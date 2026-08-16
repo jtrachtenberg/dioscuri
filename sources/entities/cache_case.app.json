@@ -1,0 +1,1001 @@
+{
+ "Header": {
+  "WolvenKitVersion": "8.20.0",
+  "WKitJsonVersion": "0.0.9",
+  "GameVersion": 2310,
+  "ExportedDateTime": "2026-08-16T16:41:42.0683230Z",
+  "DataType": "CR2W",
+  "ArchiveFileName": "C:\\Users\\jtrac\\AppData\\Local\\Temp\\claude\\C--Users-jtrac-dev\\da229038-98a4-40f5-bf52-047296d0c59e\\scratchpad\\vanilla\\base\\gameplay\\loot\\containers\\common_suitcases\\appearances\\suitcase_small.app"
+ },
+ "Data": {
+  "Version": 195,
+  "BuildVersion": 0,
+  "RootChunk": {
+   "$type": "appearanceAppearanceResource",
+   "alternateAppearanceMapping": [],
+   "alternateAppearanceSettingName": {
+    "$type": "CName",
+    "$storage": "string",
+    "$value": "None"
+   },
+   "alternateAppearanceSuffixes": [],
+   "appearances": [
+    {
+     "HandleId": "0",
+     "Data": {
+      "$type": "appearanceAppearanceDefinition",
+      "censorFlags": 0,
+      "compiledData": {
+       "BufferId": "0",
+       "Flags": 0,
+       "Type": "WolvenKit.RED4.Archive.Buffer.RedPackage, WolvenKit.RED4, Version=8.20.0.0, Culture=neutral, PublicKeyToken=null",
+       "Data": {
+        "Version": 4,
+        "Sections": 7,
+        "CruidIndex": -1,
+        "CruidDict": {
+         "0": "2038924860779126784",
+         "1": "2038924860795904000",
+         "2": "2038924860812681216"
+        },
+        "Chunks": [
+         {
+          "$type": "entPhysicalMeshComponent",
+          "autoHideDistance": 0,
+          "castLocalShadows": "Always",
+          "castRayTracedGlobalShadows": "Always",
+          "castRayTracedLocalShadows": "Default",
+          "castShadows": "Always",
+          "chunkMask": "9223372036854775807",
+          "filterData": {
+           "HandleId": "1",
+           "Data": {
+            "$type": "physicsFilterData",
+            "customFilterData": null,
+            "preset": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "Device solid visible"
+            },
+            "queryFilter": {
+             "$type": "physicsQueryFilter",
+             "mask1": "0",
+             "mask2": "70107400"
+            },
+            "simulationFilter": {
+             "$type": "physicsSimulationFilter",
+             "mask1": "114696",
+             "mask2": "23627"
+            }
+           }
+          },
+          "filterDataSource": "Parent",
+          "forcedLodDistance": "Default",
+          "forceLODLevel": -1,
+          "id": "2038924860779126784",
+          "isEnabled": 1,
+          "isReplicable": 0,
+          "localTransform": {
+           "$type": "WorldTransform",
+           "Orientation": {
+            "$type": "Quaternion",
+            "i": 0,
+            "j": 0,
+            "k": 0,
+            "r": 1
+           },
+           "Position": {
+            "$type": "WorldPosition",
+            "x": {
+             "$type": "FixedPoint",
+             "Bits": 0
+            },
+            "y": {
+             "$type": "FixedPoint",
+             "Bits": -25952
+            },
+            "z": {
+             "$type": "FixedPoint",
+             "Bits": -24904
+            }
+           }
+          },
+          "LODMode": "AlwaysVisible",
+          "mesh": {
+           "DepotPath": {
+            "$type": "ResourcePath",
+            "$storage": "string",
+            "$value": "base\\environment\\gameplay\\lootable_containers\\lootable_common_suitcase\\lootable_common_suitcase_medium_kitsch_a_lid.mesh"
+           },
+           "Flags": "Default"
+          },
+          "meshAppearance": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "default"
+          },
+          "motionBlurScale": 1,
+          "name": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "lid"
+          },
+          "navigationImpact": {
+           "$type": "NavGenNavigationSetting",
+           "navmeshImpact": "Blocking"
+          },
+          "numInstances": 0,
+          "objectTypeID": "ROT_Static",
+          "order": 0,
+          "overrideMeshNavigationImpact": 1,
+          "parentTransform": {
+           "HandleId": "2",
+           "Data": {
+            "$type": "entHardTransformBinding",
+            "bindName": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "TransformAnimator5856"
+            },
+            "enabled": 1,
+            "enableMask": {
+             "$type": "entTagMask",
+             "excludedTags": {
+              "$type": "redTagList",
+              "tags": [
+               {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "NoBinding"
+               }
+              ]
+             },
+             "hardTags": {
+              "$type": "redTagList",
+              "tags": []
+             },
+             "softTags": {
+              "$type": "redTagList",
+              "tags": []
+             }
+            },
+            "slotName": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "None"
+            }
+           }
+          },
+          "renderingPlane": "RPl_Scene",
+          "renderSceneLayerMask": "Default",
+          "simulationType": "Kinematic",
+          "startInactive": 0,
+          "useResourceSimulationType": 0,
+          "version": 0,
+          "visibilityAnimationParam": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "None"
+          },
+          "visualScale": {
+           "$type": "Vector3",
+           "X": 1,
+           "Y": 1,
+           "Z": 1
+          }
+         },
+         {
+          "$type": "gameTransformAnimatorComponent",
+          "animations": [
+           {
+            "$type": "gameTransformAnimationDefinition",
+            "autoStart": 0,
+            "autoStartDelay": 0,
+            "looping": 0,
+            "name": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "Open"
+            },
+            "reverse": 0,
+            "timeline": {
+             "$type": "gameTransformAnimationTimeline",
+             "items": [
+              {
+               "$type": "gameTransformAnimationTrackItem",
+               "duration": 0.699999988,
+               "impl": {
+                "HandleId": "3",
+                "Data": {
+                 "$type": "gameTransformAnimation_RotateFromTo",
+                 "movement": {
+                  "HandleId": "4",
+                  "Data": {
+                   "$type": "gameTransformAnimation_Movement_PredefinedFunction",
+                   "function": {
+                    "$type": "EasingFunction",
+                    "easingType": "EET_In",
+                    "transitionType": "EET_Linear"
+                   }
+                  }
+                 },
+                 "startRotationEvaluator": {
+                  "HandleId": "5",
+                  "Data": {
+                   "$type": "gameTransformAnimation_Rotation_CurrentRotation",
+                   "offset": {
+                    "$type": "Quaternion",
+                    "i": 0,
+                    "j": 0,
+                    "k": 0,
+                    "r": 1
+                   }
+                  }
+                 },
+                 "targetRotationEvaluator": {
+                  "HandleId": "6",
+                  "Data": {
+                   "$type": "gameTransformAnimation_Rotation_LocalRotation",
+                   "rotation": {
+                    "$type": "Quaternion",
+                    "i": -0.27563735581699916,
+                    "j": 0,
+                    "k": 0,
+                    "r": 0.9612616959383189
+                   }
+                  }
+                 }
+                }
+               },
+               "startTime": 0
+              },
+              {
+               "$type": "gameTransformAnimationTrackItem",
+               "duration": 0,
+               "impl": {
+                "HandleId": "7",
+                "Data": {
+                 "$type": "gameTransformAnimation_PlaySound",
+                 "soundName": {
+                  "$type": "CName",
+                  "$storage": "string",
+                  "$value": "it_interactive_suitcase_kitsch_small"
+                 },
+                 "unique": 0
+                }
+               },
+               "startTime": 0
+              }
+             ]
+            },
+            "timeScale": 1,
+            "timesToPlay": 1
+           }
+          ],
+          "id": "2038924860795904000",
+          "isReplicable": 0,
+          "localTransform": {
+           "$type": "WorldTransform",
+           "Orientation": {
+            "$type": "Quaternion",
+            "i": 0,
+            "j": 0,
+            "k": 0,
+            "r": 1
+           },
+           "Position": {
+            "$type": "WorldPosition",
+            "x": {
+             "$type": "FixedPoint",
+             "Bits": 0
+            },
+            "y": {
+             "$type": "FixedPoint",
+             "Bits": 25952
+            },
+            "z": {
+             "$type": "FixedPoint",
+             "Bits": 24904
+            }
+           }
+          },
+          "name": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "TransformAnimator5856"
+          },
+          "parentTransform": {
+           "HandleId": "8",
+           "Data": {
+            "$type": "entHardTransformBinding",
+            "bindName": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "box"
+            },
+            "enabled": 1,
+            "enableMask": {
+             "$type": "entTagMask",
+             "excludedTags": {
+              "$type": "redTagList",
+              "tags": [
+               {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "NoBinding"
+               }
+              ]
+             },
+             "hardTags": {
+              "$type": "redTagList",
+              "tags": []
+             },
+             "softTags": {
+              "$type": "redTagList",
+              "tags": []
+             }
+            },
+            "slotName": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "None"
+            }
+           }
+          }
+         },
+         {
+          "$type": "entPhysicalMeshComponent",
+          "autoHideDistance": 0,
+          "castLocalShadows": "Always",
+          "castRayTracedGlobalShadows": "Always",
+          "castRayTracedLocalShadows": "Default",
+          "castShadows": "Always",
+          "chunkMask": "9223372036854775807",
+          "filterData": {
+           "HandleId": "9",
+           "Data": {
+            "$type": "physicsFilterData",
+            "customFilterData": null,
+            "preset": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "Device solid visible"
+            },
+            "queryFilter": {
+             "$type": "physicsQueryFilter",
+             "mask1": "0",
+             "mask2": "70107400"
+            },
+            "simulationFilter": {
+             "$type": "physicsSimulationFilter",
+             "mask1": "114696",
+             "mask2": "23627"
+            }
+           }
+          },
+          "filterDataSource": "Parent",
+          "forcedLodDistance": "Default",
+          "forceLODLevel": -1,
+          "id": "2038924860812681216",
+          "isEnabled": 1,
+          "isReplicable": 0,
+          "localTransform": {
+           "$type": "WorldTransform",
+           "Orientation": {
+            "$type": "Quaternion",
+            "i": 0,
+            "j": 0,
+            "k": 0,
+            "r": 1
+           },
+           "Position": {
+            "$type": "WorldPosition",
+            "x": {
+             "$type": "FixedPoint",
+             "Bits": 0
+            },
+            "y": {
+             "$type": "FixedPoint",
+             "Bits": 0
+            },
+            "z": {
+             "$type": "FixedPoint",
+             "Bits": 0
+            }
+           }
+          },
+          "LODMode": "AlwaysVisible",
+          "mesh": {
+           "DepotPath": {
+            "$type": "ResourcePath",
+            "$storage": "string",
+            "$value": "base\\environment\\gameplay\\lootable_containers\\lootable_common_suitcase\\lootable_common_suitcase_medium_kitsch_a.mesh"
+           },
+           "Flags": "Default"
+          },
+          "meshAppearance": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "default"
+          },
+          "motionBlurScale": 1,
+          "name": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "box"
+          },
+          "navigationImpact": {
+           "$type": "NavGenNavigationSetting",
+           "navmeshImpact": "Blocking"
+          },
+          "numInstances": 0,
+          "objectTypeID": "ROT_Static",
+          "order": 0,
+          "overrideMeshNavigationImpact": 1,
+          "parentTransform": {
+           "HandleId": "10",
+           "Data": {
+            "$type": "entHardTransformBinding",
+            "bindName": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "root"
+            },
+            "enabled": 1,
+            "enableMask": {
+             "$type": "entTagMask",
+             "excludedTags": {
+              "$type": "redTagList",
+              "tags": [
+               {
+                "$type": "CName",
+                "$storage": "string",
+                "$value": "NoBinding"
+               }
+              ]
+             },
+             "hardTags": {
+              "$type": "redTagList",
+              "tags": []
+             },
+             "softTags": {
+              "$type": "redTagList",
+              "tags": []
+             }
+            },
+            "slotName": {
+             "$type": "CName",
+             "$storage": "string",
+             "$value": "None"
+            }
+           }
+          },
+          "renderingPlane": "RPl_Scene",
+          "renderSceneLayerMask": "Default",
+          "simulationType": "Kinematic",
+          "startInactive": 0,
+          "useResourceSimulationType": 0,
+          "version": 0,
+          "visibilityAnimationParam": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "None"
+          },
+          "visualScale": {
+           "$type": "Vector3",
+           "X": 1,
+           "Y": 1,
+           "Z": 1
+          }
+         }
+        ]
+       }
+      },
+      "components": [
+       {
+        "$type": "entPhysicalMeshComponent",
+        "autoHideDistance": 0,
+        "castLocalShadows": "Always",
+        "castRayTracedGlobalShadows": "Always",
+        "castRayTracedLocalShadows": "Default",
+        "castShadows": "Always",
+        "chunkMask": "9223372036854775807",
+        "filterData": {
+         "HandleRefId": "1"
+        },
+        "filterDataSource": "Parent",
+        "forcedLodDistance": "Default",
+        "forceLODLevel": -1,
+        "id": "2038924860779126784",
+        "isEnabled": 1,
+        "isReplicable": 0,
+        "localTransform": {
+         "$type": "WorldTransform",
+         "Orientation": {
+          "$type": "Quaternion",
+          "i": 0,
+          "j": 0,
+          "k": 0,
+          "r": 1
+         },
+         "Position": {
+          "$type": "WorldPosition",
+          "x": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          },
+          "y": {
+           "$type": "FixedPoint",
+           "Bits": -25952
+          },
+          "z": {
+           "$type": "FixedPoint",
+           "Bits": -24904
+          }
+         }
+        },
+        "LODMode": "AlwaysVisible",
+        "mesh": {
+         "DepotPath": {
+          "$type": "ResourcePath",
+          "$storage": "string",
+          "$value": "mod\\dioscuri\\meshes\\cache_case_top.mesh"
+         },
+         "Flags": "Default"
+        },
+        "meshAppearance": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "default"
+        },
+        "motionBlurScale": 1,
+        "name": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "lid"
+        },
+        "navigationImpact": {
+         "$type": "NavGenNavigationSetting",
+         "navmeshImpact": "Blocking"
+        },
+        "numInstances": 0,
+        "objectTypeID": "ROT_Static",
+        "order": 0,
+        "overrideMeshNavigationImpact": 1,
+        "parentTransform": {
+         "HandleRefId": "2"
+        },
+        "renderingPlane": "RPl_Scene",
+        "renderSceneLayerMask": "Default",
+        "simulationType": "Kinematic",
+        "startInactive": 0,
+        "useResourceSimulationType": 0,
+        "version": 0,
+        "visibilityAnimationParam": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "None"
+        },
+        "visualScale": {
+         "$type": "Vector3",
+         "X": 1,
+         "Y": 1,
+         "Z": 1
+        }
+       },
+       {
+        "$type": "gameTransformAnimatorComponent",
+        "animations": [
+         {
+          "$type": "gameTransformAnimationDefinition",
+          "autoStart": 0,
+          "autoStartDelay": 0,
+          "looping": 0,
+          "name": {
+           "$type": "CName",
+           "$storage": "string",
+           "$value": "Open"
+          },
+          "reverse": 0,
+          "timeline": {
+           "$type": "gameTransformAnimationTimeline",
+           "items": [
+            {
+             "$type": "gameTransformAnimationTrackItem",
+             "duration": 0.699999988,
+             "impl": {
+              "HandleRefId": "3"
+             },
+             "startTime": 0
+            },
+            {
+             "$type": "gameTransformAnimationTrackItem",
+             "duration": 0,
+             "impl": {
+              "HandleRefId": "7"
+             },
+             "startTime": 0
+            }
+           ]
+          },
+          "timeScale": 1,
+          "timesToPlay": 1
+         }
+        ],
+        "id": "2038924860795904000",
+        "isReplicable": 0,
+        "localTransform": {
+         "$type": "WorldTransform",
+         "Orientation": {
+          "$type": "Quaternion",
+          "i": 0,
+          "j": 0,
+          "k": 0,
+          "r": 1
+         },
+         "Position": {
+          "$type": "WorldPosition",
+          "x": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          },
+          "y": {
+           "$type": "FixedPoint",
+           "Bits": 25952
+          },
+          "z": {
+           "$type": "FixedPoint",
+           "Bits": 24904
+          }
+         }
+        },
+        "name": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "TransformAnimator5856"
+        },
+        "parentTransform": {
+         "HandleRefId": "8"
+        }
+       },
+       {
+        "$type": "entPhysicalMeshComponent",
+        "autoHideDistance": 0,
+        "castLocalShadows": "Always",
+        "castRayTracedGlobalShadows": "Always",
+        "castRayTracedLocalShadows": "Default",
+        "castShadows": "Always",
+        "chunkMask": "9223372036854775807",
+        "filterData": {
+         "HandleRefId": "9"
+        },
+        "filterDataSource": "Parent",
+        "forcedLodDistance": "Default",
+        "forceLODLevel": -1,
+        "id": "2038924860812681216",
+        "isEnabled": 1,
+        "isReplicable": 0,
+        "localTransform": {
+         "$type": "WorldTransform",
+         "Orientation": {
+          "$type": "Quaternion",
+          "i": 0,
+          "j": 0,
+          "k": 0,
+          "r": 1
+         },
+         "Position": {
+          "$type": "WorldPosition",
+          "x": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          },
+          "y": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          },
+          "z": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          }
+         }
+        },
+        "LODMode": "AlwaysVisible",
+        "mesh": {
+         "DepotPath": {
+          "$type": "ResourcePath",
+          "$storage": "string",
+          "$value": "mod\\dioscuri\\meshes\\cache_case_bottom.mesh"
+         },
+         "Flags": "Default"
+        },
+        "meshAppearance": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "default"
+        },
+        "motionBlurScale": 1,
+        "name": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "box"
+        },
+        "navigationImpact": {
+         "$type": "NavGenNavigationSetting",
+         "navmeshImpact": "Blocking"
+        },
+        "numInstances": 0,
+        "objectTypeID": "ROT_Static",
+        "order": 0,
+        "overrideMeshNavigationImpact": 1,
+        "parentTransform": {
+         "HandleRefId": "10"
+        },
+        "renderingPlane": "RPl_Scene",
+        "renderSceneLayerMask": "Default",
+        "simulationType": "Kinematic",
+        "startInactive": 0,
+        "useResourceSimulationType": 0,
+        "version": 0,
+        "visibilityAnimationParam": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "None"
+        },
+        "visualScale": {
+         "$type": "Vector3",
+         "X": 1,
+         "Y": 1,
+         "Z": 1
+        }
+       },
+       {
+        "$type": "entPhysicalMeshComponent",
+        "autoHideDistance": 0,
+        "castLocalShadows": "Always",
+        "castRayTracedGlobalShadows": "Always",
+        "castRayTracedLocalShadows": "Default",
+        "castShadows": "Always",
+        "chunkMask": "9223372036854775807",
+        "filterData": {
+         "HandleRefId": "9"
+        },
+        "filterDataSource": "Parent",
+        "forcedLodDistance": "Default",
+        "forceLODLevel": -1,
+        "id": "9999999",
+        "isEnabled": 1,
+        "isReplicable": 0,
+        "localTransform": {
+         "$type": "WorldTransform",
+         "Orientation": {
+          "$type": "Quaternion",
+          "i": 0,
+          "j": 0,
+          "k": 0,
+          "r": 1
+         },
+         "Position": {
+          "$type": "WorldPosition",
+          "x": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          },
+          "y": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          },
+          "z": {
+           "$type": "FixedPoint",
+           "Bits": 0
+          }
+         }
+        },
+        "LODMode": "AlwaysVisible",
+        "mesh": {
+         "DepotPath": {
+          "$type": "ResourcePath",
+          "$storage": "string",
+          "$value": "base\\items\\quest\\q000__hym_gun_suitcase\\q000__gun_suitcase_handle.mesh"
+         },
+         "Flags": "Default"
+        },
+        "meshAppearance": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "default"
+        },
+        "motionBlurScale": 1,
+        "name": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "handle"
+        },
+        "navigationImpact": {
+         "$type": "NavGenNavigationSetting",
+         "navmeshImpact": "Blocking"
+        },
+        "numInstances": 0,
+        "objectTypeID": "ROT_Static",
+        "order": 0,
+        "overrideMeshNavigationImpact": 1,
+        "parentTransform": {
+         "HandleRefId": "10"
+        },
+        "renderingPlane": "RPl_Scene",
+        "renderSceneLayerMask": "Default",
+        "simulationType": "Kinematic",
+        "startInactive": 0,
+        "useResourceSimulationType": 0,
+        "version": 0,
+        "visibilityAnimationParam": {
+         "$type": "CName",
+         "$storage": "string",
+         "$value": "None"
+        },
+        "visualScale": {
+         "$type": "Vector3",
+         "X": 1,
+         "Y": 1,
+         "Z": 1
+        }
+       }
+      ],
+      "cookedDataPathOverride": {
+       "DepotPath": {
+        "$type": "ResourcePath",
+        "$storage": "uint64",
+        "$value": "0"
+       },
+       "Flags": "Soft"
+      },
+      "forcedLodDistance": 0,
+      "hitRepresentationOverrides": [],
+      "inheritedVisualTags": {
+       "$type": "redTagList",
+       "tags": []
+      },
+      "looseDependencies": [],
+      "name": {
+       "$type": "CName",
+       "$storage": "string",
+       "$value": "default"
+      },
+      "parametersBuffer": {
+       "$type": "entEntityParametersBuffer",
+       "parameterBuffers": []
+      },
+      "parentAppearance": {
+       "$type": "CName",
+       "$storage": "string",
+       "$value": "None"
+      },
+      "partsMasks": [],
+      "partsOverrides": [],
+      "partsValues": [],
+      "proxyMesh": {
+       "DepotPath": {
+        "$type": "ResourcePath",
+        "$storage": "uint64",
+        "$value": "0"
+       },
+       "Flags": "Soft"
+      },
+      "proxyMeshAppearance": {
+       "$type": "CName",
+       "$storage": "string",
+       "$value": "None"
+      },
+      "resolvedDependencies": [
+       {
+        "DepotPath": {
+         "$type": "ResourcePath",
+         "$storage": "string",
+         "$value": "base\\environment\\gameplay\\lootable_containers\\lootable_common_suitcase\\lootable_common_suitcase_medium_kitsch_a_lid.mesh"
+        },
+        "Flags": "Soft"
+       },
+       {
+        "DepotPath": {
+         "$type": "ResourcePath",
+         "$storage": "string",
+         "$value": "base\\environment\\gameplay\\lootable_containers\\lootable_common_suitcase\\lootable_common_suitcase_medium_kitsch_a.mesh"
+        },
+        "Flags": "Soft"
+       }
+      ],
+      "visualTags": {
+       "$type": "redTagList",
+       "tags": []
+      }
+     }
+    }
+   ],
+   "baseEntity": {
+    "DepotPath": {
+     "$type": "ResourcePath",
+     "$storage": "uint64",
+     "$value": "0"
+    },
+    "Flags": "Soft"
+   },
+   "baseEntityType": {
+    "$type": "CName",
+    "$storage": "string",
+    "$value": "None"
+   },
+   "baseType": {
+    "$type": "CName",
+    "$storage": "string",
+    "$value": "None"
+   },
+   "censorshipMapping": [],
+   "commonCookData": {
+    "DepotPath": {
+     "$type": "ResourcePath",
+     "$storage": "uint64",
+     "$value": "0"
+    },
+    "Flags": "Soft"
+   },
+   "cookingPlatform": "PLATFORM_PC",
+   "DismEffects": [],
+   "DismWoundConfig": {
+    "$type": "entdismembermentWoundsConfigSet",
+    "Configs": [
+     {
+      "HandleId": "33",
+      "Data": {
+       "$type": "entdismembermentWoundConfigContainer",
+       "AppearanceName": {
+        "$type": "CName",
+        "$storage": "string",
+        "$value": "default"
+       },
+       "Wounds": []
+      }
+     },
+     {
+      "HandleId": "34",
+      "Data": {
+       "$type": "entdismembermentWoundConfigContainer",
+       "AppearanceName": {
+        "$type": "CName",
+        "$storage": "string",
+        "$value": "kitsch_a"
+       },
+       "Wounds": []
+      }
+     },
+     {
+      "HandleId": "35",
+      "Data": {
+       "$type": "entdismembermentWoundConfigContainer",
+       "AppearanceName": {
+        "$type": "CName",
+        "$storage": "string",
+        "$value": "neomilitary_a"
+       },
+       "Wounds": []
+      }
+     }
+    ]
+   },
+   "forceCompileProxy": 0,
+   "generatePlayerBlockingCollisionForProxy": 0,
+   "partType": {
+    "$type": "CName",
+    "$storage": "string",
+    "$value": "None"
+   },
+   "preset": {
+    "$type": "CName",
+    "$storage": "string",
+    "$value": "None"
+   },
+   "proxyPolyCount": 1400,
+   "Wounds": []
+  },
+  "EmbeddedFiles": []
+ }
+}

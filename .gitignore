@@ -1,0 +1,18 @@
+# extracted vanilla game assets — never commit (copyright + 300MB+)
+mesh-work/source/
+mesh-work/silencer/
+mesh-work/ashura-original/
+mesh-work/lid-import/
+
+# build intermediates (regenerable from blend + sources)
+mesh-work/mesh-import/*.glb
+mesh-work/mesh-import/*.mesh.json
+mesh-work/*.glb
+mesh-work/renders/*_4x.png
+
+# working-file backups
+mesh-work/*.pre-smooth.blend
+
+# build artifacts
+archive-staging/Dioscuri.archive
+dist/

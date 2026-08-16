@@ -1,0 +1,9 @@
+﻿localization:
+  onscreens:
+    en-us: mod\dioscuri\en-us.json
+factories:
+  - mod\dioscuri\factory_parts.csv
+streaming:
+  blocks:
+    - malorian\all.streamingblock
+

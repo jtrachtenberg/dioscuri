@@ -1,0 +1,61 @@
+{
+  "Header": {
+    "WolvenKitVersion": "8.20.0",
+    "WKitJsonVersion": "0.0.9",
+    "GameVersion": 2310,
+    "DataType": "CR2W",
+    "ArchiveFileName": "mod\\dioscuri\\en-us.json"
+  },
+  "Data": {
+    "Version": 195,
+    "BuildVersion": 0,
+    "RootChunk": {
+      "$type": "JsonResource",
+      "cookingPlatform": "PLATFORM_PC",
+      "root": {
+        "HandleId": "0",
+        "Data": {
+          "$type": "localizationPersistenceOnScreenEntries",
+          "entries": [
+            {
+              "$type": "localizationPersistenceOnScreenEntry",
+              "femaleVariant": "Malorian Arms Dioscuri",
+              "maleVariant": "",
+              "primaryKey": "0",
+              "secondaryKey": "Dioscuri-Name"
+            },
+            {
+              "$type": "localizationPersistenceOnScreenEntry",
+              "femaleVariant": "A twin-chambered smart sniper platform out of Malorian Arms' experimental division, built into the shell of a Kang Tao G-58 and never announced, let alone released. Its targeting suite holds two locks at once and answers a single pull of the trigger with paired rounds. The handful of old Malorian hands who admit the project existed say Eran Malor ordered exactly one prototype built, then buried the program — and they point to a rumor the company has never dignified with a response: that Malor was born a twin, and that his brother died in infancy.",
+              "maleVariant": "",
+              "primaryKey": "0",
+              "secondaryKey": "Dioscuri-Description"
+            },
+            {
+              "$type": "localizationPersistenceOnScreenEntry",
+              "femaleVariant": "Locks onto up to two targets simultaneously and fires paired rounds with a single pull of the trigger. Integrated silencer. Greatly increased headshot damage.",
+              "maleVariant": "",
+              "primaryKey": "0",
+              "secondaryKey": "Dioscuri-Mod-Description"
+            },
+            {
+              "$type": "localizationPersistenceOnScreenEntry",
+              "femaleVariant": "Locks onto up to two enemies at a time.",
+              "maleVariant": "",
+              "primaryKey": "0",
+              "secondaryKey": "Dioscuri-Gameplay-Description"
+            },
+            {
+              "$type": "localizationPersistenceOnScreenEntry",
+              "femaleVariant": "Malorian Arms Case",
+              "maleVariant": "",
+              "primaryKey": "0",
+              "secondaryKey": "Dioscuri-Cache-Name"
+            }
+          ]
+        }
+      }
+    },
+    "EmbeddedFiles": []
+  }
+}

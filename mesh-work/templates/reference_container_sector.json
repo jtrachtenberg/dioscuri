@@ -1,0 +1,3577 @@
+{
+  "Header": {
+    "WolvenKitVersion": "8.20.0",
+    "WKitJsonVersion": "0.0.9",
+    "GameVersion": 2310,
+    "ExportedDateTime": "2026-08-16T05:24:28.4966386Z",
+    "DataType": "CR2W",
+    "ArchiveFileName": "C:\\Users\\jtrac\\AppData\\Local\\Temp\\claude\\C--Users-jtrac-dev\\da229038-98a4-40f5-bf52-047296d0c59e\\scratchpad\\sector2\\mod\\worlds\\sectors\\sq_high_stakes.streamingsector"
+  },
+  "Data": {
+    "Version": 195,
+    "BuildVersion": 0,
+    "RootChunk": {
+      "$type": "worldStreamingSector",
+      "category": "Quest",
+      "cookingPlatform": "PLATFORM_None",
+      "externInplaceResource": {
+        "DepotPath": {
+          "$type": "ResourcePath",
+          "$storage": "uint64",
+          "$value": "0"
+        },
+        "Flags": "Soft"
+      },
+      "level": 1,
+      "localInplaceResource": [],
+      "nodeData": {
+        "BufferId": "0",
+        "Flags": 0,
+        "Type": "WolvenKit.RED4.Archive.Buffer.worldNodeDataBuffer, WolvenKit.RED4, Version=8.20.0.0, Culture=neutral, PublicKeyToken=null",
+        "Data": [
+          {
+            "Id": "0",
+            "NodeIndex": 0,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3048.57129,
+              "Y": -4498.90381,
+              "Z": 68.4316254
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": -0.422280729,
+              "r": 0.946644247
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3050.57129,
+              "Y": -4498.90381,
+              "Z": 68.4316254
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3055.57129,
+                "Y": -4497.90381,
+                "Z": 68.4316254
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3055.57129,
+                "Y": -4497.90381,
+                "Z": 68.4316254
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_chase_car_1"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2500,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 1,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3050,
+              "Y": -4496,
+              "Z": 68.0175781
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": -0.422280729,
+              "r": 0.946644247
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3056.50659,
+              "Y": -4497.97266,
+              "Z": 68.0175781
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3056.50659,
+                "Y": -4502.97266,
+                "Z": 68.0175781
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3056.50659,
+                "Y": -4502.97266,
+                "Z": 68.0175781
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_chase_car_2"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2500,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 2,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3046.073,
+              "Y": -4490.62305,
+              "Z": 68.6296234
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.320216656,
+              "r": -0.947344363
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3047.073,
+              "Y": -4490.62305,
+              "Z": 68.6296234
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3047.073,
+                "Y": -4490.62305,
+                "Z": 68.6296234
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3047.073,
+                "Y": -4490.62305,
+                "Z": 68.6296234
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_behemoth"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 500,
+            "UkFloat1": 450,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 3,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3041.15674,
+              "Y": -4483.03467,
+              "Z": 68.5616531
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.313595325,
+              "r": -0.949556708
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3041.15674,
+              "Y": -4483.03467,
+              "Z": 68.5616531
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_chase_car_3"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2500,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 5,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3041.15674,
+              "Y": -4483.03467,
+              "Z": 68.5616531
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.313595325,
+              "r": -0.949556708
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3041.15674,
+              "Y": -4483.03467,
+              "Z": 68.5616531
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_race_car_spline"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 450,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 4,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3026.15674,
+              "Y": -4464.03467,
+              "Z": 82.5616531
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.450214893,
+              "r": 0.892920315
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3026.15674,
+              "Y": -4464.03467,
+              "Z": 82.5616531
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_convoy_drone"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2500,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 14,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3026.15674,
+              "Y": -4464.03467,
+              "Z": 83
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.450214893,
+              "r": 0.892920315
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3041.15674,
+              "Y": -4483.03467,
+              "Z": 83
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_race_drone_spline"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 500,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 7,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -2824.67188,
+              "Y": -4202.09375,
+              "Z": 68.0100021
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_ambush_scene_marker"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 500,
+            "UkFloat1": 400,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 8,
+            "Position": {
+              "$type": "Vector4",
+              "W": 1,
+              "X": -2837.67993,
+              "Y": -4220.87012,
+              "Z": 68
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 5,
+              "Y": 5,
+              "Z": 5
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_ambush_tr"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 5000,
+            "UkFloat1": 4000,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 9,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -2836.1377,
+              "Y": -4194.19189,
+              "Z": 68.5277863
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.897959888,
+              "r": -0.440077603
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -2836.1377,
+              "Y": -4194.19189,
+              "Z": 68.5277863
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -2836.1377,
+                "Y": -4194.19189,
+                "Z": 68.5277863
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -2836.1377,
+                "Y": -4194.19189,
+                "Z": 68.5277863
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_aldo_explode_car"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2500,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 10,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -2836.1377,
+              "Y": -4194.19189,
+              "Z": 68.5277863
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.897959888,
+              "r": -0.440077603
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -2836.1377,
+              "Y": -4194.19189,
+              "Z": 68.5277863
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -2836.1377,
+                "Y": -4194.19189,
+                "Z": 68.5277863
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -2836.1377,
+                "Y": -4194.19189,
+                "Z": 68.5277863
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_aldo_explode_car_spline"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 400,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 11,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3041.15674,
+              "Y": -4483.03467,
+              "Z": 68.5616531
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.313595325,
+              "r": -0.949556708
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3041.15674,
+              "Y": -4483.03467,
+              "Z": 68.5616531
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3041.15674,
+                "Y": -4483.03467,
+                "Z": 68.5616531
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_behemoth_spline"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2000,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 12,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3050.57129,
+              "Y": -4498.90381,
+              "Z": 68.4316254
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": -0.322280735,
+              "r": 0.946644247
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3050.57129,
+              "Y": -4497.90381,
+              "Z": 68.4316254
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3052.57129,
+                "Y": -4497.90381,
+                "Z": 68.4316254
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3052.57129,
+                "Y": -4497.90381,
+                "Z": 68.4316254
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_follower_1_car_spline"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2500,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 13,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3054.42847,
+              "Y": -4496.24805,
+              "Z": 68.0175781
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": -0.322280735,
+              "r": 0.946644247
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": -3056.50659,
+              "Y": -4502.97266,
+              "Z": 68.0175781
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3056.50659,
+                "Y": -4502.97266,
+                "Z": 68.0175781
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": -3056.50659,
+                "Y": -4502.97266,
+                "Z": 68.0175781
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_follower_2_car_spline"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2500,
+            "UkFloat1": 650,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 15,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -3017.4126,
+              "Y": -4433.85303,
+              "Z": 67.9401245
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 3,
+              "Y": 3,
+              "Z": 2
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#debug_tr_teleport_drone"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 500,
+            "UkFloat1": 400,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 16,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -842.969727,
+              "Y": 2785.46997,
+              "Z": 38.5754013
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.814377308,
+              "r": 0.580335855
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 9.93000031,
+              "Y": 13.6999998,
+              "Z": 9
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_deliver_tr"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 8564,
+            "UkFloat1": 400,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 23,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -844.609985,
+              "Y": 2783.5,
+              "Z": 38.5800018
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 3,
+              "Y": 2,
+              "Z": 4
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_deliver_tr_small"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 8564,
+            "UkFloat1": 400,
+            "Uk10": 1056,
+            "Uk11": 512,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 6,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -2836.11255,
+              "Y": -4194.1377,
+              "Z": 68.0117798
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 2,
+              "Y": 2,
+              "Z": 2
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_alde_meet_tr"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 5000,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 568,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 17,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -963.01001,
+              "Y": 1516.28003,
+              "Z": 3.47000003
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_regina_shard"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 3000,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 568,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 18,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -963.416321,
+              "Y": 1520.11353,
+              "Z": 2.21000004
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.707106769,
+              "r": 0.707106769
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_regina_shard_scene_sm"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 3000,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 568,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 19,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": 1633.33508,
+              "Y": -693.559998,
+              "Z": 50.3718948
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.619418144,
+              "r": 0.7850613
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 35.5999985,
+              "Y": 52.5999985,
+              "Z": 2
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_tr"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 4000,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 568,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 20,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": 1638.979,
+              "Y": -691.42688,
+              "Z": 50.2868195
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_sm"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 4000,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 568,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 21,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": 1639.45496,
+              "Y": -691.114014,
+              "Z": 50.4300003
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0.133128524,
+              "r": 0.991098821
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 4,
+              "Y": 4,
+              "Z": 3
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_tr_small"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 2000,
+            "UkFloat1": 500,
+            "Uk10": 1056,
+            "Uk11": 568,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          },
+          {
+            "Id": "0",
+            "NodeIndex": 22,
+            "Position": {
+              "$type": "Vector4",
+              "W": 0,
+              "X": -2577.22632,
+              "Y": -119.987091,
+              "Z": 8.79383087
+            },
+            "Orientation": {
+              "$type": "Quaternion",
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "r": 1
+            },
+            "Scale": {
+              "$type": "Vector3",
+              "X": 1,
+              "Y": 1,
+              "Z": 1
+            },
+            "Pivot": {
+              "$type": "Vector3",
+              "X": 0,
+              "Y": 0,
+              "Z": 0
+            },
+            "Bounds": {
+              "$type": "Box",
+              "Max": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              },
+              "Min": {
+                "$type": "Vector4",
+                "W": 0,
+                "X": 0,
+                "Y": 0,
+                "Z": 0
+              }
+            },
+            "QuestPrefabRefHash": {
+              "$type": "NodeRef",
+              "$storage": "string",
+              "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_tp_sm"
+            },
+            "UkHash1": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "CookedPrefabData": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "uint64",
+                "$value": "0"
+              },
+              "Flags": "Default"
+            },
+            "MaxStreamingDistance": 10000,
+            "UkFloat1": 512,
+            "Uk10": 1056,
+            "Uk11": 568,
+            "Uk12": 0,
+            "Uk13": "0",
+            "Uk14": "0"
+          }
+        ]
+      },
+      "nodeRefs": [
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_chase_car_1"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_chase_car_2"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_chase_car_3"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_behemoth"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_behemoth_spline"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_convoy_drone"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_race_car_spline"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_race_drone_spline"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_alde_meet_tr"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#debug_tr_teleport_drone"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_ambush_scene_marker"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_ambush_tr"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_aldo_explode_car"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_aldo_explode_car_spline"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_follower_1_car_spline"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#convoy_follower_2_car_spline"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_deliver_tr"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_deliver_tr_small"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_regina_shard"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_regina_shard_scene_sm"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_tr"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_sm"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_tr_small"
+        },
+        {
+          "$type": "NodeRef",
+          "$storage": "string",
+          "$value": "$/03_night_city/sunlive/#sq_high_stakes/#sq_hs_after_quest_scene_tp_sm"
+        }
+      ],
+      "nodes": [
+        {
+          "HandleId": "0",
+          "Data": {
+            "$type": "worldPopulationSpawnerNode",
+            "alwaysSpawned": "default__false_",
+            "appearanceName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "chevalier_emperor__basic_suburban_1_6"
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "Vehicle.q000_arasaka_chase_car_behind_1"
+            },
+            "isHostOnly": 0,
+            "isVehicle": 0,
+            "isVisibleInGame": 1,
+            "objectRecordId": {
+              "$type": "TweakDBID",
+              "$storage": "string",
+              "$value": "Vehicle.q000_arasaka_chase_car"
+            },
+            "prefetchAppearance": 0,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "spawnInView": "default__true_",
+            "spawnOnStart": 0,
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "1",
+          "Data": {
+            "$type": "worldPopulationSpawnerNode",
+            "alwaysSpawned": "default__false_",
+            "appearanceName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "chevalier_emperor__basic_suburban_1_6"
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "Vehicle.q000_arasaka_chase_car_behind_2"
+            },
+            "isHostOnly": 0,
+            "isVehicle": 0,
+            "isVisibleInGame": 1,
+            "objectRecordId": {
+              "$type": "TweakDBID",
+              "$storage": "string",
+              "$value": "Vehicle.q000_arasaka_chase_car"
+            },
+            "prefetchAppearance": 0,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "spawnInView": "default__true_",
+            "spawnOnStart": 0,
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "2",
+          "Data": {
+            "$type": "worldPopulationSpawnerNode",
+            "alwaysSpawned": "default__false_",
+            "appearanceName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "militech_behemoth_basic_arasaka"
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "Vehicle.sq_hs_behemoth"
+            },
+            "isHostOnly": 0,
+            "isVehicle": 0,
+            "isVisibleInGame": 1,
+            "objectRecordId": {
+              "$type": "TweakDBID",
+              "$storage": "uint64",
+              "$value": "94567687877"
+            },
+            "prefetchAppearance": 0,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "spawnInView": "default__true_",
+            "spawnOnStart": 0,
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "3",
+          "Data": {
+            "$type": "worldPopulationSpawnerNode",
+            "alwaysSpawned": "default__false_",
+            "appearanceName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "chevalier_emperor__basic_arasaka_q000_chase_02"
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "Vehicle.q000_arasaka_chase_car_front_1"
+            },
+            "isHostOnly": 0,
+            "isVehicle": 0,
+            "isVisibleInGame": 1,
+            "objectRecordId": {
+              "$type": "TweakDBID",
+              "$storage": "string",
+              "$value": "Vehicle.q000_arasaka_chase_car"
+            },
+            "prefetchAppearance": 0,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "spawnInView": "default__true_",
+            "spawnOnStart": 0,
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "4",
+          "Data": {
+            "$type": "worldPopulationSpawnerNode",
+            "alwaysSpawned": "default__false_",
+            "appearanceName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "default"
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "Vehicle.av_camera_drone"
+            },
+            "isHostOnly": 0,
+            "isVehicle": 0,
+            "isVisibleInGame": 1,
+            "objectRecordId": {
+              "$type": "TweakDBID",
+              "$storage": "string",
+              "$value": "Vehicle.av_camera_drone"
+            },
+            "prefetchAppearance": 0,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "spawnInView": "default__true_",
+            "spawnOnStart": 1,
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "5",
+          "Data": {
+            "$type": "worldRaceSplineNode",
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{head_of_convoy_car_spline}"
+            },
+            "deprecatedDefaultAdjustTime": 0,
+            "deprecatedDefaultSpeed": 0,
+            "deprecatedSpeedRestrictions": [],
+            "destSnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "destSnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "entrySnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "entrySnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "ignoreTerrain": 0,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "offsetDefault": 5,
+            "offsets": [],
+            "orientationChangeSections": [],
+            "proxyScale": null,
+            "roadAdjustmentFactorChangeSections": [],
+            "sourcePrefabHash": "0",
+            "speedChangeSections": [
+              {
+                "$type": "worldSpeedSplineNodeSpeedChangeSection",
+                "end": 0,
+                "start": 0,
+                "targetSpeed_M_P_S": 10
+              }
+            ],
+            "splineData": {
+              "HandleId": "6",
+              "Data": {
+                "$type": "Spline",
+                "hasDirection": 1,
+                "looped": 0,
+                "points": [
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 1,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 0,
+                      "Y": 0,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 3,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 7.75,
+                      "Y": 349,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "reversed": 0
+              }
+            },
+            "tag": "None",
+            "tagExt": "None",
+            "useDeprecated": 0
+          }
+        },
+        {
+          "HandleId": "7",
+          "Data": {
+            "$type": "worldTriggerAreaNode",
+            "color": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{tr_alde_scene}"
+            },
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "notifiers": [
+              {
+                "HandleId": "8",
+                "Data": {
+                  "$type": "questTriggerNotifier_Quest",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Default",
+                  "isEnabled": 1
+                }
+              }
+            ],
+            "outline": null,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "9",
+          "Data": {
+            "$type": "worldStaticMarkerNode",
+            "data": {
+              "HandleId": "10",
+              "Data": {
+                "$type": "scnSceneMarker",
+                "markers": [],
+                "workspotMarkers": []
+              }
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_ambush_scene_point}"
+            },
+            "isEnabled": 1,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None",
+            "tags": {
+              "$type": "redTagList",
+              "tags": []
+            }
+          }
+        },
+        {
+          "HandleId": "11",
+          "Data": {
+            "$type": "worldTriggerAreaNode",
+            "color": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_ambush_tr}"
+            },
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "notifiers": [
+              {
+                "HandleId": "12",
+                "Data": {
+                  "$type": "questTriggerNotifier_Quest",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Default",
+                  "isEnabled": 1
+                }
+              }
+            ],
+            "outline": null,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "13",
+          "Data": {
+            "$type": "worldPopulationSpawnerNode",
+            "alwaysSpawned": "default__false_",
+            "appearanceName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "militech_behemoth_basic_base_01"
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_exploding_car}"
+            },
+            "isHostOnly": 0,
+            "isVehicle": 0,
+            "isVisibleInGame": 1,
+            "objectRecordId": {
+              "$type": "TweakDBID",
+              "$storage": "string",
+              "$value": "Vehicle.q000_nomad_v_utility4_militech_behemoth_quest"
+            },
+            "prefetchAppearance": 0,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "spawnInView": "default__true_",
+            "spawnOnStart": 0,
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "14",
+          "Data": {
+            "$type": "worldRaceSplineNode",
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_explode_car_spline}"
+            },
+            "deprecatedDefaultAdjustTime": 0,
+            "deprecatedDefaultSpeed": 0,
+            "deprecatedSpeedRestrictions": [],
+            "destSnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "destSnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "entrySnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "entrySnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "ignoreTerrain": 0,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "offsetDefault": 5,
+            "offsets": [],
+            "orientationChangeSections": [],
+            "proxyScale": null,
+            "roadAdjustmentFactorChangeSections": [],
+            "sourcePrefabHash": "0",
+            "speedChangeSections": [
+              {
+                "$type": "worldSpeedSplineNodeSpeedChangeSection",
+                "end": 0,
+                "start": 0,
+                "targetSpeed_M_P_S": 8
+              }
+            ],
+            "splineData": {
+              "HandleId": "15",
+              "Data": {
+                "$type": "Spline",
+                "hasDirection": 1,
+                "looped": 0,
+                "points": [
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 0,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 0,
+                      "Y": 0,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 0,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 0,
+                      "Y": 16,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "reversed": 0
+              }
+            },
+            "tag": "None",
+            "tagExt": "None",
+            "useDeprecated": 0
+          }
+        },
+        {
+          "HandleId": "16",
+          "Data": {
+            "$type": "worldRaceSplineNode",
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_behemoth_spline}"
+            },
+            "deprecatedDefaultAdjustTime": 0,
+            "deprecatedDefaultSpeed": 0,
+            "deprecatedSpeedRestrictions": [],
+            "destSnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "destSnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "entrySnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "entrySnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "ignoreTerrain": 0,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "offsetDefault": 5,
+            "offsets": [],
+            "orientationChangeSections": [],
+            "proxyScale": null,
+            "roadAdjustmentFactorChangeSections": [],
+            "sourcePrefabHash": "0",
+            "speedChangeSections": [
+              {
+                "$type": "worldSpeedSplineNodeSpeedChangeSection",
+                "end": 0,
+                "start": 0,
+                "targetSpeed_M_P_S": 10
+              }
+            ],
+            "splineData": {
+              "HandleId": "17",
+              "Data": {
+                "$type": "Spline",
+                "hasDirection": 1,
+                "looped": 0,
+                "points": [
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 1,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 0,
+                      "Y": 0,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 3,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 7.75,
+                      "Y": 339,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "reversed": 0
+              }
+            },
+            "tag": "None",
+            "tagExt": "None",
+            "useDeprecated": 0
+          }
+        },
+        {
+          "HandleId": "18",
+          "Data": {
+            "$type": "worldRaceSplineNode",
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_follower_1_race_car_spline}"
+            },
+            "deprecatedDefaultAdjustTime": 0,
+            "deprecatedDefaultSpeed": 0,
+            "deprecatedSpeedRestrictions": [],
+            "destSnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "destSnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "entrySnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "entrySnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "ignoreTerrain": 0,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "offsetDefault": 5,
+            "offsets": [],
+            "orientationChangeSections": [],
+            "proxyScale": null,
+            "roadAdjustmentFactorChangeSections": [],
+            "sourcePrefabHash": "0",
+            "speedChangeSections": [
+              {
+                "$type": "worldSpeedSplineNodeSpeedChangeSection",
+                "end": 0,
+                "start": 0,
+                "targetSpeed_M_P_S": 10
+              }
+            ],
+            "splineData": {
+              "HandleId": "19",
+              "Data": {
+                "$type": "Spline",
+                "hasDirection": 1,
+                "looped": 0,
+                "points": [
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 1,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 0,
+                      "Y": 0,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 2,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 2,
+                      "Y": 345,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "reversed": 0
+              }
+            },
+            "tag": "None",
+            "tagExt": "None",
+            "useDeprecated": 0
+          }
+        },
+        {
+          "HandleId": "20",
+          "Data": {
+            "$type": "worldRaceSplineNode",
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_follower_2_race_car_spline}"
+            },
+            "deprecatedDefaultAdjustTime": 0,
+            "deprecatedDefaultSpeed": 0,
+            "deprecatedSpeedRestrictions": [],
+            "destSnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "destSnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "entrySnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "entrySnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "ignoreTerrain": 0,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "offsetDefault": 5,
+            "offsets": [],
+            "orientationChangeSections": [],
+            "proxyScale": null,
+            "roadAdjustmentFactorChangeSections": [],
+            "sourcePrefabHash": "0",
+            "speedChangeSections": [
+              {
+                "$type": "worldSpeedSplineNodeSpeedChangeSection",
+                "end": 0,
+                "start": 0,
+                "targetSpeed_M_P_S": 10
+              }
+            ],
+            "splineData": {
+              "HandleId": "21",
+              "Data": {
+                "$type": "Spline",
+                "hasDirection": 1,
+                "looped": 0,
+                "points": [
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 1,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 0,
+                      "Y": 0,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 2,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 2,
+                      "Y": 345,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "reversed": 0
+              }
+            },
+            "tag": "None",
+            "tagExt": "None",
+            "useDeprecated": 0
+          }
+        },
+        {
+          "HandleId": "22",
+          "Data": {
+            "$type": "worldRaceSplineNode",
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_dron_race_spline}"
+            },
+            "deprecatedDefaultAdjustTime": 0,
+            "deprecatedDefaultSpeed": 0,
+            "deprecatedSpeedRestrictions": [],
+            "destSnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "destSnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "entrySnapedNode": {
+              "$type": "NodeRef",
+              "$storage": "uint64",
+              "$value": "0"
+            },
+            "entrySnapedSocketName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "None"
+            },
+            "ignoreTerrain": 0,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "offsetDefault": 5,
+            "offsets": [],
+            "orientationChangeSections": [],
+            "proxyScale": null,
+            "roadAdjustmentFactorChangeSections": [],
+            "sourcePrefabHash": "0",
+            "speedChangeSections": [
+              {
+                "$type": "worldSpeedSplineNodeSpeedChangeSection",
+                "end": 0,
+                "start": 0,
+                "targetSpeed_M_P_S": 9
+              }
+            ],
+            "splineData": {
+              "HandleId": "23",
+              "Data": {
+                "$type": "Spline",
+                "hasDirection": 1,
+                "looped": 0,
+                "points": [
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 1,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 0,
+                      "Y": 0,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 2,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 150,
+                      "Y": 5,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 3,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 250,
+                      "Y": -10,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "SplinePoint",
+                    "automaticTangents": 1,
+                    "continuousTangents": 1,
+                    "id": 4,
+                    "position": {
+                      "$type": "Vector3",
+                      "X": 340,
+                      "Y": -7.75,
+                      "Z": 0
+                    },
+                    "rotation": {
+                      "$type": "Quaternion",
+                      "i": 0,
+                      "j": 0,
+                      "k": 0,
+                      "r": 1
+                    },
+                    "tangents": {
+                      "Elements": [
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        },
+                        {
+                          "$type": "Vector3",
+                          "X": 0,
+                          "Y": 0,
+                          "Z": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "reversed": 0
+              }
+            },
+            "tag": "None",
+            "tagExt": "None",
+            "useDeprecated": 0
+          }
+        },
+        {
+          "HandleId": "24",
+          "Data": {
+            "$type": "worldTriggerAreaNode",
+            "color": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{convoy_camera_dron_tr_area}"
+            },
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "notifiers": [
+              {
+                "HandleId": "25",
+                "Data": {
+                  "$type": "questTriggerNotifier_Quest",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Default",
+                  "isEnabled": 1
+                }
+              }
+            ],
+            "outline": null,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "26",
+          "Data": {
+            "$type": "worldTriggerAreaNode",
+            "color": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{sq_hs_deliver_tr}"
+            },
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "notifiers": [
+              {
+                "HandleId": "27",
+                "Data": {
+                  "$type": "questTriggerNotifier_Quest",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Default, TC_Player, TC_Vehicle",
+                  "isEnabled": 1
+                }
+              },
+              {
+                "HandleId": "28",
+                "Data": {
+                  "$type": "worldInteriorAreaNotifier",
+                  "excludeChannels": 0,
+                  "gameRestrictionIDs": [
+                    {
+                      "$type": "TweakDBID",
+                      "$storage": "string",
+                      "$value": "GameplayRestriction.NoTimeSkip"
+                    }
+                  ],
+                  "includeChannels": "TC_Player",
+                  "isEnabled": 1,
+                  "setTier2": 1,
+                  "treatAsInterior": 1
+                }
+              }
+            ],
+            "outline": null,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "29",
+          "Data": {
+            "$type": "worldEntityNode",
+            "appearanceName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "shard_case_container_entropy_b"
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{regina_shard}"
+            },
+            "entityLod": 0,
+            "entityTemplate": {
+              "DepotPath": {
+                "$type": "ResourcePath",
+                "$storage": "string",
+                "$value": "base\\gameplay\\loot\\shard_cases\\shard_case_container.ent"
+              },
+              "Flags": "Soft"
+            },
+            "instanceData": {
+              "HandleId": "30",
+              "Data": {
+                "$type": "entEntityInstanceData",
+                "buffer": {
+                  "BufferId": "1",
+                  "Flags": 0,
+                  "Type": "WolvenKit.RED4.Archive.Buffer.RedPackage, WolvenKit.RED4, Version=8.20.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Data": {
+                    "Version": 4,
+                    "Sections": 6,
+                    "CruidIndex": 0,
+                    "CruidDict": {
+                      "0": "0"
+                    },
+                    "Chunks": [
+                      {
+                        "$type": "ShardCaseContainer",
+                        "accumulatedTimePasssed": 0,
+                        "activeQualityRangeInteraction": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "None"
+                        },
+                        "audioResourceName": {
+                          "$type": "CName",
+                          "$storage": "string",
+                          "$value": "None"
+                        },
+                        "containerType": "AmmoCase",
+                        "contentAssignment": {
+                          "$type": "TweakDBID",
+                          "$storage": "uint64",
+                          "$value": "0"
+                        },
+                        "customCameraTarget": "ECCTV_All",
+                        "displayDescription": {
+                          "unk1": "0",
+                          "value": ""
+                        },
+                        "displayName": {
+                          "unk1": "0",
+                          "value": ""
+                        },
+                        "e3ObjectRevealed": 0,
+                        "forceDefeatReward": 0,
+                        "forceRegisterInHudManager": 0,
+                        "giveHandicapAmmo": 0,
+                        "hasQuestItems": 0,
+                        "hasVisibilityForcedInAnimSystem": 0,
+                        "hitInstigatorCooldownID": {
+                          "$type": "gameDelayID"
+                        },
+                        "isDead": 0,
+                        "isHighlightedInFocusMode": 0,
+                        "isIconic": 0,
+                        "isIllegal": 0,
+                        "isInIconForcedVisibilityRange": 0,
+                        "isScannerDataDirty": 0,
+                        "isTargetedWithSmartWeapon": 0,
+                        "itemTDBID": {
+                          "$type": "TweakDBID",
+                          "$storage": "uint64",
+                          "$value": "103387007875"
+                        },
+                        "killRewardDisabled": 0,
+                        "lastEngineTime": 0,
+                        "lastHitInstigatorID": {
+                          "$type": "entEntityID",
+                          "hash": "0"
+                        },
+                        "lockedByKey": {
+                          "$type": "TweakDBID",
+                          "$storage": "uint64",
+                          "$value": "0"
+                        },
+                        "lootQuality": "Common",
+                        "lootTables": [],
+                        "markAsQuest": 0,
+                        "persistentState": null,
+                        "playerSocket": {
+                          "$type": "gamePlayerSocket"
+                        },
+                        "prereqListeners": [],
+                        "receivedDamageHistory": [],
+                        "renderSceneLayerMask": "Default",
+                        "scanningComponent": null,
+                        "shardMesh": null,
+                        "sourceShootComponent": null,
+                        "squadMemberComponent": null,
+                        "statusEffectComponent": null,
+                        "statusEffectListeners": [],
+                        "stimBroadcaster": null,
+                        "tags": {
+                          "$type": "redTagList",
+                          "tags": []
+                        },
+                        "targetShootComponent": null,
+                        "uiSlotComponent": null,
+                        "useAreaLoot": 1,
+                        "visibilityCheckDistance": 16000,
+                        "visionComponent": null,
+                        "wasLootInitalized": 0,
+                        "wasOpened": 0,
+                        "willDieSoon": 0,
+                        "workspotMapper": null
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "ioPriority": "Immediate",
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "31",
+          "Data": {
+            "$type": "worldStaticMarkerNode",
+            "data": {
+              "HandleId": "32",
+              "Data": {
+                "$type": "scnSceneMarker",
+                "markers": [],
+                "workspotMarkers": []
+              }
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{regina_shard_scene_sm}"
+            },
+            "isEnabled": 1,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None",
+            "tags": {
+              "$type": "redTagList",
+              "tags": []
+            }
+          }
+        },
+        {
+          "HandleId": "33",
+          "Data": {
+            "$type": "worldTriggerAreaNode",
+            "color": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{sq_hs_after_quest_tr}"
+            },
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "notifiers": [
+              {
+                "HandleId": "34",
+                "Data": {
+                  "$type": "questTriggerNotifier_Quest",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Default",
+                  "isEnabled": 1
+                }
+              }
+            ],
+            "outline": null,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "35",
+          "Data": {
+            "$type": "worldStaticMarkerNode",
+            "data": {
+              "HandleId": "36",
+              "Data": {
+                "$type": "scnSceneMarker",
+                "markers": [],
+                "workspotMarkers": []
+              }
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{sq_hs_after_quest_scene_sm}"
+            },
+            "isEnabled": 1,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None",
+            "tags": {
+              "$type": "redTagList",
+              "tags": []
+            }
+          }
+        },
+        {
+          "HandleId": "37",
+          "Data": {
+            "$type": "worldTriggerAreaNode",
+            "color": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{sq_hs_after_quest_scene_tr_small}"
+            },
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "notifiers": [
+              {
+                "HandleId": "38",
+                "Data": {
+                  "$type": "worldVehicleForbiddenAreaNotifier",
+                  "areaSpeedLimit": 0,
+                  "dismount": 0,
+                  "enableNullArea": 1,
+                  "enableSummoning": 1,
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Player, TC_Vehicle",
+                  "innerAreaBoundToOuterArea": 0,
+                  "innerAreaOutline": null,
+                  "innerAreaSpeedLimit": 0,
+                  "isEnabled": 1,
+                  "parkingSpots": []
+                }
+              },
+              {
+                "HandleId": "39",
+                "Data": {
+                  "$type": "worldInteriorAreaNotifier",
+                  "excludeChannels": 0,
+                  "gameRestrictionIDs": [
+                    {
+                      "$type": "TweakDBID",
+                      "$storage": "string",
+                      "$value": "GameplayRestriction.NoTimeSkip"
+                    },
+                    {
+                      "$type": "TweakDBID",
+                      "$storage": "string",
+                      "$value": "GameplayRestriction.InDaClub"
+                    }
+                  ],
+                  "includeChannels": "TC_Player",
+                  "isEnabled": 1,
+                  "setTier2": 1,
+                  "treatAsInterior": 1
+                }
+              },
+              {
+                "HandleId": "40",
+                "Data": {
+                  "$type": "worldQuestPreventionNotifier",
+                  "activation": "Always",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Player",
+                  "isEnabled": 1,
+                  "type": "Clear"
+                }
+              }
+            ],
+            "outline": null,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        },
+        {
+          "HandleId": "41",
+          "Data": {
+            "$type": "worldStaticMarkerNode",
+            "data": {
+              "HandleId": "42",
+              "Data": {
+                "$type": "scnSceneMarker",
+                "markers": [],
+                "workspotMarkers": []
+              }
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{sq_hs_after_quest_scene_tp_sm}"
+            },
+            "isEnabled": 1,
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None",
+            "tags": {
+              "$type": "redTagList",
+              "tags": []
+            }
+          }
+        },
+        {
+          "HandleId": "43",
+          "Data": {
+            "$type": "worldTriggerAreaNode",
+            "color": {
+              "$type": "Color",
+              "Alpha": 0,
+              "Blue": 0,
+              "Green": 0,
+              "Red": 0
+            },
+            "debugName": {
+              "$type": "CName",
+              "$storage": "string",
+              "$value": "{sq_hs_after_deliver_tr_small}"
+            },
+            "isHostOnly": 0,
+            "isVisibleInGame": 1,
+            "notifiers": [
+              {
+                "HandleId": "44",
+                "Data": {
+                  "$type": "worldInteriorAreaNotifier",
+                  "excludeChannels": 0,
+                  "gameRestrictionIDs": [
+                    {
+                      "$type": "TweakDBID",
+                      "$storage": "string",
+                      "$value": "GameplayRestriction.NoTimeSkip"
+                    },
+                    {
+                      "$type": "TweakDBID",
+                      "$storage": "string",
+                      "$value": "GameplayRestriction.InDaClub"
+                    }
+                  ],
+                  "includeChannels": "TC_Player",
+                  "isEnabled": 1,
+                  "setTier2": 1,
+                  "treatAsInterior": 1
+                }
+              },
+              {
+                "HandleId": "45",
+                "Data": {
+                  "$type": "worldQuestPreventionNotifier",
+                  "activation": "Always",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Player",
+                  "isEnabled": 1,
+                  "type": "Clear"
+                }
+              },
+              {
+                "HandleId": "46",
+                "Data": {
+                  "$type": "questTriggerNotifier_Quest",
+                  "excludeChannels": 0,
+                  "includeChannels": "TC_Default, TC_Vehicle",
+                  "isEnabled": 1
+                }
+              }
+            ],
+            "outline": null,
+            "proxyScale": null,
+            "sourcePrefabHash": "0",
+            "tag": "None",
+            "tagExt": "None"
+          }
+        }
+      ],
+      "persistentNodeIndex": 0,
+      "persistentNodes": [],
+      "variantIndices": [0
+      ],
+      "variantNodes": [],
+      "version": 62
+    },
+    "EmbeddedFiles": []
+  }
+}

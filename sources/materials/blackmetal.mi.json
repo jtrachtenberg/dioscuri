@@ -1,0 +1,115 @@
+{
+  "Header": {
+    "WolvenKitVersion": "8.20.0",
+    "WKitJsonVersion": "0.0.9",
+    "GameVersion": 2310,
+    "ExportedDateTime": "2026-08-16T18:07:31.7740773Z",
+    "DataType": "CR2W",
+    "ArchiveFileName": "C:\\Users\\jtrac\\AppData\\Local\\Temp\\claude\\C--Users-jtrac-dev\\da229038-98a4-40f5-bf52-047296d0c59e\\scratchpad\\vanilla-mi\\base\\environment\\architecture\\common\\int\\int_mlt_jp_arasaka_a\\textures\\militarism_devices_01_dark.mi"
+  },
+  "Data": {
+    "Version": 195,
+    "BuildVersion": 0,
+    "RootChunk": {
+      "$type": "CMaterialInstance",
+      "audioTag": {
+        "$type": "CName",
+        "$storage": "string",
+        "$value": "None"
+      },
+      "baseMaterial": {
+        "DepotPath": {
+          "$type": "ResourcePath",
+          "$storage": "string",
+          "$value": "engine\\materials\\metal_base.remt"
+        },
+        "Flags": "Default"
+      },
+      "cookingPlatform": "PLATFORM_PC",
+      "enableMask": 1,
+      "metadata": null,
+      "resourceVersion": 4,
+      "values": [
+        {
+          "$type": "rRef:ITexture",
+          "BaseColor": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "engine\\textures\\editor\\white.xbm"
+            },
+            "Flags": "Default"
+          }
+        },
+        {
+          "$type": "Vector4",
+          "BaseColorScale": {
+            "$type": "Vector4",
+            "W": 0,
+            "X": 0.015,
+            "Y": 0.015,
+            "Z": 0.015
+          }
+        },
+        {
+          "$type": "rRef:ITexture",
+          "Metalness": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "engine\\textures\\editor\\black.xbm"
+            },
+            "Flags": "Default"
+          }
+        },
+        {
+          "$type": "Float",
+          "MetalnessScale": 0
+        },
+        {
+          "$type": "Float",
+          "MetalnessBias": 0
+        },
+        {
+          "$type": "rRef:ITexture",
+          "Roughness": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "engine\\textures\\editor\\white.xbm"
+            },
+            "Flags": "Default"
+          }
+        },
+        {
+          "$type": "Float",
+          "RoughnessScale": 0.9
+        },
+        {
+          "$type": "Float",
+          "RoughnessBias": 0
+        },
+        {
+          "$type": "rRef:ITexture",
+          "Normal": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "engine\\textures\\editor\\normal.xbm"
+            },
+            "Flags": "Default"
+          }
+        },
+        {
+          "$type": "Float",
+          "NormalStrength": 1
+        },
+        {
+          "$type": "Float",
+          "LayerTile": 1
+        }
+      ]
+    },
+    "EmbeddedFiles": []
+  }
+}

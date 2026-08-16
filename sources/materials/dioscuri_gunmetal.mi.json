@@ -1,0 +1,70 @@
+{
+  "Header": {
+    "WolvenKitVersion": "8.20.0",
+    "WKitJsonVersion": "0.0.9",
+    "GameVersion": 2310,
+    "ExportedDateTime": "2026-08-16T18:07:31.7740773Z",
+    "DataType": "CR2W",
+    "ArchiveFileName": "C:\\Users\\jtrac\\AppData\\Local\\Temp\\claude\\C--Users-jtrac-dev\\da229038-98a4-40f5-bf52-047296d0c59e\\scratchpad\\vanilla-mi\\base\\environment\\architecture\\common\\int\\int_mlt_jp_arasaka_a\\textures\\militarism_devices_01_dark.mi"
+  },
+  "Data": {
+    "Version": 195,
+    "BuildVersion": 0,
+    "RootChunk": {
+      "$type": "CMaterialInstance",
+      "audioTag": {
+        "$type": "CName",
+        "$storage": "string",
+        "$value": "None"
+      },
+      "baseMaterial": {
+        "DepotPath": {
+          "$type": "ResourcePath",
+          "$storage": "string",
+          "$value": "engine\\materials\\multilayered.mt"
+        },
+        "Flags": "Default"
+      },
+      "cookingPlatform": "PLATFORM_PC",
+      "enableMask": 1,
+      "metadata": null,
+      "resourceVersion": 4,
+      "values": [
+        {
+          "$type": "rRef:ITexture",
+          "GlobalNormal": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\weapons\\firearms\\handgun\\malorian_silverhand\\entities\\meshes\\textures\\tpp\\w_handgun__malorian_silverhand__base1_01_n01.xbm"
+            },
+            "Flags": "Default"
+          }
+        },
+        {
+          "$type": "rRef:Multilayer_Mask",
+          "MultilayerMask": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "base\\weapons\\firearms\\handgun\\malorian_silverhand\\entities\\meshes\\textures\\ml_w_handgun__malorian_silverhand__base1_01_default_maskssettpp.mlmask"
+            },
+            "Flags": "Default"
+          }
+        },
+        {
+          "$type": "rRef:Multilayer_Setup",
+          "MultilayerSetup": {
+            "DepotPath": {
+              "$type": "ResourcePath",
+              "$storage": "string",
+              "$value": "mod\\dioscuri\\materials\\dioscuri_gunmetal.mlsetup"
+            },
+            "Flags": "Default"
+          }
+        }
+      ]
+    },
+    "EmbeddedFiles": []
+  }
+}
