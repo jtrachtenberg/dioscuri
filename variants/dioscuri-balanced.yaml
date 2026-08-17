@@ -1,0 +1,249 @@
+﻿# =====================================================================
+# Dioscuri â€” twin-lock smart sniper wearing a Kang Tao G-58 Dian shell
+# (Castor & Pollux: one trigger pull, two bullets, two targets)
+# =====================================================================
+# Mechanics base : Items.Preset_Ashura_Default (smart sniper rifle)
+# Visuals        : G-58 Dian part records via slotPartListPreset
+#
+# FIX from v1: the blueprint must be an *iconic* blueprint or the
+# IconicWeaponModLegendary slot doesn't exist and the iconic modifier
+# (which carries all the special stats) is silently dropped.
+#
+# Spawn via CET console:
+#   Game.AddToInventory("Items.Preset_Dioscuri", 1)
+
+# --- Iconic modifier: twin lock + integral suppressor ----------------
+DioscuriIconicWeaponMod:
+  $base: Items.IconicWeaponModBase
+  OnAttach:
+    - $base: Items.IconicWeaponModAbilityBase
+      UIData:
+        iconPath: ability_offensive
+        localizedDescription: LocKey#Dioscuri-Mod-Description
+  statModifiers:
+    # --- twin lock: Ashura stock = 1 (hip & ADS), additive -> 2 ------
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.SmartGunAdsMaxLockedTargets
+      modifierType: Additive
+      value: 1
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.SmartGunHipMaxLockedTargets
+      modifierType: Additive
+      value: 1
+    # Twin fire as a true 2-round burst: each round is real (consumes ammo,
+    # can strike a different lock), near-simultaneous cycle for the
+    # "paired rounds" feel. One pull empties both chambers -> reload.
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.NumShotsInBurst
+      modifierType: Additive
+      value: 2
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.CycleTime_Burst
+      modifierType: Additive
+      value: 0.06
+    # Twin chamber: the Ashura loads a single round per reload (vanilla
+    # MagazineCapacity = 1); this gun chambers a pair.
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.MagazineCapacity
+      modifierType: Additive
+      value: 1
+    # BALANCED VARIANT: the full burst (2 rounds) totals one vanilla
+    # Ashura shot (371): each round lands ~186. Main file uses -0.104.
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.DamagePerHit
+      modifierType: AdditiveMultiplier
+      value: -0.5
+    # --- 250% headshot bonus -----------------------------------------
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.HeadshotDamageMultiplier
+      modifierType: Additive
+      value: 2.5
+    # --- projectile velocity 80 -> 100 -------------------------------
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.SmartGunPlayerProjectileVelocity
+      modifierType: Additive
+      value: 20
+    # --- +25% smart-targeting reticle size (stat is in percent) ------
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.SmartGunTargetingRectangleSizeIncrease
+      modifierType: Additive
+      value: 25
+    # --- integral suppressor (vanilla SilencerBase stats) ------------
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.WeaponNoise
+      modifierType: Additive
+      value: -10
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.RicochetCount
+      modifierType: Multiplier
+      value: 0
+
+# --- Blueprint: which attachment slots exist on the gun --------------
+# Vanilla smart-sniper blueprint (mod slots + scope, no muzzle â€” the
+# silencer is integral) plus the iconic-mod slot our modifier lives in.
+DioscuriBlueprint:
+  $base: Items.Base_Smart_Precision_Sniper_Rifle_NoMuzzle_Blueprint
+  rootElement:
+    slot: AttachmentSlots.Receiver
+    childElements:
+      - Items.IconicRangedWeaponModElement
+      - Items.Smart_Precision_Sniper_Rifle_WeaponMod1Element
+      - slot: AttachmentSlots.Magazine
+      - slot: AttachmentSlots.MagazineEmpty
+      - slot: AttachmentSlots.Barrel
+        # no ScopeElement: scoped ADS jitters against the smart-lock UI â€”
+        # the game never mixed scopes with smart weapons, so neither do we
+
+# --- Inventory icon: rendered from the actual kitbash ----------------
+UIIcon.DioscuriIcon:
+  $type: UIIcon
+  atlasResourcePath: mod\dioscuri\icons.inkatlas
+  atlasPartName: dioscuri_icon
+
+# --- HUD holo outline (ammo counter / smart-link widget) --------------
+# Freestyle line-art render of the final model, vanilla style (white
+# lines on transparency, muzzle right, widget applies the tint)
+UIIcon.DioscuriHudIcon:
+  $type: UIIcon
+  atlasResourcePath: mod\dioscuri\hud_icons.inkatlas
+  atlasPartName: dioscuri_hud
+
+# --- Custom body part: our kitbashed mesh ----------------------------
+# appearanceResourceName resolves via the ArchiveXL-registered factory
+# (mod\dioscuri\factory_parts.csv -> mod\dioscuri\dioscuri_body.app
+#  -> mod\dioscuri\meshes\dioscuri_body.mesh)
+Items.DioscuriBodyPart:
+  $base: Items.w_smg__kang_tao_dian__rcv1
+  appearanceResourceName: dioscuri_body
+
+# --- The weapon itself ----------------------------------------------
+Items.Preset_Dioscuri:
+  $base: Items.Preset_Ashura_Default
+  displayName: Dioscuri-Name          # custom key from Dioscuri.archive (ArchiveXL onscreens)
+  localizedDescription: Dioscuri-Description
+  gameplayDescription: LocKey#Dioscuri-Gameplay-Description  # replaces inherited "Locks onto only one enemy" (LocKey#92677)
+  # weapon-level appearance = THE thing that paints the gun (resolves via
+  # weapons appearance factory to mod\dioscuri\dioscuri_weapon.app)
+  appearanceResourceName: Dioscuri_Weapon
+  triggerModes:
+    - TriggerMode.Burst
+  primaryTriggerMode: TriggerMode.Burst
+  iconPath: DioscuriIcon    # custom UIIcon record below
+  hudIcon: UIIcon.DioscuriHudIcon   # holo outline in ammo/smart-link widget
+  visualTags: [Default]
+  quality: Quality.Random             # scales with player level like other iconics
+  CraftingData: Items.Craftable_Iconic_Weapon
+  blueprint: DioscuriBlueprint
+  tags:
+    - !append IconicWeapon
+    - !append CraftableIconic
+    - !append Silenced
+  statModifierGroups:
+    - !append Items.CraftableIconicQualityRandomisation
+  statModifiers:
+    - !append Quality.IconicItem
+    # CanSilentKill must live on the WEAPON RECORD, not the iconic-mod
+    # part: StealthRunner's detection patch (bug_fixes.reds) falls back
+    # to scanning the record's own statModifiers, which is how Wind
+    # (Silent Ashura) stays reliably silent. Same placement here.
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.CanSilentKill
+      modifierType: Additive
+      value: 1
+  slotPartListPreset:
+    # single custom body mesh replaces the Dian receiver/barrel/mags
+    - slot: AttachmentSlots.Receiver
+      itemPartPreset: Items.DioscuriBodyPart
+    - slot: AttachmentSlots.IconicWeaponModLegendary
+      itemPartPreset: DioscuriIconicWeaponMod
+
+# --- Tiered craftables + crafting specs (Silent Ashura pattern) -------
+Items.$(tier)_Dioscuri:
+  $instances:
+    - {tier: Common   }
+    - {tier: Uncommon }
+    - {tier: Rare     }
+    - {tier: Epic     }
+    - {tier: Legendary}
+  $base: Items.Preset_Dioscuri
+  quality: Quality.$(tier)
+  CraftingData: Items.Craftable_$(tier)_Iconic_Weapon
+
+Items.Recipe_Preset_Dioscuri:
+  $base: Items.IconicRecipe
+  displayName: LocKey#Dioscuri-Name
+  craftingResult:
+    item: Items.Preset_Dioscuri
+
+Items.Recipe_$(tier)_Dioscuri:
+  $instances:
+    - {tier: Common   }
+    - {tier: Uncommon }
+    - {tier: Rare     }
+    - {tier: Epic     }
+    - {tier: Legendary}
+  $base: Items.Recipe_Preset_Dioscuri
+  craftingResult:
+    item: Items.$(tier)_Dioscuri
+  hideOnItemsAdded: [Items.$(tier)_Dioscuri]
+
+# --- cache loot (structure per wiki "Lootable world objects") --------
+# Vanilla iconic-spec pattern (ma_wbr_jpn_20_Igla_Sovereign_recipe_loot_table):
+# all five tiered recipes gated by level-band prereqs (<9 / 9-16 / 17-24 /
+# 25-32 / 33+), so the case drops the ONE recipe matching player level â€”
+# fixed-tier display, single-material crafting cost.
+LootTables.DioscuriCacheLoot:
+  $type: gamedataLootTable_Record
+  lootGenerationType: dropChance
+  minItemsToLoot: 1
+  maxItemsToLoot: 1
+  lootItems:
+    - $type: gamedataLootItem_Record
+      dropChance: 1
+      dropCountMin: 1
+      dropCountMax: 1
+      itemID: Items.Recipe_Common_Dioscuri
+      playerPrereqID: LootPrereqs.CraftedIconicWeaponRecipePrereq_Common
+    - $type: gamedataLootItem_Record
+      dropChance: 1
+      dropCountMin: 1
+      dropCountMax: 1
+      itemID: Items.Recipe_Uncommon_Dioscuri
+      playerPrereqID: LootPrereqs.CraftedIconicWeaponRecipePrereq_Uncommon
+    - $type: gamedataLootItem_Record
+      dropChance: 1
+      dropCountMin: 1
+      dropCountMax: 1
+      itemID: Items.Recipe_Rare_Dioscuri
+      playerPrereqID: LootPrereqs.CraftedIconicWeaponRecipePrereq_Rare
+    - $type: gamedataLootItem_Record
+      dropChance: 1
+      dropCountMin: 1
+      dropCountMax: 1
+      itemID: Items.Recipe_Epic_Dioscuri
+      playerPrereqID: LootPrereqs.CraftedIconicWeaponRecipePrereq_Epic
+    - $type: gamedataLootItem_Record
+      dropChance: 1
+      dropCountMin: 1
+      dropCountMax: 1
+      itemID: Items.Recipe_Legendary_Dioscuri
+      playerPrereqID: LootPrereqs.CraftedIconicWeaponRecipePrereq_Legendary
+
+Debug.RecipeIconicFirearms.items:
+  - !append Items.Recipe_Common_Dioscuri
+  - !append Items.Recipe_Uncommon_Dioscuri
+  - !append Items.Recipe_Rare_Dioscuri
+  - !append Items.Recipe_Epic_Dioscuri
+  - !append Items.Recipe_Legendary_Dioscuri
