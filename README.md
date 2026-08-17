@@ -1,5 +1,7 @@
 # Malorian Arms Dioscuri
 
+**Published:** https://www.nexusmods.com/cyberpunk2077/mods/32801
+
 A custom iconic smart sniper rifle mod for Cyberpunk 2077 — built from scratch as a
 kitbash of the Tsunami Ashura and the Malorian 3516, with its own lore, world
 placement, and acquisition.
