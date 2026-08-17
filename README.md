@@ -6,12 +6,8 @@ A custom iconic smart sniper rifle mod for Cyberpunk 2077 — built from scratch
 kitbash of the Tsunami Ashura and the Malorian 3516, with its own lore, world
 placement, and acquisition.
 
-> *Before the 3516 ever bore Johnny Silverhand's name, Eran Malor chased a
-> stranger obsession: a rifle that fired in pairs. Factory rumor said it was for
-> the twin brother who died in infancy — one trigger, two rounds, so no shot
-> would ever be alone. The Dioscuri never shipped. One case survived the
-> factory's closing.*
-
+> Just before he retired, Eran Malor made a Smart prototype - a rifle that fired in pairs.
+> The Dioscuri never shipped. One case containing the spec survived the factory's closing.
 ## Features
 
 - **Twin-lock smart targeting** — locks up to two targets simultaneously, fires a
