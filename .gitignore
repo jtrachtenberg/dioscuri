@@ -12,6 +12,11 @@ mesh-work/renders/*_4x.png
 
 # working-file backups
 mesh-work/*.pre-smooth.blend
+*.blend1
+
+# loose screenshots (not mod assets — kept locally only)
+/location.png
+/madio.png
 
 # build artifacts
 archive-staging/Dioscuri.archive
