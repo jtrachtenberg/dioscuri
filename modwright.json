@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "name": "Malorian Arms Dioscuri",
+  "game": "cyberpunk2077",
+  "version": "1.0.0",
+  "sources": [
+    {
+      "id": "archive-staging",
+      "path": "archive-staging/Dioscuri",
+      "kind": "archive-staging",
+      "notes": "WolvenKit project packed into Dioscuri.archive: meshes, apps, sector, icons, materials, localization."
+    },
+    {
+      "id": "archive-xl",
+      "path": "archive-staging/Dioscuri.archive.xl",
+      "kind": "xl",
+      "notes": "Hand-authored ArchiveXL manifest: localization, factories, streaming block."
+    },
+    {
+      "id": "tweaks",
+      "path": "r6/tweaks/Dioscuri",
+      "kind": "tweaks",
+      "notes": "dioscuri.yaml: weapon, iconic mod, recipes, loot table and icon TweakDB records."
+    },
+    {
+      "id": "cet",
+      "path": "cet/DioscuriCache",
+      "kind": "cet",
+      "notes": "Author-only CET cleanup for legacy dev spawns — not shipped, no deploy target."
+    },
+    {
+      "id": "blender",
+      "path": "mesh-work",
+      "kind": "blender",
+      "notes": "dioscuri_kitbash_edit.blend (editable model) plus export_game_mesh_v2.py / render_icon_v2.py pipeline scripts."
+    },
+    {
+      "id": "sources",
+      "path": "sources",
+      "kind": "sources",
+      "notes": "Editable JSON sources for shipped binaries: sector, materials, cache_case entity, icons."
+    }
+  ],
+  "build": {
+    "outDir": "archive-staging",
+    "steps": ["wolvenkit-pack"]
+  },
+  "deploy": {
+    "targets": [
+      {
+        "rootId": "archive",
+        "from": "Dioscuri.archive",
+        "waitForGameExit": true,
+        "backup": true
+      },
+      {
+        "rootId": "archive",
+        "from": "Dioscuri.archive.xl",
+        "waitForGameExit": true,
+        "backup": true
+      },
+      {
+        "rootId": "tweaks",
+        "from": "tweaks",
+        "waitForGameExit": false,
+        "backup": true
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "id": "red4ext",
+      "kind": "loader",
+      "url": "https://www.nexusmods.com/cyberpunk2077/mods/2380"
+    },
+    {
+      "id": "archivexl",
+      "kind": "framework",
+      "url": "https://www.nexusmods.com/cyberpunk2077/mods/4198"
+    },
+    {
+      "id": "tweakxl",
+      "kind": "framework",
+      "url": "https://www.nexusmods.com/cyberpunk2077/mods/4197"
+    },
+    {
+      "id": "wolvenkit-cli",
+      "kind": "tool",
+      "minVersion": "8.20",
+      "notes": "Packs archive-staging/Dioscuri (build.ps1) and imports the Blender GLB export as a .mesh."
+    },
+    {
+      "id": "blender",
+      "kind": "tool",
+      "minVersion": "5.1",
+      "notes": "Cyberpunk IO Suite required for the join-by-material GLB export (export_game_mesh_v2.py)."
+    }
+  ],
+  "toolchain": {
+    "wolvenkit-cli": "C:/Users/jtrac/dev/tools/WolvenKit.Console/WolvenKit.CLI.exe",
+    "blender": "C:/Program Files/Blender Foundation/Blender 5.1/blender.exe"
+  },
+  "publish": [
+    {
+      "target": "nexus",
+      "id": "32801",
+      "notes": "https://www.nexusmods.com/cyberpunk2077/mods/32801"
+    },
+    {
+      "target": "zip",
+      "include": ["archive/**", "r6/**"],
+      "notes": "build.ps1 -Dist stages archive/pc/mod + r6/tweaks/Dioscuri into dist/MalorianArmsDioscuri-<version>.zip."
+    }
+  ]
+}
