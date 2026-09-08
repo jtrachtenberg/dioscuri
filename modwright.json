@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "name": "Malorian Arms Dioscuri",
   "game": "cyberpunk2077",
   "version": "1.0.0",
@@ -43,28 +43,36 @@
   ],
   "build": {
     "outDir": "archive-staging",
-    "steps": ["wolvenkit-pack"]
+    "steps": [
+      {
+        "step": "blender-export",
+        "id": "mesh",
+        "optional": true,
+        "blend": "mesh-work/dioscuri_kitbash_edit.blend",
+        "script": "mesh-work/export_game_mesh_v2.py",
+        "out": "mesh-work/dioscuri_body.glb"
+      },
+      {
+        "step": "wolvenkit-import",
+        "id": "mesh",
+        "optional": true,
+        "glb": "mesh-work/dioscuri_body.glb",
+        "base": "archive-staging/Dioscuri/mod/dioscuri/meshes/dioscuri_body.mesh",
+        "outDir": "archive-staging/Dioscuri/mod/dioscuri/meshes"
+      },
+      { "step": "stage", "id": "pack", "sources": ["archive-staging"], "into": "Dioscuri" },
+      { "step": "wolvenkit-pack", "from": "${stage}/pack/Dioscuri", "out": "Dioscuri.archive" },
+      { "step": "verify-listing", "of": "Dioscuri.archive", "forbid": ["**/*.json"] },
+      { "step": "stage", "id": "dist", "sources": ["archive-staging", "tweaks"] },
+      { "step": "zip", "from": "${stage}/dist", "name": "MalorianArmsDioscuri-${version}.zip" }
+    ]
   },
   "deploy": {
+    "waitMinutes": 0,
     "targets": [
-      {
-        "rootId": "archive",
-        "from": "Dioscuri.archive",
-        "waitForGameExit": true,
-        "backup": true
-      },
-      {
-        "rootId": "archive",
-        "from": "Dioscuri.archive.xl",
-        "waitForGameExit": true,
-        "backup": true
-      },
-      {
-        "rootId": "tweaks",
-        "from": "tweaks",
-        "waitForGameExit": false,
-        "backup": true
-      }
+      { "rootId": "archive", "from": "Dioscuri.archive", "locked": true, "backup": true },
+      { "rootId": "archive", "from": "Dioscuri.archive.xl", "locked": false, "backup": true },
+      { "rootId": "tweaks", "from": "tweaks", "into": "Dioscuri", "locked": false, "backup": true }
     ]
   },
   "dependencies": [
