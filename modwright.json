@@ -50,29 +50,84 @@
         "optional": true,
         "blend": "mesh-work/dioscuri_kitbash_edit.blend",
         "script": "mesh-work/export_game_mesh_v2.py",
-        "out": "mesh-work/dioscuri_body.glb"
+        "out": "${stage}/dioscuri.glb"
       },
       {
         "step": "wolvenkit-import",
         "id": "mesh",
         "optional": true,
-        "glb": "mesh-work/dioscuri_body.glb",
-        "base": "archive-staging/Dioscuri/mod/dioscuri/meshes/dioscuri_body.mesh",
+        "glb": "${stage}/dioscuri.glb",
+        "base": "archive-staging/Dioscuri/mod/dioscuri/meshes/dioscuri.mesh",
         "outDir": "archive-staging/Dioscuri/mod/dioscuri/meshes"
       },
-      { "step": "stage", "id": "pack", "sources": ["archive-staging"], "into": "Dioscuri" },
-      { "step": "wolvenkit-pack", "from": "${stage}/pack/Dioscuri", "out": "Dioscuri.archive" },
-      { "step": "verify-listing", "of": "Dioscuri.archive", "forbid": ["**/*.json", "!**/en-us.json"] },
-      { "step": "stage", "id": "dist", "sources": ["archive-staging", "tweaks"] },
-      { "step": "zip", "from": "${stage}/dist", "name": "MalorianArmsDioscuri-${version}.zip" }
+      {
+        "step": "stage",
+        "id": "pack",
+        "sources": [
+          "archive-staging"
+        ],
+        "into": "Dioscuri"
+      },
+      {
+        "step": "wolvenkit-pack",
+        "from": "${stage}/pack/Dioscuri",
+        "out": "Dioscuri.archive"
+      },
+      {
+        "step": "verify-listing",
+        "of": "Dioscuri.archive",
+        "forbid": [
+          "**/*.json",
+          "!**/en-us.json"
+        ]
+      },
+      {
+        "step": "stage",
+        "id": "dist",
+        "sources": [
+          {
+            "output": "Dioscuri.archive",
+            "into": "archive/pc/mod"
+          },
+          {
+            "source": "archive-xl",
+            "into": "archive/pc/mod"
+          },
+          {
+            "source": "tweaks",
+            "into": "r6/tweaks/Dioscuri"
+          }
+        ]
+      },
+      {
+        "step": "zip",
+        "from": "${stage}/dist",
+        "name": "MalorianArmsDioscuri-${version}.zip"
+      }
     ]
   },
   "deploy": {
     "waitMinutes": 0,
     "targets": [
-      { "rootId": "archive", "from": "Dioscuri.archive", "locked": true, "backup": true },
-      { "rootId": "archive", "from": "Dioscuri.archive.xl", "locked": false, "backup": true },
-      { "rootId": "tweaks", "from": "tweaks", "into": "Dioscuri", "locked": false, "backup": true }
+      {
+        "rootId": "archive",
+        "from": "Dioscuri.archive",
+        "locked": true,
+        "backup": true
+      },
+      {
+        "rootId": "archive",
+        "from": "Dioscuri.archive.xl",
+        "locked": false,
+        "backup": true
+      },
+      {
+        "rootId": "tweaks",
+        "from": "tweaks",
+        "into": "Dioscuri",
+        "locked": false,
+        "backup": true
+      }
     ]
   },
   "dependencies": [
@@ -116,7 +171,10 @@
     },
     {
       "target": "zip",
-      "include": ["archive/**", "r6/**"],
+      "include": [
+        "archive/**",
+        "r6/**"
+      ],
       "notes": "build.ps1 -Dist stages archive/pc/mod + r6/tweaks/Dioscuri into dist/MalorianArmsDioscuri-<version>.zip."
     }
   ]
