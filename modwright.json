@@ -62,7 +62,7 @@
       },
       { "step": "stage", "id": "pack", "sources": ["archive-staging"], "into": "Dioscuri" },
       { "step": "wolvenkit-pack", "from": "${stage}/pack/Dioscuri", "out": "Dioscuri.archive" },
-      { "step": "verify-listing", "of": "Dioscuri.archive", "forbid": ["**/*.json"] },
+      { "step": "verify-listing", "of": "Dioscuri.archive", "forbid": ["**/*.json", "!**/en-us.json"] },
       { "step": "stage", "id": "dist", "sources": ["archive-staging", "tweaks"] },
       { "step": "zip", "from": "${stage}/dist", "name": "MalorianArmsDioscuri-${version}.zip" }
     ]
