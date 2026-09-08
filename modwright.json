@@ -122,6 +122,15 @@
         "backup": true
       },
       {
+        "rootId": "cet",
+        "from": ".modwright/bridge/cp2077-cet/ModWrightBridge",
+        "into": "ModWrightBridge",
+        "variant": "withBridge",
+        "locked": false,
+        "backup": true,
+        "prune": ["ModWrightBridge/**"]
+      },
+      {
         "rootId": "tweaks",
         "from": "tweaks",
         "into": "Dioscuri",
