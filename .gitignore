@@ -21,3 +21,7 @@ mesh-work/*.pre-smooth.blend
 # build artifacts
 archive-staging/Dioscuri.archive
 dist/
+
+# ModWright Phase 4 build/deploy state (in-project stage, backups, manifest)
+.modwright/
+.modwright-build-manifest.json
