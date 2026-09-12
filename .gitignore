@@ -23,6 +23,10 @@ archive-staging/Dioscuri.archive
 dist/
 
 # ModWright Phase 4 build/deploy state (in-project stage, backups, manifest)
-.modwright/
+.modwright/*
+!.modwright/suppressions.json
+!.modwright/templates/
+.modwright/templates/*
+!.modwright/templates/manifest.json
 .modwright-build-manifest.json
 archive-staging/*.zip
