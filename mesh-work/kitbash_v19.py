@@ -6,7 +6,6 @@ import bpy
 import bmesh
 import math
 import os
-from collections import deque
 
 ROOT = r"C:\Users\jtrac\dev\cp2077-mods\dioscuri\mesh-work"
 SRC = os.path.join(ROOT, "source")

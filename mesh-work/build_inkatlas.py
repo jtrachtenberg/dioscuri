@@ -1,4 +1,4 @@
-"""Author mod\dioscuri\icons.inkatlas from the avatars0 template:
+r"""Author mod\dioscuri\icons.inkatlas from the avatars0 template:
 single part 'dioscuri_icon' covering the whole of our xbm texture."""
 import json
 import copy
