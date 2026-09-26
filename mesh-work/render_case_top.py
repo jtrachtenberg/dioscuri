@@ -1,6 +1,5 @@
 """Render the gun case top with textures to locate the Constitutional Arms logo."""
 import bpy
-import math
 import os
 
 ROOT = r"C:\Users\jtrac\dev\cp2077-mods\dioscuri\mesh-work"
@@ -35,7 +34,8 @@ scene.render.film_transparent = True
 
 world = bpy.data.worlds.new("w")
 scene.world = world
-world.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    world.use_nodes = True
 world.node_tree.nodes["Background"].inputs["Strength"].default_value = 1.2
 
 cx = (min(xs) + max(xs)) / 2

@@ -4,6 +4,7 @@ import bpy
 import math
 import os
 import mathutils
+import numpy as np
 
 ROOT = r"C:\Users\jtrac\dev\cp2077-mods\dioscuri\mesh-work"
 bpy.ops.wm.open_mainfile(filepath=os.path.join(ROOT, "dioscuri_joined_v2.blend"))
@@ -19,13 +20,14 @@ scene.render.film_transparent = True
 
 world = bpy.data.worlds.new("w")
 scene.world = world
-world.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    world.use_nodes = True
 world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.05, 0.05, 0.065, 1)
 world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.06
 
-# icon-pass material darkening (deeper than v1 â€” icons read brighter in the grid)
+# icon-pass material darkening (deeper than v1 — icons read brighter in the grid)
 for mat in bpy.data.materials:
-    if not mat.use_nodes:
+    if not getattr(mat, "use_nodes", True) or mat.node_tree is None:
         continue
     bsdf = mat.node_tree.nodes.get("Principled BSDF")
     if bsdf is None:
@@ -87,14 +89,15 @@ print("frame: span %.3f center (%.3f, %.3f) ortho %.3f" % (span_y, cy, cz, cam_d
 scene.render.filepath = os.path.join(ROOT, "renders", "dioscuri_icon_v2.png")
 bpy.ops.render.render(write_still=True)
 img = bpy.data.images.load(os.path.join(ROOT, "renders", "dioscuri_icon_v2.png"))
-px = list(img.pixels)
-for i in range(0, len(px), 4):
-    px[i] = px[i] ** 3.0
-    px[i + 1] = px[i + 1] ** 3.0
-    px[i + 2] = px[i + 2] ** 3.0
-img.pixels = px
+# ^3 power curve on RGB (alpha untouched), vectorized: a per-pixel Python
+# loop over 1024x1024x4 floats takes seconds and ~300 MB
+px = np.empty(len(img.pixels), dtype=np.float32)
+img.pixels.foreach_get(px)
+for c in range(3):
+    px[c::4] **= 3.0
+img.pixels.foreach_set(px)
 img.save()
-print("ICON V2 RENDERED + dimmed 15%")
+print("ICON V2 RENDERED + ^3 gamma curve")
 
 
 

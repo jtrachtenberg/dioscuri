@@ -24,7 +24,8 @@ imp(os.path.join(ROOT, "cache_case_bottom.glb"))        # custom bottom, empty f
 imp(os.path.join(SRC, "q000__gun_suitcase_handle.glb"))
 
 mat = bpy.data.materials.new("case_metal")
-mat.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    mat.use_nodes = True
 b = mat.node_tree.nodes["Principled BSDF"]
 b.inputs["Base Color"].default_value = (0.16, 0.16, 0.18, 1)
 b.inputs["Metallic"].default_value = 0.9
@@ -44,7 +45,8 @@ scene.render.resolution_y = 900
 
 world = bpy.data.worlds.new("w")
 scene.world = world
-world.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    world.use_nodes = True
 world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.35, 0.35, 0.38, 1)
 world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.9
 

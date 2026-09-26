@@ -1,4 +1,4 @@
-﻿"""Dioscuri kitbash v14:
+﻿"""Dioscuri kitbash v22 (canonical; the notes below date from v14):
 - logo cluster eased back from the muzzle dip (-9mm)
 - NIGHT CITY onto the upper receiver flat (rearward + up, per red arrow)
 - red grip via crease-bounded flood fill (follows geometry edges)"""
@@ -6,7 +6,6 @@ import bpy
 import bmesh
 import math
 import os
-from collections import deque
 
 ROOT = r"C:\Users\jtrac\dev\cp2077-mods\dioscuri\mesh-work"
 SRC = os.path.join(ROOT, "source")
@@ -23,14 +22,18 @@ scene = bpy.context.scene
 
 def make_mat(name, base, metallic, rough, alpha=1.0):
     m = bpy.data.materials.new(name)
-    m.use_nodes = True
+    if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+        m.use_nodes = True
     bsdf = m.node_tree.nodes["Principled BSDF"]
     bsdf.inputs["Base Color"].default_value = (*base, 1.0)
     bsdf.inputs["Metallic"].default_value = metallic
     bsdf.inputs["Roughness"].default_value = rough
     if alpha < 1.0:
         bsdf.inputs["Alpha"].default_value = alpha
-        m.blend_method = 'BLEND'
+        if hasattr(m, "surface_render_method"):   # EEVEE Next (4.2+)
+            m.surface_render_method = 'BLENDED'
+        else:
+            m.blend_method = 'BLEND'
     return m
 
 MAT_GUNMETAL = make_mat("gunmetal", (0.28, 0.29, 0.31), 1.0, 0.38)
@@ -163,7 +166,8 @@ scene.render.resolution_y = 800
 
 world = bpy.data.worlds.new("w")
 scene.world = world
-world.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    world.use_nodes = True
 world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.35, 0.35, 0.37, 1)
 world.node_tree.nodes["Background"].inputs["Strength"].default_value = 1.2
 
@@ -195,7 +199,7 @@ for name, (loc, rot) in views.items():
     scene.render.filepath = os.path.join(outdir, f"v22_{name}.png")
     bpy.ops.render.render(write_still=True)
     print("RENDERED", name)
-print("KITBASH V21 DONE")
+print("KITBASH V22 DONE")
 
 
 

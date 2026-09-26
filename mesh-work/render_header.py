@@ -19,13 +19,14 @@ scene.render.film_transparent = False   # opaque near-black backdrop
 
 world = bpy.data.worlds.new("w")
 scene.world = world
-world.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    world.use_nodes = True
 world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.05, 0.05, 0.065, 1)
 world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.06
 
 # pin icon-pass materials
 for mat in bpy.data.materials:
-    if not mat.use_nodes:
+    if not getattr(mat, "use_nodes", True) or mat.node_tree is None:
         continue
     bsdf = mat.node_tree.nodes.get("Principled BSDF")
     if bsdf is None:
@@ -85,7 +86,8 @@ key.rotation_euler.rotate_axis('Z', math.radians(90))
 
 # Malorian seven-dot logo, top-left of frame (view right = +y)
 dot_mat = bpy.data.materials.new("logo_dot")
-dot_mat.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    dot_mat.use_nodes = True
 nt = dot_mat.node_tree
 for n in list(nt.nodes):
     nt.nodes.remove(n)

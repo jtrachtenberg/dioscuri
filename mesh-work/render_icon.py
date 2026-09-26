@@ -17,13 +17,14 @@ scene.render.film_transparent = True
 
 world = bpy.data.worlds.new("w")
 scene.world = world
-world.use_nodes = True
+if bpy.app.version < (5, 0, 0):   # always on (and deprecated) since 5.0
+    world.use_nodes = True
 world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.06, 0.06, 0.075, 1)
 world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.35
 
 # darken the preview materials for the icon pass (game icons are moody)
 for mat in bpy.data.materials:
-    if not mat.use_nodes:
+    if not getattr(mat, "use_nodes", True) or mat.node_tree is None:
         continue
     bsdf = mat.node_tree.nodes.get("Principled BSDF")
     if bsdf is None:
