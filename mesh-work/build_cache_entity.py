@@ -64,11 +64,11 @@ eroot["defaultAppearance"] = cname("default")
 # native content: lootTables seeds the container's inventory at spawn
 eroot["entity"]["Data"]["lootTables"] = [
     {"$type": "TweakDBID", "$storage": "string", "$value": LOOT_TABLE}]
-eroot["entity"]["Data"]["contentAssignment"] = {
-    "$type": "TweakDBID", "$storage": "string", "$value": LOOT_TABLE}
+# contentAssignment wants a gamedataContentAssignment_Record, not a loot
+# table, and the sector node's instanceData overrides it anyway: leave it 0
 eroot["entity"]["Data"]["lootQuality"] = "Legendary"
 eroot["entity"]["Data"]["displayName"] = {"unk1": "0", "value": "LocKey#Dioscuri-Cache-Name"}
 with open(STAGE + r"\cache_case.ent.json", "w", encoding="utf-8") as fh:
     json.dump(ent, fh, indent=1)
-print("ENT written with contentAssignment ->", LOOT_TABLE)
+print("ENT written with lootTables ->", LOOT_TABLE)
 print("ENTITY BUILD DONE")
