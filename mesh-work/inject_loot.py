@@ -26,6 +26,9 @@ chunk["lootTables"] = [
     {"$type": "TweakDBID", "$storage": "string", "$value": "LootTables.DioscuriCacheLoot"}
 ]
 chunk["lootQuality"] = "Legendary"
+# the reference chunk's displayName is empty, and instanceData overrides the
+# name baked into cache_case.ent, so set it here or the case shows no name
+chunk["displayName"] = {"unk1": "0", "value": "LocKey#Dioscuri-Cache-Name"}
 chunk["containerType"] = "ClothingContainer"
 
 nodes = doc["Data"]["RootChunk"]["nodes"]
