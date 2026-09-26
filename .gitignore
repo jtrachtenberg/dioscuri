@@ -30,3 +30,7 @@ dist/
 !.modwright/templates/manifest.json
 .modwright-build-manifest.json
 archive-staging/*.zip
+
+# Python bytecode
+__pycache__/
+*.pyc
