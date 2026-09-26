@@ -6,7 +6,11 @@ registerForEvent("onUpdate", function(dt)
     if timer < 3.0 then return end
     timer = 0
     if not Game.GetPlayer() then return end
+    -- DynamicEntitySystem is a Codeware API: without Codeware, do nothing
+    -- instead of raising "attempt to call a nil value" every 3 s
+    if not Game.GetDynamicEntitySystem then return end
     local des = Game.GetDynamicEntitySystem()
+    if not des then return end
     for _, tag in ipairs({ "DioscuriCache", "DioscuriCacheProp" }) do
         for _, id in ipairs(des:GetTaggedIDs(tag) or {}) do
             des:DeleteEntity(id)
