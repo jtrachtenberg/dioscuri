@@ -26,7 +26,7 @@
             },
             {
               "$type": "localizationPersistenceOnScreenEntry",
-              "femaleVariant": "A twin-chambered smart sniper platform out of Malorian Arms' experimental division, built into the shell of a Kang Tao G-58 and never announced, let alone released. Its targeting suite holds two locks at once and answers a single pull of the trigger with paired rounds. The handful of old Malorian hands who admit the project existed say Eran Malor ordered exactly one prototype built, then buried the program — and they point to a rumor the company has never dignified with a response: that Malor was born a twin, and that his brother died in infancy.",
+              "femaleVariant": "A twin-chambered smart sniper platform out of Malorian Arms' experimental division, built on a Tsunami Ashura frame with a Malorian 3516 grip, and never announced, let alone released. Its targeting suite holds two locks at once and answers a single pull of the trigger with paired rounds. The handful of old Malorian hands who admit the project existed say Eran Malor ordered exactly one prototype built, then buried the program — and they point to a rumor the company has never dignified with a response: that Malor was born a twin, and that his brother died in infancy.",
               "maleVariant": "",
               "primaryKey": "0",
               "secondaryKey": "Dioscuri-Description"

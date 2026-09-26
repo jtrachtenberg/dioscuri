@@ -1,9 +1,11 @@
 # =====================================================================
-# Dioscuri — twin-lock smart sniper wearing a Kang Tao G-58 Dian shell
+# Dioscuri — twin-lock smart sniper: Tsunami Ashura frame + Malorian 3516 grip
 # (Castor & Pollux: one trigger pull, two bullets, two targets)
 # =====================================================================
 # Mechanics base : Items.Preset_Ashura_Default (smart sniper rifle)
-# Visuals        : G-58 Dian part records via slotPartListPreset
+# Visuals        : custom kitbash mesh, painted by the weapon-level app
+#                  (appearanceResourceName: Dioscuri_Weapon); the body
+#                  part record still inherits from the G-58 Dian receiver
 #
 # FIX from v1: the blueprint must be an *iconic* blueprint or the
 # IconicWeaponModLegendary slot doesn't exist and the iconic modifier
