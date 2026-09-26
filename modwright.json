@@ -38,7 +38,7 @@
       "id": "sources",
       "path": "sources",
       "kind": "sources",
-      "notes": "Editable JSON sources for shipped binaries: sector, materials, cache_case entity, icons."
+      "notes": "Serialized JSON + icon PNGs. sector/ and materials/ match what ships; entities/ holds the vanilla suitcase templates build_cache_entity.py started from, not the shipped cache_case.ent/.app."
     }
   ],
   "build": {
