@@ -1,9 +1,16 @@
-﻿# =====================================================================
-# Dioscuri â€” twin-lock smart sniper wearing a Kang Tao G-58 Dian shell
+# =====================================================================
+# Dioscuri — twin-lock smart sniper: Tsunami Ashura frame + Malorian 3516 grip
 # (Castor & Pollux: one trigger pull, two bullets, two targets)
 # =====================================================================
+# BALANCED VARIANT of r6/tweaks/Dioscuri/dioscuri.yaml. As written it is a
+# full copy (only the DamagePerHit modifier differs). TweakXL loads every
+# .yaml in the folder and !append does not de-duplicate, so installed NEXT
+# TO dioscuri.yaml the stat modifiers would apply twice. Use it only in
+# place of dioscuri.yaml; how it ships is still undecided (see HANDOFF.md).
 # Mechanics base : Items.Preset_Ashura_Default (smart sniper rifle)
-# Visuals        : G-58 Dian part records via slotPartListPreset
+# Visuals        : custom kitbash mesh, painted by the weapon-level app
+#                  (appearanceResourceName: Dioscuri_Weapon); the body
+#                  part record still inherits from the G-58 Dian receiver
 #
 # FIX from v1: the blueprint must be an *iconic* blueprint or the
 # IconicWeaponModLegendary slot doesn't exist and the iconic modifier
@@ -90,7 +97,7 @@ DioscuriIconicWeaponMod:
       value: 0
 
 # --- Blueprint: which attachment slots exist on the gun --------------
-# Vanilla smart-sniper blueprint (mod slots + scope, no muzzle â€” the
+# Vanilla smart-sniper blueprint (mod slots + scope, no muzzle — the
 # silencer is integral) plus the iconic-mod slot our modifier lives in.
 DioscuriBlueprint:
   $base: Items.Base_Smart_Precision_Sniper_Rifle_NoMuzzle_Blueprint
@@ -102,7 +109,7 @@ DioscuriBlueprint:
       - slot: AttachmentSlots.Magazine
       - slot: AttachmentSlots.MagazineEmpty
       - slot: AttachmentSlots.Barrel
-        # no ScopeElement: scoped ADS jitters against the smart-lock UI â€”
+        # no ScopeElement: scoped ADS jitters against the smart-lock UI —
         # the game never mixed scopes with smart weapons, so neither do we
 
 # --- Inventory icon: rendered from the actual kitbash ----------------
@@ -202,7 +209,7 @@ Items.Recipe_$(tier)_Dioscuri:
 # --- cache loot (structure per wiki "Lootable world objects") --------
 # Vanilla iconic-spec pattern (ma_wbr_jpn_20_Igla_Sovereign_recipe_loot_table):
 # all five tiered recipes gated by level-band prereqs (<9 / 9-16 / 17-24 /
-# 25-32 / 33+), so the case drops the ONE recipe matching player level â€”
+# 25-32 / 33+), so the case drops the ONE recipe matching player level —
 # fixed-tier display, single-material crafting cost.
 LootTables.DioscuriCacheLoot:
   $type: gamedataLootTable_Record
