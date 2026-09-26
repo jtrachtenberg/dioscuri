@@ -50,14 +50,14 @@
         "optional": true,
         "blend": "mesh-work/dioscuri_kitbash_edit.blend",
         "script": "mesh-work/export_game_mesh_v2.py",
-        "out": "${stage}/dioscuri.glb"
+        "out": "${stage}/dioscuri_body.glb"
       },
       {
         "step": "wolvenkit-import",
         "id": "mesh",
         "optional": true,
-        "glb": "${stage}/dioscuri.glb",
-        "base": "archive-staging/Dioscuri/mod/dioscuri/meshes/dioscuri.mesh",
+        "glb": "${stage}/dioscuri_body.glb",
+        "base": "archive-staging/Dioscuri/mod/dioscuri/meshes/dioscuri_body.mesh",
         "outDir": "archive-staging/Dioscuri/mod/dioscuri/meshes"
       },
       {
