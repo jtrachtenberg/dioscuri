@@ -24,29 +24,32 @@ MAX_SUBMESH_VERTS = 65535   # engine cap per submesh (see HANDOFF)
 
 
 def deselect_all():
-    for o in bpy.data.objects:
+    # objects outside the view layer can't be (de)selected and would raise
+    for o in bpy.context.view_layer.objects:
         o.select_set(False)
 
 
 def unhide_everything():
-    """Make every object selectable/editable: view-layer hide, viewport hide,
-    select lock, and hidden/excluded collections all block the edit-mode ops."""
+    """Undo temporary (eye-icon) hides and selection locks, which block the
+    edit-mode and join ops. Objects disabled in viewports or sitting in
+    excluded/disabled collections stay out: see visible()."""
     def walk(lc):
-        lc.exclude = False
         lc.hide_viewport = False
         for child in lc.children:
             walk(child)
     for lc in bpy.context.view_layer.layer_collection.children:
-        walk(lc)   # the scene's root collection itself can't be excluded
-    for c in bpy.data.collections:
-        c.hide_viewport = False
-        c.hide_select = False
+        walk(lc)
     bpy.context.view_layer.update()
     for o in bpy.data.objects:
-        o.hide_viewport = False
         o.hide_select = False
         if o.name in bpy.context.view_layer.objects:
             o.hide_set(False)
+
+
+def visible(o):
+    """Disabled/excluded objects were never part of the export (the ops
+    skip or choke on them), so leave them out explicitly."""
+    return o.visible_get()
 
 
 def base_material_name(name):
@@ -106,16 +109,20 @@ def main(out):
         if o.type == 'MESH' and o.name.startswith('submesh_'):
             o.name = "part_" + o.name
 
+    for o in bpy.data.objects:
+        if o.type in ('MESH', 'FONT') and not visible(o):
+            print(f"SKIP {o.name}: disabled in viewport or in an excluded collection")
+
     # 1. convert text curves to mesh
     for o in list(bpy.data.objects):
-        if o.type == 'FONT':
+        if o.type == 'FONT' and visible(o):
             deselect_all()
             o.select_set(True)
             bpy.context.view_layer.objects.active = o
             bpy.ops.object.convert(target='MESH')
 
     # 2. separate multi-material objects so each object is single-material
-    for o in [o for o in bpy.data.objects if o.type == 'MESH']:
+    for o in [o for o in bpy.data.objects if o.type == 'MESH' and visible(o)]:
         used = {p.material_index for p in o.data.polygons}
         if len(used) > 1:
             deselect_all()
@@ -129,7 +136,7 @@ def main(out):
     # 3. classify every mesh object by the material its faces actually use
     groups = {"gunmetal": [], "red_grip": [], "text_ink": [], "black": []}
     for o in bpy.data.objects:
-        if o.type != 'MESH' or not o.data.polygons:
+        if o.type != 'MESH' or not o.data.polygons or not visible(o):
             continue
         slots = o.data.materials
         idx = o.data.polygons[0].material_index
