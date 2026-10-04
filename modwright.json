@@ -135,7 +135,8 @@
         "from": "tweaks",
         "into": "Dioscuri",
         "locked": false,
-        "backup": true
+        "backup": true,
+        "prune": ["Dioscuri/**"]
       }
     ]
   },
