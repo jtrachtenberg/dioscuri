@@ -61,6 +61,48 @@
         "outDir": "archive-staging/Dioscuri/mod/dioscuri/meshes"
       },
       {
+        "step": "exec",
+        "id": "sector-to-2.5",
+        "command": "python",
+        "args": [
+          "tools/sector_231_to_25.py",
+          "sources/sector/malorian.streamingsector.json",
+          "${stage}/sector-2.5/malorian.streamingsector.json"
+        ],
+        "expectOutputs": [
+          "${stage}/sector-2.5/malorian.streamingsector.json"
+        ],
+        "inputs": [
+          "sources/sector/malorian.streamingsector.json",
+          "tools/sector_231_to_25.py"
+        ]
+      },
+      {
+        "step": "exec",
+        "id": "deserialize-sector",
+        "command": "powershell",
+        "args": [
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "tools/wk10.ps1",
+          "convert",
+          "deserialize",
+          "${stage}/sector-2.5/malorian.streamingsector.json",
+          "-o",
+          "archive-staging/Dioscuri/malorian/sectors"
+        ],
+        "expectOutputs": [
+          "archive-staging/Dioscuri/malorian/sectors/malorian.streamingsector"
+        ],
+        "freshOutputs": true,
+        "inputs": [
+          "${stage}/sector-2.5/malorian.streamingsector.json",
+          "tools/wk10.ps1"
+        ]
+      },
+      {
         "step": "stage",
         "id": "pack",
         "sources": [
