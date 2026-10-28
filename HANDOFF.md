@@ -86,6 +86,72 @@ Ashura's own `base1_01` mesh, untransformed:
   rounds going in means a different arm reload: authored in the Meigetsu
   animation pipeline, or another weapon family's, which changes all of V's
   handling. The weapon's own clips (bolt timing) would have to match it.
+
+### Two-round reload: research (2026-10-28), plan NOT started
+
+What a reload is made of (all game 2.5, read offline):
+- V's arms: `pwa_`/`pma_w_rifle_sniper__tsunami_ashura.anims`, mounted on
+  the record's friendlyName `w_rifle_sniper_tsunami_ashura`. Three clips,
+  `empty_reload`, `_01`, `_02`, each 4.167 s (126 frames). There is no
+  plain `reload`: the Ashura's magazine holds 1.
+- The gun: the bolt (`DioscuriBolt`, the Ashura's base1 set) and the
+  cartridge V carries, which is the Magazine PART (`mag_std_01.app`: a
+  `Magazine` animated component + the cartridge mesh, the Ashura's mag_std
+  set). The MagazineEmpty part (`mag_stdr_01.app`) is empty. All use the
+  same three clip names and length.
+- Which variant plays: `RandDifferent(previous, 3)` in the weapon PSM's
+  reload OnEnter (`weaponTransitions.script`), one index shared by arms
+  and gun, never the same twice in a row.
+- Speed: the clip plays at `baseEmptyReloadTime / EmptyReloadTime` (the
+  Ashura: 2.1 / 2.1 = 1.0). The ammo refills when the logical reload ends
+  (2.1 s), which lines up with the "load" sound at 2.13 s; the clip plays
+  on to its 4.167 s end.
+- The clips carry only sound events (`empty_reload`): move 0.10 s,
+  handle_pull 0.67, mag_new_grab 1.37, load 2.13, handle_release 2.83,
+  grab 3.67 (`_01`/`_02` within 2 frames; `_01` has move_long instead of
+  mag_new_grab).
+- The engine's own per-round reload (the Tactician: `ReloadAmount` 1,
+  `reload_start`/`reload_loop` clips, `continueLoop` + `RightReloadLoop`)
+  runs the loop AFTER the first round is chambered. Dioscuri "chambers a
+  pair" (yaml), so the loop would put the second round in after the bolt
+  closes. Not this route.
+
+The plan: one longer `empty_reload` per variant:
+- Take frames [0..B], then [A..B] again, then [B..125]:
+  - A = handle_pull + 7: bolt fully back;
+  - B = handle_release - 4: round in, hand still at the breech;
+  - A..B is f27..f81 (f29..f83 in `_02`).
+- The same time map applies to all four tracks, so they stay in step:
+  - V's arms, `pwa` and `pma`;
+  - the bolt (back for the whole of A..B);
+  - the cartridge: between rounds it jumps from the receiver back to its
+    out-of-view spot, where the hand fetches it.
+  - Sound events after B shift by 54 frames, and a second mag_new_grab and
+    load are added.
+- 126 + 54 = 180 frames, 6.0 s. The second round goes in at about 3.9 s.
+- The seam B→A, measured: `_01`/`_02` move the gun 3-4 cm and 15 deg, with
+  the left hand in the same place on the gun (0 mm); `empty_reload` moves
+  it 6 cm and 25 deg, the hand 8 cm. Blend across about 8 frames.
+- Dioscuri-only: the arm clips must not change the vanilla Ashura.
+  - Recommended: the Meigetsu route. A small extension set holding only the
+    three reload clips, gated on a custom AnimWrapper variable that a small
+    redscript raises while Dioscuri is drawn. Lower priority number wins,
+    sets override by clip name, and both ep1 player ents get patched.
+    Proven in Meigetsu.
+  - The alternative is a new friendlyName: no script, but every other
+    Ashura animation keyed by that name would need copying, third person
+    included.
+- The gun side: DioscuriBolt points at a Dioscuri copy of the base1 set.
+  The cartridge needs Dioscuri's own Magazine part item, with its own part
+  app and factory row, pointing at a Dioscuri copy of the mag_std set.
+- Pipeline: the CP77 add-on's importer and the headless anims import
+  (aeroboard `tools\wkit-anims-import`), with every gate CLAUDE.md lists:
+  numExtraJoints 0, rootMotionType Unknown, fallbackFrameIndices, LINEAR
+  keys, the chunk ceiling, the 23 float tracks retimed with the bones.
+  Then a Blender preview of arms and gun together before any launch.
+- The maintainer's calls: the reload length (the natural pace makes it
+  2.1 → 3.9 s; keeping 2.1 s plays it 1.87x; in between, e.g. 3.0 s at
+  1.3x), and whether to do all three variants or one.
 - **CONFIRMED IN GAME by the maintainer (2026-10-28): "ok the bolt moves".**
   Unattended runs (`soak.py dioreload --turn 180 --only dioscuri`, ModWright)
   showed it loads, fires and reloads cleanly, but could not show the bolt:
