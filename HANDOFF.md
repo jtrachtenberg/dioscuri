@@ -35,7 +35,52 @@ in NEXUS-PAGE.md. Key late-stage lessons appended below the original log:
   shows only hex lookup keys. Export json via CLI serialize, edit, deserialize.
 - 65,535 verts/submesh engine cap (double-siding all gunmetal exceeded it).
 
-## Historical: resume notes from the cache-case saga (superseded)
+## Game 2.5: "no reload animation" report (2026-10-27) — NOT reproduced
+
+A user reported no reload animation for V on 2.5 (no Possession involved).
+Tested unattended with ModWright's soak runner
+(`field-probe\launch\cp2077-bridge\soak.py dioreload [--ads]`, research 57):
+game 2.5, frameworks on their 2.5 releases, Dioscuri 1.1.0 as published
+(same yaml, same archive file list), female V. Each gun was put on wheel
+slot 3 and drawn with the 3 key, fired once, and filmed; the vanilla
+`Items.Preset_Ashura_Default` (Dioscuri's base) was the control. Runs are
+in `cp2077-mods\_soak\20261027-2154*-dioreload` (hip) and
+`20261027-215748-dioreload` (aimed).
+- Hip fire: both bursts fired (ammo 175 -> 173 -> 171), and the film shows
+  the full reload: V tips the rifle, the off hand brings the rounds in, and
+  the gun comes back up at 002. The Ashura control does the same at 001.
+- Aimed: Dioscuri drops out of the scope, runs the same full reload and
+  comes back up. The Ashura matches.
+- Possession's reload trace (it logs V's reloads too): V's weapon state
+  machine takes the right-hand route on 2.5 (`WeaponRight`, sends
+  RightReloadData), and V's hands still animate. Possession's 247 fix
+  touches possessed bodies only.
+
+What the offline checks ruled out (all 2.31 vs 2.5):
+- the Ashura records and every record Dioscuri inherits are unchanged (the
+  only diffs are an `[ EP1 ]` tag and a new blueprint Dioscuri does not use);
+- the vanilla Dian `.app`, which `dioscuri_weapon.app` was cloned from, is
+  unchanged (same components, rigs, anim sets);
+- V's arms pick the reload clips by the record's `friendlyName`
+  (`w_rifle_sniper_tsunami_ashura`, inherited), and both
+  `player_wa_fpp_ep1.ent` and `player_ma_fpp_ep1.ent` on 2.5 still mount
+  the Ashura's arm set (`pwa_`/`pma_w_rifle_sniper__tsunami_ashura.anims`)
+  under that name.
+
+Not covered: male V in game (only the entity was checked), Smart Link
+installed (this V has none), and a reload with a partly full magazine
+(Dioscuri's burst always empties it). Questions for the reporter: does the
+vanilla Ashura (or any other gun) animate its reload? Which animation or
+weapon mods do they run, and are any 2.31-era builds? Are they playing as a
+replacer (a mod that swaps V's body)? That is a guess from Possession, not a
+tested link: Possession's replacer bodies on 2.5 refilled the magazine with
+the hands frozen (filmed with pistols), because their graph reads the
+reload speed under its 2.31 name. V's own graph does not have the problem.
+
+Note on Dioscuri's own mesh: `dioscuri_body_mesh` is a static
+`entMeshComponent`, so the gun itself never had moving reload parts (no
+bolt or magazine motion), on 2.31 either. If "no reload animation" means
+the gun and not the hands, that is by design.
 
 **What the user did next** (resolved — Option B injection worked):
 1. In Object Spawner window: despawn/delete their placed suitcase + the
