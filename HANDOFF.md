@@ -93,7 +93,41 @@ Ashura's own `base1_01` mesh, untransformed:
   animation pipeline, or another weapon family's, which changes all of V's
   handling. The weapon's own clips (bolt timing) would have to match it.
 
-### Two-round reload: research (2026-10-28), plan NOT started
+### Two-round reload: BUILT 2026-10-28, in game: arms OK, bolt fix awaiting eyes
+
+Built as planned below (commits 3edba12, 1eb8e46):
+- `mesh-work\build_two_round_reload.py` (Blender: the cut, seam blend,
+  retimed tracks, GLB gate);
+- `finish_two_round_reload.py` (headless import into Dioscuri's own sets,
+  the gates, sound events: a second `mag_new_grab`/`move_long` and `load`,
+  the rest shifted 54 frames);
+- `verify_two_round_reload.py` (the decoded clips vs the TIME-MAPPED
+  vanilla clips, and vs our export);
+- `build_anim_patch.py` (the player-entity patches, made from Meigetsu's);
+- `scripts\Dioscuri\Dioscuri_TwoRoundReload.reds` (raises
+  `w_rifle_sniper_dioscuri` while a `DioscuriWeapon`-tagged item is in
+  WeaponRight);
+- yaml: `baseEmptyReloadTime` 3.93 and `EmptyReloadTime` +0.9 (3.0 s, 1.31x);
+- modwright.json: a scripts source, a redscript deploy target, the dist
+  entry, and redscript as a new requirement.
+
+In game (the maintainer):
+- First build: "the entire gun vanished during the reload ... just the
+  hands remained". The bolt clips were re-encoded SIMD like vanilla's
+  (16-bit, 14 joints); WolvenKit read them back perfectly, the game did not
+  (CLAUDE.md lesson).
+- A/B (`finish_moving_parts.py --vanilla-bolt-clips`): "the gun stays".
+  V's two-round arm clips work, and the second insert plays, but the
+  vanilla bolt "snaps shut after the first ... the second one plays but the
+  gun is already closed", as expected.
+- Now deployed (2026-10-28 18:40 UTC): the bolt clips as a Compressed
+  buffer (`preferSIMD` false), decoded within 0.11 mm / 0.005 deg of the
+  vanilla motion. NOT yet seen in game. Rollbacks:
+  `.modwright\backups\20261028-184008` (the A/B build), `20261028-180119`
+  (the first two-round build), `20261028-175210` (bolt only).
+- Still no visible rounds (as planned: a later step).
+
+### Two-round reload: research (2026-10-28)
 
 What a reload is made of (all game 2.5, read offline):
 - V's arms: `pwa_`/`pma_w_rifle_sniper__tsunami_ashura.anims`, mounted on
