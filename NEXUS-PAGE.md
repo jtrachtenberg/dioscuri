@@ -3,8 +3,9 @@
 **1.2.0 UPLOAD (built 2026-10-28):** `dist\MalorianArmsDioscuri-1.2.0.zip`,
 md5 349EF69D455E9456117AD4A502DEC1B5, 4 files, every one byte-identical to
 the build the maintainer confirmed in game ("the animation is now perfect").
-Upload it as the new MAIN file (version 1.2.0). Add **redscript** to the
-Requirements tab (new: the reload's script), and paste the full description
+Upload it as the new MAIN file (version 1.2.0). Add **redscript 0.5.32 or
+newer** (mod 1511, the game 2.5 release; the confirmed build ran on 0.5.32)
+to the Requirements tab (new: the reload's script), and paste the full description
 again (below: Requirements, Installation and a feature line changed).
 Changelog line:
 > 1.2.0 - The bolt now works the action when you reload, and the reload
@@ -48,7 +49,7 @@ Find the surviving Malorian gun case near the waterfront northeast of City Cente
 [*]RED4ext
 [*]ArchiveXL
 [*]TweakXL
-[*]redscript
+[*][url=https://www.nexusmods.com/cyberpunk2077/mods/1511]redscript[/url] 0.5.32 or newer (since 1.2.0)
 [/list]
 
 [size=4][b]Installation[/b][/size]
