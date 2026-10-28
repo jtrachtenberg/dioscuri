@@ -56,15 +56,12 @@ BARREL_EPSILON = 1.2
 # The Ashura's cartridge (mag_std) travels to V's hand in the reload, but at
 # rest it sits where the Ashura's Nekomata receiver hides it, and Dioscuri has
 # no receiver there: preview_moving_parts.py showed it in Dioscuri's trigger
-# guard (2026-10-28). `--round` builds it in anyway; in game (the maintainer)
-# it was wrong both ways. In the reload where V turns the gun to the side it
-# sits inside the rounds V's hand already holds, adding nothing. In the
-# reload where the gun stays forward it floats just below the gun for a
-# moment. The rounds a reload shows come from the Ashura's magazine PART
-# items, which Dioscuri inherits from Preset_Ashura_Default
-# (AttachmentSlots.Magazine = mag_std, AttachmentSlots.MagazineEmpty =
-# mag_stdr, the rounds in V's hand), not from the .app. Leave it off; the
-# switch stays as the record.
+# guard (2026-10-28). `--round` builds it in anyway. In game (the maintainer)
+# it floated just below the gun in the forward reload: the Ashura's cartridge
+# clip does not keep the round in V's hand (36-78 cm away while it is out of
+# the gun, measured offline; HANDOFF.md). Dioscuri 1.1.0 shows no round at all
+# (no Magazine part, and parts don't paint). Leave it off; visible rounds need
+# a cartridge clip baked from V's hand.
 ROUND = '--round' in sys.argv
 MATERIAL_KEYS = ('appearances', 'materialEntries', 'preloadLocalMaterialInstances', 'preloadExternalMaterials',
                  'externalMaterials', 'localMaterialBuffer', 'localMaterialInstances', 'objectType')

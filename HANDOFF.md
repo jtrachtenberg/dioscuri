@@ -69,17 +69,23 @@ Ashura's own `base1_01` mesh, untransformed:
   100 mm. Renders: `ashura-reload\preview\dioscuri_bolt_strip.png`.
 - The cartridge (the Ashura's `Magazine` component + its vanilla mesh,
   `finish_moving_parts.py --round`, two of them 1.6 cm apart) was tried in
-  game on 2026-10-28 and DROPPED. The rounds a reload shows come from the
-  Ashura's magazine PART items, which Dioscuri inherits from
-  `Preset_Ashura_Default` (`AttachmentSlots.Magazine` = `mag_std`,
-  `AttachmentSlots.MagazineEmpty` = `mag_stdr`: the rounds in V's hand), not
-  from the .app.
-  - There are two reloads (the maintainer). In the one where V turns the
-    gun to the side, the app cartridges sat inside the hand's rounds and
-    added nothing. In the one where the gun stays forward, they floated
-    just below the gun for a moment.
-  - At rest they sat in Dioscuri's trigger guard: the Ashura hides them
-    inside its Nekomata receiver, which Dioscuri lacks.
+  game on 2026-10-28 and DROPPED.
+  - Dioscuri 1.1.0 shows NO round in a reload. Its `slotPartListPreset` is
+    its own (body part + iconic mod, no Magazine part), and parts don't
+    paint anyway (lesson 2): only `dioscuri_weapon.app` draws. A first
+    reading here, that the rounds come from the Ashura's magazine parts,
+    was wrong.
+  - The Ashura's own cartridge clip does not keep the round in V's hand.
+    Measured offline (`pwa` LeftHand vs the `mag_std` bone, in the gun-space
+    weapon frame): while it is out of the gun it is 36-78 cm from the left
+    hand in all three variants. Only `empty_reload` brings it to the hand,
+    at the insert (7-9 cm, f54-66); `_01`/`_02` never get closer than 13/21
+    cm. In game (the maintainer): in the forward reload "the cartridges
+    floating in the air just below the gun for a moment".
+  - At rest it sat in Dioscuri's trigger guard: the Ashura hides it inside
+    its Nekomata receiver, which Dioscuri lacks.
+  - Visible rounds need their own cartridge clip, baked from V's left hand
+    (a step of its own).
 - **Open (the maintainer, 2026-10-28):** "the dioscuri fires two - so it
   needs to put in two rounds". V's reload is the Ashura's arm animation,
   made for its 1-round magazine (`mag 1/1`); Dioscuri holds 2. Showing two
@@ -94,11 +100,10 @@ What a reload is made of (all game 2.5, read offline):
   the record's friendlyName `w_rifle_sniper_tsunami_ashura`. Three clips,
   `empty_reload`, `_01`, `_02`, each 4.167 s (126 frames). There is no
   plain `reload`: the Ashura's magazine holds 1.
-- The gun: the bolt (`DioscuriBolt`, the Ashura's base1 set) and the
-  cartridge V carries, which is the Magazine PART (`mag_std_01.app`: a
-  `Magazine` animated component + the cartridge mesh, the Ashura's mag_std
-  set). The MagazineEmpty part (`mag_stdr_01.app`) is empty. All use the
-  same three clip names and length.
+- The gun: the bolt (`DioscuriBolt`, the Ashura's base1 set). The Ashura
+  also has a cartridge (its weapon app's `Magazine` component on the
+  mag_std set); Dioscuri has none, see above. All use the same three clip
+  names and length.
 - Which variant plays: `RandDifferent(previous, 3)` in the weapon PSM's
   reload OnEnter (`weaponTransitions.script`), one index shared by arms
   and gun, never the same twice in a row.
@@ -142,8 +147,12 @@ The plan: one longer `empty_reload` per variant:
     Ashura animation keyed by that name would need copying, third person
     included.
 - The gun side: DioscuriBolt points at a Dioscuri copy of the base1 set.
-  The cartridge needs Dioscuri's own Magazine part item, with its own part
-  app and factory row, pointing at a Dioscuri copy of the mag_std set.
+  Visible rounds come later, as their own step: a cartridge component in
+  `dioscuri_weapon.app` (parts don't paint) on a clip baked from V's hand.
+- The maintainer chose 3.0 s (2026-10-28: "In between: about 3.0 s, the
+  animation a bit quicker (1.3x)"). So `baseEmptyReloadTime` 3.93 (the
+  second "load" sound's clip time) and `EmptyReloadTime` 3.0, giving speed
+  1.31: the ammo lands as the second round goes in.
 - Pipeline: the CP77 add-on's importer and the headless anims import
   (aeroboard `tools\wkit-anims-import`), with every gate CLAUDE.md lists:
   numExtraJoints 0, rootMotionType Unknown, fallbackFrameIndices, LINEAR
