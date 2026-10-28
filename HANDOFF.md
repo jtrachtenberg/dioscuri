@@ -35,6 +35,55 @@ in NEXUS-PAGE.md. Key late-stage lessons appended below the original log:
   shows only hex lookup keys. Export json via CLI serialize, edit, deserialize.
 - 65,535 verts/submesh engine cap (double-siding all gunmetal exceeded it).
 
+## The moving bolt (2026-10-28, working version 1.2.0, NOT published)
+
+The maintainer: "this mod is outside the contest range, can you try an
+automated pass at cutting the bolt and getting ashura's animation?" Done
+with no cutting at all, because the kitbash took Dioscuri's receiver from the
+Ashura's own `base1_01` mesh, untransformed:
+- `mesh-work\build_moving_parts.py` (Blender): each vertex of the SHIPPED
+  mesh finds its twin on the Ashura (within 0.3 mm) and takes that vertex's
+  bone. A connected island moves if at least 90% of its vertices land on a
+  moving bone, and everything else goes on `barrel`, which the clips never
+  move. Result: `cocking_mechanism` 5,534 vertices, `hammer` 1,147, `l_grip`
+  392, `r_grip` 396, `barrel` the rest. 111 islands are 100% moving; 9
+  static islands touch the bolt with only 1-2 vertices.
+- `mesh-work\finish_moving_parts.py`: `import -k` over 1.1.0's mesh (taken
+  from git, commit fdac8c3, so reruns are identical), with the bone data set
+  by the GLB's joint order and copied from the Ashura's mesh (`barrel`
+  epsilon 1.2 for Dioscuri's 1.13 m reach). Three importer traps are in
+  CLAUDE.md, under the `import -k` bullet.
+  - The app: it adds `DioscuriBolt` (the Ashura's `Barrel` component: the
+    `base1` rig, `weapon.animgraph` and the Ashura's base1 anim sets) under
+    Dioscuri's `Receiver`. `dioscuri_body_mesh` becomes an
+    `entSkinnedMeshComponent` bound to it (same id, same mesh).
+  - Both go into `components` AND `compiledData` (the copy the game reads),
+    sharing their binding handles; CruidDict is rebuilt;
+    `resolvedDependencies` gains the three base1 anim sets. Both files go
+    to `archive-staging`.
+  - Then it packs the mesh under a unique name and uncooks it back, the way
+    the game reads it.
+- `mesh-work\preview_moving_parts.py` (Blender) gates that build: every
+  vertex where 1.1.0 has it (0.000000 m), the skin counts, and in
+  `empty_reload` `barrel` moves 0.0 mm while the bolt, hammer and grips move
+  100 mm. Renders: `ashura-reload\preview\dioscuri_bolt_strip.png`.
+- The cartridge (the Ashura's `Magazine` component + its vanilla mesh) is
+  built but OFF (`ROUND = False`). At rest the Ashura hides it inside its
+  Nekomata receiver, which Dioscuri lacks; the preview showed it in
+  Dioscuri's trigger guard. It needs a cover, or an animation that hides
+  it, before it can ship.
+- **CONFIRMED IN GAME by the maintainer (2026-10-28): "ok the bolt moves".**
+  Unattended runs (`soak.py dioreload --turn 180 --only dioscuri`, ModWright)
+  showed it loads, fires and reloads cleanly, but could not show the bolt:
+  10 cm on a moving gun is lost in the run-to-run sway of a frame diff. Ask
+  for eyes on for a small part. Also: Dioscuri's 1.13 m reach puts it in
+  the obstructed (raised) pose near a wall, where the Ashura is not, so film
+  it in the open (`--turn`).
+- Built (ModWright, 18 entries) and deployed 2026-10-28 15:46 UTC. Rollback:
+  `.modwright\backups\20261028-154630` (the previous archive, md5 318EB2...).
+  `modwright.json` version 1.2.0 so the test zip doesn't overwrite the
+  1.1.0 one.
+
 ## Game 2.5: "no reload animation" report (2026-10-27) — NOT reproduced
 
 A user reported no reload animation for V on 2.5 (no Possession involved).
