@@ -245,12 +245,19 @@ assert bolt['parentTransform'].data['bindName']['$value'] == 'Receiver'  # Diosc
 ASHURA_BASE1 = 'base\\animations\\weapon\\firearms\\rifle_sniper\\tsunami_ashura\\w_rifle_sniper__tsunami_ashura__base1.anims'
 DIOSCURI_BASE1 = 'mod\\dioscuri\\anims\\dioscuri_base1.anims'
 swapped = 0
+# 2026-10-28 A/B: with the two-round build the whole gun vanished during the
+# reload, V's hands stayed. `--vanilla-bolt-clips` keeps the Ashura's own base1
+# set on the bolt (the bolt then closes early in the second round) to tell
+# whether Dioscuri's re-encoded base1 clips or V's new arm set hide the gun.
+if '--vanilla-bolt-clips' in sys.argv:
+    DIOSCURI_BASE1 = ASHURA_BASE1
 for e in bolt['animations']['gameplay']:
     ed = e.data if isinstance(e, wkhandles.Handle) else e
     if ed['animSet']['DepotPath']['$value'] == ASHURA_BASE1:
         ed['animSet']['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': DIOSCURI_BASE1}
         swapped += 1
 assert swapped == 1, 'the Ashura base1 player set was not found once (%d)' % swapped
+print('BOLT CLIPS', DIOSCURI_BASE1)
 
 body = dup(named(S['components'], 'w_rifle_sniper__tsunami_ashura__base1_017481'), {})
 body['name'] = cname('dioscuri_body_mesh')

@@ -190,6 +190,19 @@ for name, base in SETS:
         assert seam <= max(clip_max, 6.0) * 1.05, 'the seam jumps more than the clip ever moves'
         a['numExtraJoints'] = 0          # a NUMBER (a "0" string throws in WolvenKit's PutAnimations)
         a['rootMotionType'] = 'Unknown'
+        if name == 'base1':
+            # 2026-10-28, in game: re-encoded as the vanilla clips are (SIMD,
+            # 16-bit quantized, 14 joints) the bolt clips hid the WHOLE gun
+            # during the reload (every vertex hangs off base1), while V's arm
+            # clips (SIMD, unquantized, 152 joints) played fine; the vanilla
+            # bolt clips with the new arms kept the gun (A/B). WolvenKit's
+            # decoder reads its own SIMD encode back fine, the game does not.
+            # So the bolt goes in a Compressed buffer: the importer follows
+            # this hint. Its rotation noise only touches channels that change,
+            # and every base1 rotation is constant here (the bolt slides).
+            hints = dict(a.get('optimizationHints', {}))
+            hints['preferSIMD'] = False
+            a['optimizationHints'] = hints
         a.use_fake_user = True
         arm.animation_data_create()
         arm.animation_data.action = a

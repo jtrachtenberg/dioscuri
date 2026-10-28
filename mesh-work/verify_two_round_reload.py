@@ -61,6 +61,42 @@ def sample(times, vals, t):
 
 
 bad = []
+# 1. The decoded clips against the VANILLA clips, time-mapped (the frames the
+#    cut takes them from), outside the seam blend. This is the check that
+#    matters (2026-10-28: comparing only with our own export missed nothing
+#    there, but it could not have caught a clip that is wrong from the start).
+U = os.path.join(HERE, 'ashura-reload', 'uncooked', 'base', 'animations', 'weapon', 'firearms', 'rifle_sniper', 'tsunami_ashura')
+VANILLA = {'pwa.glb': 'pwa_w_rifle_sniper__tsunami_ashura.anims.glb', 'pma.glb': 'pma_w_rifle_sniper__tsunami_ashura.anims.glb',
+           'base1.glb': 'w_rifle_sniper__tsunami_ashura__base1.anims.glb'}
+splice = json.load(open(os.path.join(TR, 'splice.json')))
+for authored, decoded in PAIRS:
+    V, D = load(os.path.join(U, VANILLA[authored])), load(os.path.join(TR, decoded))
+    for clip in CLIPS:
+        A, B = splice[clip]['A'], splice[clip]['B']
+        L = B - A
+        g = np.array([x for x in range(180) if not (B < x < B + 10)])
+        f = np.where(g <= B, g, np.where(g <= B + L, A + (g - B), g - L))
+        worst_r, worst_p = (0.0, ''), (0.0, '')
+        for key, (tv, vv) in V[clip].items():
+            if key[1] not in ('rotation', 'translation') or key not in D[clip]:
+                continue
+            td, vd = D[clip][key]
+            x, y = sample(tv, vv, f / 30.0), sample(td, vd, g / 30.0)
+            if key[1] == 'rotation':
+                x /= np.linalg.norm(x, axis=1, keepdims=True)
+                y /= np.linalg.norm(y, axis=1, keepdims=True)
+                e = np.degrees(2 * np.arccos(np.clip(np.abs(np.sum(x * y, axis=1)), 0, 1))).max()
+                if e > worst_r[0]:
+                    worst_r = (e, key[0])
+            else:
+                e = np.linalg.norm(x - y, axis=1).max()
+                if e > worst_p[0]:
+                    worst_p = (e, key[0])
+        print('vs vanilla %-6s %-16s worst rotation %.3f deg (%s), worst position %.2f mm (%s)' % (
+            authored[:-4], clip, worst_r[0], worst_r[1], worst_p[0] * 1000, worst_p[1]))
+        if worst_r[0] > ROT_TOL or worst_p[0] > POS_TOL:
+            bad.append(('vanilla', authored, clip))
+# 2. The decoded clips against our own export (the encoder's error alone).
 for authored, decoded in PAIRS:
     A, D = load(os.path.join(TR, authored)), load(os.path.join(TR, decoded))
     for clip in CLIPS:

@@ -99,6 +99,9 @@ for glb, van, out, has_events in SETS:
         buf = nc[name]['Data']['animation']['Data']['animBuffer']['Data']
         vbuf = vc[name]['Data']['animation']['Data']['animBuffer']['Data']
         assert buf['numFrames'] == splice[name]['frames'], (name, buf['numFrames'])
+        # the bolt must NOT be SIMD: WolvenKit's SIMD encode of these 14-joint,
+        # 16-bit clips hid the whole gun in game (build_two_round_reload.py)
+        assert glb != 'base1' or buf['$type'] == 'animAnimationBufferCompressed', (name, buf['$type'])
         assert buf['numExtraJoints'] == 0 and buf['numJoints'] == vbuf['numJoints'] and buf['numTracks'] == vbuf['numTracks'], name
         if buf['fallbackFrameIndices'] != vbuf['fallbackFrameIndices']:
             print('  %s %s: fallbackFrameIndices %s -> restored %s' % (out, name, buf['fallbackFrameIndices'], vbuf['fallbackFrameIndices']))
