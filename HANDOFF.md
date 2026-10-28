@@ -67,11 +67,25 @@ Ashura's own `base1_01` mesh, untransformed:
   vertex where 1.1.0 has it (0.000000 m), the skin counts, and in
   `empty_reload` `barrel` moves 0.0 mm while the bolt, hammer and grips move
   100 mm. Renders: `ashura-reload\preview\dioscuri_bolt_strip.png`.
-- The cartridge (the Ashura's `Magazine` component + its vanilla mesh) is
-  built but OFF (`ROUND = False`). At rest the Ashura hides it inside its
-  Nekomata receiver, which Dioscuri lacks; the preview showed it in
-  Dioscuri's trigger guard. It needs a cover, or an animation that hides
-  it, before it can ship.
+- The cartridge (the Ashura's `Magazine` component + its vanilla mesh,
+  `finish_moving_parts.py --round`, two of them 1.6 cm apart) was tried in
+  game on 2026-10-28 and DROPPED. The rounds a reload shows come from the
+  Ashura's magazine PART items, which Dioscuri inherits from
+  `Preset_Ashura_Default` (`AttachmentSlots.Magazine` = `mag_std`,
+  `AttachmentSlots.MagazineEmpty` = `mag_stdr`: the rounds in V's hand), not
+  from the .app.
+  - There are two reloads (the maintainer). In the one where V turns the
+    gun to the side, the app cartridges sat inside the hand's rounds and
+    added nothing. In the one where the gun stays forward, they floated
+    just below the gun for a moment.
+  - At rest they sat in Dioscuri's trigger guard: the Ashura hides them
+    inside its Nekomata receiver, which Dioscuri lacks.
+- **Open (the maintainer, 2026-10-28):** "the dioscuri fires two - so it
+  needs to put in two rounds". V's reload is the Ashura's arm animation,
+  made for its 1-round magazine (`mag 1/1`); Dioscuri holds 2. Showing two
+  rounds going in means a different arm reload: authored in the Meigetsu
+  animation pipeline, or another weapon family's, which changes all of V's
+  handling. The weapon's own clips (bolt timing) would have to match it.
 - **CONFIRMED IN GAME by the maintainer (2026-10-28): "ok the bolt moves".**
   Unattended runs (`soak.py dioreload --turn 180 --only dioscuri`, ModWright)
   showed it loads, fires and reloads cleanly, but could not show the bolt:

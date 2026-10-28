@@ -56,8 +56,16 @@ BARREL_EPSILON = 1.2
 # The Ashura's cartridge (mag_std) travels to V's hand in the reload, but at
 # rest it sits where the Ashura's Nekomata receiver hides it, and Dioscuri has
 # no receiver there: preview_moving_parts.py showed it in Dioscuri's trigger
-# guard (2026-10-28). Off until Dioscuri has something that covers it.
-ROUND = False
+# guard (2026-10-28). `--round` builds it in anyway; in game (the maintainer)
+# it was wrong both ways. In the reload where V turns the gun to the side it
+# sits inside the rounds V's hand already holds, adding nothing. In the
+# reload where the gun stays forward it floats just below the gun for a
+# moment. The rounds a reload shows come from the Ashura's magazine PART
+# items, which Dioscuri inherits from Preset_Ashura_Default
+# (AttachmentSlots.Magazine = mag_std, AttachmentSlots.MagazineEmpty =
+# mag_stdr, the rounds in V's hand), not from the .app. Leave it off; the
+# switch stays as the record.
+ROUND = '--round' in sys.argv
 MATERIAL_KEYS = ('appearances', 'materialEntries', 'preloadLocalMaterialInstances', 'preloadExternalMaterials',
                  'externalMaterials', 'localMaterialBuffer', 'localMaterialInstances', 'objectType')
 
@@ -244,17 +252,26 @@ rebind(body, 'parentTransform', 'DioscuriBolt')
 rebind(body, 'skinning', 'DioscuriBolt')
 new = [bolt, body]
 
+# Dioscuri fires a two-round burst, so V loads two (the maintainer, 2026-10-28):
+# the second cartridge rides the same clip on its own rig, shifted ROUND_GAP
+# sideways (x) by its animated component's localTransform. WorldPosition is
+# FixedPoint, Bits = metres * 2^17. (Unproven that the game honours a
+# localTransform on an animated component: if not, the two overlap.)
+ROUND_GAP = 0.016
 if ROUND:
-    rnd = dup(named(S['components'], 'Magazine'), {})        # mag_std rig + anim sets
-    rnd['name'] = cname('DioscuriRound')
-    rnd['id'] = new_id('DioscuriRound')
-    rebind(rnd, 'parentTransform', 'DioscuriBolt')
-    rnd_mesh = dup(named(S['components'], 'w_rifle_sniper__tsunami_ashura__mag_std_017138'), {})  # vanilla cartridge mesh
-    rnd_mesh['name'] = cname('dioscuri_round_mesh')
-    rnd_mesh['id'] = new_id('dioscuri_round_mesh')
-    rebind(rnd_mesh, 'parentTransform', 'DioscuriRound')
-    rebind(rnd_mesh, 'skinning', 'DioscuriRound')
-    new += [rnd, rnd_mesh]
+    for k, gap in enumerate((0.0, ROUND_GAP)):
+        tag = '' if k == 0 else str(k + 1)
+        rnd = dup(named(S['components'], 'Magazine'), {})        # mag_std rig + anim sets
+        rnd['name'] = cname('DioscuriRound' + tag)
+        rnd['id'] = new_id('DioscuriRound' + tag)
+        rebind(rnd, 'parentTransform', 'DioscuriBolt')
+        rnd['localTransform']['Position']['x']['Bits'] = int(round(gap * 131072))
+        rnd_mesh = dup(named(S['components'], 'w_rifle_sniper__tsunami_ashura__mag_std_017138'), {})  # vanilla cartridge mesh
+        rnd_mesh['name'] = cname('dioscuri_round%s_mesh' % tag)
+        rnd_mesh['id'] = new_id('dioscuri_round%s_mesh' % tag)
+        rebind(rnd_mesh, 'parentTransform', 'DioscuriRound' + tag)
+        rebind(rnd_mesh, 'skinning', 'DioscuriRound' + tag)
+        new += [rnd, rnd_mesh]
 
 cd = A['compiledData']['Data']
 for lst in (A['components'], cd['Chunks']):
