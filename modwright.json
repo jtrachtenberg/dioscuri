@@ -23,6 +23,12 @@
       "notes": "dioscuri.yaml: weapon, iconic mod, recipes, loot table and icon TweakDB records."
     },
     {
+      "id": "scripts",
+      "path": "scripts/Dioscuri",
+      "kind": "scripts",
+      "notes": "redscript: Dioscuri_TwoRoundReload.reds raises the two-round reload's anim variable while Dioscuri is drawn."
+    },
+    {
       "id": "cet",
       "path": "cet/DioscuriCache",
       "kind": "cet",
@@ -138,6 +144,10 @@
           {
             "source": "tweaks",
             "into": "r6/tweaks/Dioscuri"
+          },
+          {
+            "source": "scripts",
+            "into": "r6/scripts/Dioscuri"
           }
         ]
       },
@@ -179,6 +189,14 @@
         "locked": false,
         "backup": true,
         "prune": ["Dioscuri/**"]
+      },
+      {
+        "rootId": "redscript",
+        "from": "scripts",
+        "into": "Dioscuri",
+        "locked": false,
+        "backup": true,
+        "prune": ["Dioscuri/**"]
       }
     ]
   },
@@ -197,6 +215,12 @@
       "id": "tweakxl",
       "kind": "framework",
       "url": "https://www.nexusmods.com/cyberpunk2077/mods/4197"
+    },
+    {
+      "id": "redscript",
+      "kind": "framework",
+      "url": "https://www.nexusmods.com/cyberpunk2077/mods/1511",
+      "notes": "Since the two-round reload (2026-10-28): scripts/Dioscuri raises the reload's anim variable while Dioscuri is drawn."
     },
     {
       "id": "wolvenkit-cli",

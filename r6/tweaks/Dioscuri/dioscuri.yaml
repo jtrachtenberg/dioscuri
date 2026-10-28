@@ -150,6 +150,15 @@ Items.Preset_Dioscuri:
     - !append IconicWeapon
     - !append CraftableIconic
     - !append Silenced
+    # scripts\Dioscuri raises the two-round reload's anim variable for it
+    - !append DioscuriWeapon
+  # The two-round reload (2026-10-28, the maintainer: "about 3.0 s, the
+  # animation a bit quicker (1.3x)"). The clip plays at
+  # baseEmptyReloadTime / EmptyReloadTime (weaponTransitions.script
+  # GetReloadAnimSpeed): 3.93 is the clip time of the SECOND "load" sound
+  # (frame 118), and EmptyReloadTime is 2.1 + 0.9 = 3.0 s (below), so the
+  # rounds land as the second goes in, at 1.31x.
+  baseEmptyReloadTime: 3.93
   statModifierGroups:
     - !append Items.CraftableIconicQualityRandomisation
   statModifiers:
@@ -163,6 +172,13 @@ Items.Preset_Dioscuri:
       statType: BaseStats.CanSilentKill
       modifierType: Additive
       value: 1
+    # two rounds: the Ashura's 2.1 s empty reload (Base_Ashura_Handling_Stats)
+    # + 0.9 = 3.0 s; see baseEmptyReloadTime above
+    - !append
+      $type: ConstantStatModifier
+      statType: BaseStats.EmptyReloadTime
+      modifierType: Additive
+      value: 0.9
   slotPartListPreset:
     # single custom body mesh replaces the Dian receiver/barrel/mags
     - slot: AttachmentSlots.Receiver

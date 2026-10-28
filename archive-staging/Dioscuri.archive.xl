@@ -6,4 +6,18 @@ factories:
 streaming:
   blocks:
     - malorian\all.streamingblock
+# The two-round reload: V's arm clips for Dioscuri, in their own sets
+# (mod\dioscuri\anims\p[wm]a_dioscuri.anims, priority 127 over the Ashura's
+# 128), mounted only while the AnimWrapper variable w_rifle_sniper_dioscuri
+# is raised (scripts\Dioscuri, while Dioscuri is drawn). Meigetsu's proven
+# route: the ep1 player entity is the one the game loads with Phantom
+# Liberty; the base one is the fallback without it, so patch both.
+resource:
+  patch:
+    mod\dioscuri\patch\player_wa_anim_ext.ent:
+      - ep1\characters\entities\player\player_wa_fpp_ep1.ent
+      - base\characters\entities\player\player_wa_fpp.ent
+    mod\dioscuri\patch\player_ma_anim_ext.ent:
+      - ep1\characters\entities\player\player_ma_fpp_ep1.ent
+      - base\characters\entities\player\player_ma_fpp.ent
 

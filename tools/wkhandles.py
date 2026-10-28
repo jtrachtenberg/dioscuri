@@ -30,6 +30,12 @@ def _resolve(o, table):
             h.data = _resolve(o['Data'], table)
             return h
         if 'HandleRefId' in o and len(o) == 1:
+            # 2026-10-28: WolvenKit writes a NULL handle as {"HandleRefId": "-1"}
+            # (the anims importer's clips: motionExtraction); vanilla JSON says
+            # null. Read as a real id, every -1 became ONE shared handle, written
+            # back as {"HandleId": N, "Data": null}, which deserialize rejects.
+            if o['HandleRefId'] == '-1':
+                return None
             return table.setdefault(o['HandleRefId'], Handle(None))
         return {k: _resolve(v, table) for k, v in o.items()}
     if isinstance(o, list):

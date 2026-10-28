@@ -239,6 +239,18 @@ bolt = dup(named(S['components'], 'Barrel'), {})         # base1 rig, weapon.ani
 bolt['name'] = cname('DioscuriBolt')
 bolt['id'] = new_id('DioscuriBolt')
 assert bolt['parentTransform'].data['bindName']['$value'] == 'Receiver'  # Dioscuri has a Receiver too
+# the two-round reload (finish_two_round_reload.py): the player's base1 set is
+# Dioscuri's own copy, its three empty_reload clips 180 frames long with the
+# bolt held back through the second round. The NPC sets stay vanilla.
+ASHURA_BASE1 = 'base\\animations\\weapon\\firearms\\rifle_sniper\\tsunami_ashura\\w_rifle_sniper__tsunami_ashura__base1.anims'
+DIOSCURI_BASE1 = 'mod\\dioscuri\\anims\\dioscuri_base1.anims'
+swapped = 0
+for e in bolt['animations']['gameplay']:
+    ed = e.data if isinstance(e, wkhandles.Handle) else e
+    if ed['animSet']['DepotPath']['$value'] == ASHURA_BASE1:
+        ed['animSet']['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': DIOSCURI_BASE1}
+        swapped += 1
+assert swapped == 1, 'the Ashura base1 player set was not found once (%d)' % swapped
 
 body = dup(named(S['components'], 'w_rifle_sniper__tsunami_ashura__base1_017481'), {})
 body['name'] = cname('dioscuri_body_mesh')
@@ -281,8 +293,11 @@ have = {r['DepotPath']['$value'] for r in A['resolvedDependencies']}
 for r in S['resolvedDependencies']:
     p = r['DepotPath']['$value']
     if p not in have and ('__base1.anims' in p or (ROUND and '__mag_std.anims' in p)):
-        A['resolvedDependencies'].append(copy.deepcopy(r))
-        have.add(p)
+        dep = copy.deepcopy(r)
+        if p == ASHURA_BASE1:
+            dep['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': DIOSCURI_BASE1}
+        A['resolvedDependencies'].append(dep)
+        have.add(dep['DepotPath']['$value'])
 
 patched = os.path.join(app_dir, 'patched', 'dioscuri_weapon.app.json')
 os.makedirs(os.path.dirname(patched))
