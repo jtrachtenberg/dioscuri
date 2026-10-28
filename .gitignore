@@ -30,3 +30,6 @@ dist/
 !.modwright/templates/manifest.json
 .modwright-build-manifest.json
 archive-staging/*.zip
+
+# vanilla Ashura parts + anims and the reload-study blend (2026-10-28): never commit
+mesh-work/ashura-reload/

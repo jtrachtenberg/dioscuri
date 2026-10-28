@@ -82,6 +82,53 @@ Note on Dioscuri's own mesh: `dioscuri_body_mesh` is a static
 bolt or magazine motion), on 2.31 either. If "no reload animation" means
 the gun and not the hands, that is by design.
 
+**2026-10-28: that IS what the reporter meant** (the maintainer, in game,
+with a vanilla Ashura and a Legendary Dioscuri given through the bridge:
+"the hands move the same as the ashura - but the gun parts on the ashura
+move when reloaded, but the dioscuri does not"). The maintainer wants to
+design moving parts in Blender. Study file, built headlessly:
+`mesh-work\ashura-reload\ashura_reload_vs_dioscuri.blend`, made by
+`mesh-work\build_ashura_reload_blend.py` (its docstring has the run line).
+The folder is gitignored: it holds vanilla assets.
+- **How the Ashura's gun moves** (its 2.5 `.app`): three
+  `entAnimatedComponent`s, each with its own rig, `weapon.animgraph` and
+  anim set, all at one origin (no slot bindings):
+  - `Receiver` (root, rig `w_rifle_sniper__rcv1`, mesh: the Nekomata's
+    receiver): its anim set has no clips, so the receiver never moves;
+  - `Barrel` (rig `..._ashura__base1`, mesh `base1_01` + two diodes): moves
+    `cocking_mechanism`, `hammer`, `l_grip`, `r_grip` and `mag_slot`;
+  - `Magazine` (rig `..._ashura__mag_std`, mesh `mag_std_01`, which is a
+    single 7.5 cm cartridge): moves `magazine`, `mag_std` and `mag_plug`.
+  Clips: `empty_reload` (126 frames at 30 fps), `empty_reload_01`, `_02`,
+  `first_equip`. In `empty_reload`, the cartridge leaves the receiver by
+  ~f9 (to ~0.6 m behind the gun, in V's hand) and is back in by ~f81. The
+  bolt (cocking_mechanism with hammer and grips) slides 10 cm back between
+  ~f18 and f27, and forward between ~f90 and f99.
+- **The blend:** each Ashura mesh is rebound to its anim rig. Each mesh's
+  bind pose matches its rig's rest pose exactly (gated, 0.000000 m). All
+  three parts play one clip; the text block `set_clip.py` switches them
+  together. Dioscuri's `dioscuri_body` (uncooked from the deployed 1.1.0
+  archive) is at its in-game origin: the Ashura and Dioscuri share their
+  width to the mm and line up along the barrel. Previews:
+  `ashura-reload\preview\` (`ashura_strip.png`, `bolt_strip.png`,
+  `overlay_dioscuri_red.png`).
+- **The route to moving Dioscuri parts, with no new animation:** split the
+  moving pieces out of Dioscuri's mesh. Skin them to the Ashura's bone
+  names: bolt to `cocking_mechanism`, and a round or magazine to `mag_std`.
+  Then give `dioscuri_weapon.app` the matching animated components (rig +
+  `weapon.animgraph` + the Ashura's `.anims`), as the Ashura's `.app` does.
+  The Ashura's own clips then drive them, in step with V's hands.
+- Traps hit building it:
+  - `uncook -gp <game> -w '*.mesh'` on ONE mod archive went through EVERY
+    game archive (7 GB in 5 minutes, stopped). With `-gp`, the pattern
+    must name the file.
+  - `--mesh-export-type WithRig` wrote no GLB at all. The default export's
+    skins carry the real bone names, which is all a rebind needs.
+  - The Cyberpunk add-on dies building the magazine's multilayer material
+    (its `.mlsetup` was not uncooked). The script falls back to Blender's
+    standard glTF importer for meshes only (plain material); `.anims`
+    always go through the add-on.
+
 **What the user did next** (resolved — Option B injection worked):
 1. In Object Spawner window: despawn/delete their placed suitcase + the
    "Malorian" group (else the tool respawns an unlootable copy on top).
