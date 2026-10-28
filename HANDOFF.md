@@ -93,7 +93,17 @@ Ashura's own `base1_01` mesh, untransformed:
   animation pipeline, or another weapon family's, which changes all of V's
   handling. The weapon's own clips (bolt timing) would have to match it.
 
-### Two-round reload: BUILT 2026-10-28, in game: arms OK, bolt fix awaiting eyes
+### Two-round reload: CONFIRMED IN GAME 2026-10-28 ("the animation is now perfect")
+
+**Status at the end of 2026-10-28:** the Compressed-bolt build (deployed
+18:40 UTC, commits 3edba12 + 1eb8e46) is confirmed by the maintainer: "ok,
+the animation is now perfect". Open: "there are still no bullet showing in
+the chamber". Visible rounds are the next step: a cartridge component in
+`dioscuri_weapon.app` on a clip baked from V's hand (the Ashura's own
+cartridge clip strays 36-78 cm from the hand, see the cartridge note
+above). Its clips go Compressed, like the bolt's. Not published: the
+working version is 1.2.0, and redscript is now a requirement (Nexus page
+and requirements to update at release).
 
 Built as planned below (commits 3edba12, 1eb8e46):
 - `mesh-work\build_two_round_reload.py` (Blender: the cut, seam blend,
