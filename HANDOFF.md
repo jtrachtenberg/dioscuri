@@ -35,7 +35,7 @@ in NEXUS-PAGE.md. Key late-stage lessons appended below the original log:
   shows only hex lookup keys. Export json via CLI serialize, edit, deserialize.
 - 65,535 verts/submesh engine cap (double-siding all gunmetal exceeded it).
 
-## Visible rounds (2026-10-28 night): built + deployed as working 1.3.0, NOT yet seen in game
+## Visible rounds (2026-10-28 night): built + deployed as working 1.2.1, NOT yet seen in game
 
 The maintainer, on the published 1.2.0: "there are still no bullet showing in
 the chamber". Now each of the two rounds shows: it comes up in V's loading
