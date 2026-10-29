@@ -35,6 +35,78 @@ in NEXUS-PAGE.md. Key late-stage lessons appended below the original log:
   shows only hex lookup keys. Export json via CLI serialize, edit, deserialize.
 - 65,535 verts/submesh engine cap (double-siding all gunmetal exceeded it).
 
+## Visible rounds (2026-10-28 night): built + deployed as working 1.3.0, NOT yet seen in game
+
+The maintainer, on the published 1.2.0: "there are still no bullet showing in
+the chamber". Now each of the two rounds shows: it comes up in V's loading
+hand, goes into its slot on top of the receiver, lies there beside the other
+round while the bolt is open, and rides the bolt forward into the chamber,
+where it is hidden. Preview of the decoded clips:
+`mesh-work\ashura-reload\preview\dioscuri_rounds_preview.png` (gitignored;
+`study_round_hand.py -- --final`).
+
+- **The parts.** Each round is the Ashura's cartridge mesh on the Ashura's
+  3-bone cartridge rig (`mag_std`, `weapon.animgraph`), in an animated
+  component of its own (`DioscuriRoundA`/`B`, parented to `DioscuriBolt`).
+  Each plays its own set, `mod\dioscuri\anims\dioscuri_round_a/b.anims`
+  (the three `empty_reload` clips at 180 frames, `first_equip` held still),
+  and both use `mod\dioscuri\meshes\dioscuri_round.mesh`. That mesh is the
+  vanilla cartridge with its vertices moved into the chamber, so the rounds
+  rest hidden whenever no clip plays (idle, firing). Nothing depends on a
+  component `localTransform`, which is unproven in game.
+- **Where (gun frame, +Y muzzle, +Z up)**, measured with
+  `study_round_hand.py` and a ray test from 200 directions:
+  - the chamber, (0, 0.165, 0.072), is hidden from every direction, bolt
+    open or closed. It is the rest and the park spot.
+  - the slots, x -0.0075 (A) and +0.0075 (B) at y 0.065, are the open
+    channel on top of the receiver in front of the open bolt's rear block.
+    That is where V's hand delivers and where the rounds read as loaded
+    from V's eye. Each slot rides the bolt, so its 10 cm travel carries
+    both rounds into the chamber.
+- **Which hand loads:** the left in `empty_reload`, the right in `_01`/`_02`
+  (the gun turns sideways and the left hand holds it). Male and female V's
+  arm clips put the hands in the same place to a micrometre, so one clip
+  serves both.
+- **Timing, per variant and round** (`build_rounds.py`, from the DECODED arm
+  and bolt clips):
+  - insert end: the frame near the round's "load" sound where V's
+    thumb-index pinch is closest to the slot's rear end. The round is held by
+    its base, along the gun's axis at that frame, and fixed to the hand
+    before it.
+  - the insert: the last 6 frames add the remaining 1.2-2.9 cm.
+  - appearance: the jump from the hidden chamber into the hand happens on
+    the frame where the hand is furthest outside V's view. That is 7.3 view
+    half-widths outside in `empty_reload`, but only 0.5-1.1 in `_01`/`_02`:
+    a wide FOV setting might catch a one-frame pop at the screen edge.
+- **Why not the Ashura's own cartridge clip:** it is in V's hand only for the
+  ~8 frames before its insert (measured). The rest of the time CDPR parks it
+  36-78 cm away, out of view. That park spot is what floated below the gun
+  in the first try.
+- **Pipeline:**
+  - `build_rounds.py` (Blender): the poses, the hidden-spot ray test, the
+    keys, the GLB gates, and the moved mesh;
+  - `finish_rounds.py`: the headless import into copies of the vanilla
+    cartridge set (Compressed, fallback indices, every clip rebuilt), and
+    the mesh via `import -k`. The bind matrix is restored, and the epsilon
+    is 0.3, since the round sits 0.2 m from its bone. The packed mesh is
+    then uncooked back and its bounds checked: off by 0.0000 m;
+  - `finish_moving_parts.py`: the app components (`--no-rounds` leaves
+    them out);
+  - the decoded clips vs the authored poses: worst 0.96 mm / 0.14 deg.
+- **Traps:** WolvenKit's anims importer counts `int(last key * 30) + 1`
+  frames, so a 4.7 s clip comes back 141 frames, not 142. The vanilla
+  cartridge set is SIMD; ours is Compressed, as the bolt's is.
+- **Deployed** 2026-10-29 04:10 UTC (archive md5 aa9f12f2..., 26 entries).
+  Rollback: `.modwright\backups\20261029-041010`, byte-identical to the
+  published 1.2.0 archive.
+- **In-game check:** reload several times to see all three variants. Look
+  for:
+  - the round in the hand on the way up;
+  - the first round lying in its slot while the second is fetched;
+  - both rounds disappearing forward as the bolt closes;
+  - no round visible at rest;
+  - no pop at the screen edge when a round appears.
+
 ## The moving bolt (2026-10-28, working version 1.2.0, NOT published)
 
 The maintainer: "this mod is outside the contest range, can you try an
@@ -101,9 +173,9 @@ the animation is now perfect". Open: "there are still no bullet showing in
 the chamber". Visible rounds are the next step: a cartridge component in
 `dioscuri_weapon.app` on a clip baked from V's hand (the Ashura's own
 cartridge clip strays 36-78 cm from the hand, see the cartridge note
-above). Its clips go Compressed, like the bolt's. Not published: the
-working version is 1.2.0, and redscript is now a requirement (Nexus page
-and requirements to update at release).
+above). Its clips go Compressed, like the bolt's. PUBLISHED as 1.2.0 on
+2026-10-28 (redscript now required); the rounds came after it, see
+"Visible rounds" at the top.
 
 Built as planned below (commits 3edba12, 1eb8e46):
 - `mesh-work\build_two_round_reload.py` (Blender: the cut, seam blend,

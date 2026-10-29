@@ -26,9 +26,13 @@ Gate: the materials and appearances are unchanged from 1.1.0's mesh.
 
 The app. As the Ashura's .app does, an animated component on the base1 rig
 (weapon.animgraph + the Ashura's base1 anim sets) hangs off Dioscuri's
-Receiver, and the body becomes a skinned mesh bound to it. ROUND also adds the
-Ashura's cartridge (its vanilla mesh, rig and anim sets): it rides from the
-receiver to V's hand and back during the reload. Each new component goes into
+Receiver, and the body becomes a skinned mesh bound to it. The two ROUNDS
+each get the Ashura's cartridge rig (mag_std, weapon.animgraph) in an animated
+component of their own, playing Dioscuri's own clip set for that round, and a
+skinned mesh component with Dioscuri's round mesh (build_rounds.py and
+finish_rounds.py make both: the mesh rests hidden in the chamber, the clips
+carry each round from V's hand into its slot and forward with the bolt).
+Each new component goes into
 BOTH `components` and `compiledData` (the cooked copy the game reads), sharing
 their binding handles as vanilla's do, and compiledData's CruidDict (chunk
 index -> component id) is rebuilt.
@@ -53,16 +57,17 @@ ASH_MESH = os.path.join(R, 'uncooked', 'base', 'weapons', 'firearms', 'rifle_sni
                         'entities', 'meshes', 'w_rifle_sniper__tsunami_ashura__base1_01.mesh')
 STAGE = os.path.join(ROOT, 'archive-staging', 'Dioscuri', 'mod', 'dioscuri')
 BARREL_EPSILON = 1.2
-# The Ashura's cartridge (mag_std) travels to V's hand in the reload, but at
-# rest it sits where the Ashura's Nekomata receiver hides it, and Dioscuri has
-# no receiver there: preview_moving_parts.py showed it in Dioscuri's trigger
-# guard (2026-10-28). `--round` builds it in anyway. In game (the maintainer)
-# it floated just below the gun in the forward reload: the Ashura's cartridge
-# clip does not keep the round in V's hand (36-78 cm away while it is out of
-# the gun, measured offline; HANDOFF.md). Dioscuri 1.1.0 shows no round at all
-# (no Magazine part, and parts don't paint). Leave it off; visible rounds need
-# a cartridge clip baked from V's hand.
-ROUND = '--round' in sys.argv
+# The rounds (2026-10-28). The first try put the Ashura's cartridge in with its
+# own vanilla clip: in game it floated just below the gun, since that clip
+# keeps the round 36-78 cm from V's hand while it is out of the gun (CDPR
+# parks it out of view), and at rest it sat in Dioscuri's trigger guard (the
+# Ashura's receiver hides it there; Dioscuri has none). Now each round has its
+# own clips, authored from V's hands (build_rounds.py), and a mesh that rests
+# in the chamber, so nothing depends on the component's localTransform
+# (unproven in game). `--no-rounds` leaves them out.
+ROUNDS = '--no-rounds' not in sys.argv
+ROUND_SETS = {'A': 'mod\\dioscuri\\anims\\dioscuri_round_a.anims', 'B': 'mod\\dioscuri\\anims\\dioscuri_round_b.anims'}
+ROUND_MESH = 'mod\\dioscuri\\meshes\\dioscuri_round.mesh'
 MATERIAL_KEYS = ('appearances', 'materialEntries', 'preloadLocalMaterialInstances', 'preloadExternalMaterials',
                  'externalMaterials', 'localMaterialBuffer', 'localMaterialInstances', 'objectType')
 
@@ -269,25 +274,27 @@ rebind(body, 'skinning', 'DioscuriBolt')
 new = [bolt, body]
 
 # Dioscuri fires a two-round burst, so V loads two (the maintainer, 2026-10-28):
-# the second cartridge rides the same clip on its own rig, shifted ROUND_GAP
-# sideways (x) by its animated component's localTransform. WorldPosition is
-# FixedPoint, Bits = metres * 2^17. (Unproven that the game honours a
-# localTransform on an animated component: if not, the two overlap.)
-ROUND_GAP = 0.016
-if ROUND:
-    for k, gap in enumerate((0.0, ROUND_GAP)):
-        tag = '' if k == 0 else str(k + 1)
-        rnd = dup(named(S['components'], 'Magazine'), {})        # mag_std rig + anim sets
-        rnd['name'] = cname('DioscuriRound' + tag)
-        rnd['id'] = new_id('DioscuriRound' + tag)
-        rebind(rnd, 'parentTransform', 'DioscuriBolt')
-        rnd['localTransform']['Position']['x']['Bits'] = int(round(gap * 131072))
-        rnd_mesh = dup(named(S['components'], 'w_rifle_sniper__tsunami_ashura__mag_std_017138'), {})  # vanilla cartridge mesh
-        rnd_mesh['name'] = cname('dioscuri_round%s_mesh' % tag)
-        rnd_mesh['id'] = new_id('dioscuri_round%s_mesh' % tag)
-        rebind(rnd_mesh, 'parentTransform', 'DioscuriRound' + tag)
-        rebind(rnd_mesh, 'skinning', 'DioscuriRound' + tag)
-        new += [rnd, rnd_mesh]
+# round A goes in first, round B second, each on its own cartridge rig and
+# clip set; both use the one round mesh.
+if ROUNDS:
+    for rnd, anims in ROUND_SETS.items():
+        rc = dup(named(S['components'], 'Magazine'), {})        # the Ashura's cartridge rig + weapon.animgraph
+        rc['name'] = cname('DioscuriRound' + rnd)
+        rc['id'] = new_id('DioscuriRound' + rnd)
+        rebind(rc, 'parentTransform', 'DioscuriBolt')
+        # only this round's own set: the Ashura's player and NPC cartridge sets
+        # would fly the moved mesh around
+        entry = rc['animations']['gameplay'][0]
+        ed = entry.data if isinstance(entry, wkhandles.Handle) else entry
+        ed['animSet']['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': anims}
+        rc['animations']['gameplay'] = [entry]
+        rm = dup(named(S['components'], 'w_rifle_sniper__tsunami_ashura__mag_std_017138'), {})
+        rm['name'] = cname('dioscuri_round_%s_mesh' % rnd.lower())
+        rm['id'] = new_id('dioscuri_round_%s_mesh' % rnd.lower())
+        rm['mesh']['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': ROUND_MESH}
+        rebind(rm, 'parentTransform', 'DioscuriRound' + rnd)
+        rebind(rm, 'skinning', 'DioscuriRound' + rnd)
+        new += [rc, rm]
 
 cd = A['compiledData']['Data']
 for lst in (A['components'], cd['Chunks']):
@@ -299,12 +306,18 @@ cd['CruidDict'] = {str(i): c['id'] for i, c in enumerate(cd['Chunks'])}
 have = {r['DepotPath']['$value'] for r in A['resolvedDependencies']}
 for r in S['resolvedDependencies']:
     p = r['DepotPath']['$value']
-    if p not in have and ('__base1.anims' in p or (ROUND and '__mag_std.anims' in p)):
+    if p not in have and '__base1.anims' in p:
         dep = copy.deepcopy(r)
         if p == ASHURA_BASE1:
             dep['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': DIOSCURI_BASE1}
         A['resolvedDependencies'].append(dep)
         have.add(dep['DepotPath']['$value'])
+if ROUNDS:
+    template = [r for r in S['resolvedDependencies'] if r['DepotPath']['$value'].endswith('__mag_std.anims')][0]
+    for anims in ROUND_SETS.values():
+        dep = copy.deepcopy(template)
+        dep['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': anims}
+        A['resolvedDependencies'].append(dep)
 
 patched = os.path.join(app_dir, 'patched', 'dioscuri_weapon.app.json')
 os.makedirs(os.path.dirname(patched))
@@ -344,11 +357,14 @@ def binding(c, f):
 
 for where, lst in (('components', ba['components']), ('compiledData', ba['compiledData']['Data']['Chunks'])):
     rows = {c['name']['$value']: (c['$type'], binding(c, 'parentTransform'), binding(c, 'skinning')) for c in lst}
-    for n in ('DioscuriBolt', 'dioscuri_body_mesh', 'DioscuriRound', 'dioscuri_round_mesh'):
+    for n in ('DioscuriBolt', 'dioscuri_body_mesh', 'DioscuriRoundA', 'dioscuri_round_a_mesh', 'DioscuriRoundB', 'dioscuri_round_b_mesh'):
         if n in rows:
-            print('APP %-12s %-20s %s' % (where, n, rows[n]))
+            print('APP %-12s %-22s %s' % (where, n, rows[n]))
     assert rows['dioscuri_body_mesh'] == ('entSkinnedMeshComponent', 'DioscuriBolt', 'DioscuriBolt'), rows['dioscuri_body_mesh']
     assert rows['DioscuriBolt'][1] == 'Receiver'
+    for rnd in (ROUND_SETS if ROUNDS else ()):
+        assert rows['DioscuriRound' + rnd] == ('entAnimatedComponent', 'DioscuriBolt', '-'), rows['DioscuriRound' + rnd]
+        assert rows['dioscuri_round_%s_mesh' % rnd.lower()] == ('entSkinnedMeshComponent', 'DioscuriRound' + rnd, 'DioscuriRound' + rnd)
 cdb = ba['compiledData']['Data']
 assert all(cdb['CruidDict'][str(i)] == c['id'] for i, c in enumerate(cdb['Chunks']))
 print('APP resolvedDependencies', len(ba['resolvedDependencies']))
