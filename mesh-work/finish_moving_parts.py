@@ -282,6 +282,12 @@ if ROUNDS:
         rc['name'] = cname('DioscuriRound' + rnd)
         rc['id'] = new_id('DioscuriRound' + rnd)
         rebind(rc, 'parentTransform', 'DioscuriBolt')
+        # Its animation comes from the component it hangs from, as every vanilla
+        # part's does (Ashura: Magazine -> Barrel for both). The copy kept the
+        # name 'Barrel', which in Dioscuri's app is the Kang Tao Dian's leftover
+        # part with no mesh on it, and the rounds never left the chamber in game
+        # (2026-10-29).
+        rebind(rc, 'controlBinding', 'DioscuriBolt')
         # only this round's own set: the Ashura's player and NPC cartridge sets
         # would fly the moved mesh around
         entry = rc['animations']['gameplay'][0]
@@ -295,6 +301,27 @@ if ROUNDS:
         rebind(rm, 'parentTransform', 'DioscuriRound' + rnd)
         rebind(rm, 'skinning', 'DioscuriRound' + rnd)
         new += [rc, rm]
+
+# TEST BUILDS ONLY (`--probe-slots`): slot components on the bolt's and each
+# round's moving bone, so a CET probe can read where the game puts them
+# (SlotComponent.GetSlotTransform, as the player's own 'slots' are read).
+PROBE_SLOTS = '--probe-slots' in sys.argv
+PROBES = {'DioscuriProbeBolt': ('DioscuriBolt', 'cocking_mechanism')}
+if ROUNDS:
+    PROBES.update({'DioscuriProbeRound' + rnd: ('DioscuriRound' + rnd, 'mag_std') for rnd in ROUND_SETS})
+if PROBE_SLOTS:
+    for name, (parent, bone) in PROBES.items():
+        sc = dup(named(A['components'], 'FX_slots'), {})
+        sc['name'] = cname(name)
+        sc['id'] = new_id(name)
+        rebind(sc, 'parentTransform', parent)
+        slot = copy.deepcopy(sc['slots'][0])
+        slot['boneName'] = cname(bone)
+        slot['slotName'] = cname('probe')
+        slot['relativePosition'] = {'$type': 'Vector3', 'X': 0, 'Y': 0, 'Z': 0}
+        sc['slots'] = [slot]
+        new.append(sc)
+    print('PROBE SLOTS', PROBES)
 
 cd = A['compiledData']['Data']
 for lst in (A['components'], cd['Chunks']):
@@ -365,6 +392,16 @@ for where, lst in (('components', ba['components']), ('compiledData', ba['compil
     for rnd in (ROUND_SETS if ROUNDS else ()):
         assert rows['DioscuriRound' + rnd] == ('entAnimatedComponent', 'DioscuriBolt', '-'), rows['DioscuriRound' + rnd]
         assert rows['dioscuri_round_%s_mesh' % rnd.lower()] == ('entSkinnedMeshComponent', 'DioscuriRound' + rnd, 'DioscuriRound' + rnd)
+    # every animated part we add takes its animation from its own parent
+    for c in lst:
+        if c['name']['$value'].startswith('Dioscuri') and c['$type'] == 'entAnimatedComponent':
+            ctl = binding(c, 'controlBinding')
+            print('APP %-12s %-22s control %s' % (where, c['name']['$value'], ctl))
+            assert ctl == binding(c, 'parentTransform'), (c['name']['$value'], ctl)
+    for name, (parent, bone) in (PROBES.items() if PROBE_SLOTS else ()):
+        c = [x for x in lst if x['name']['$value'] == name][0]
+        assert binding(c, 'parentTransform') == parent and c['slots'][0]['boneName']['$value'] == bone, name
+    assert PROBE_SLOTS or not any(c['name']['$value'].startswith('DioscuriProbe') for c in lst)
 cdb = ba['compiledData']['Data']
 assert all(cdb['CruidDict'][str(i)] == c['id'] for i, c in enumerate(cdb['Chunks']))
 print('APP resolvedDependencies', len(ba['resolvedDependencies']))

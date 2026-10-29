@@ -37,6 +37,40 @@ in NEXUS-PAGE.md. Key late-stage lessons appended below the original log:
 
 ## Visible rounds (2026-10-28 night): built + deployed as working 1.2.1, NOT yet seen in game
 
+**2026-10-29: in game the rounds did NOT show** (the maintainer: "the rounds
+dont show up ... during the reload animation"). Found offline, then fixed
+and deployed as a TEST build, not yet seen:
+- **The cause (most likely):** each animated part takes its animation from
+  its `controlBinding`. In every vanilla part it names the component the
+  part hangs from (Ashura: `Barrel` -> `Receiver`, `Magazine` -> `Barrel`).
+  The round components are copies of the Ashura's `Magazine`, so they kept
+  `controlBinding = Barrel`. In Dioscuri's app `Barrel` is the Kang Tao
+  Dian's leftover part, which has no mesh on it, not `DioscuriBolt`. A round
+  whose clip never plays stays in the hidden chamber, which matches what the
+  maintainer saw. The first cartridge try (2026-10-28) had the same binding,
+  so its round "floating just below the gun" may simply have been its REST
+  spot in the trigger guard, not the vanilla clip's park spot.
+- **Everything else checked and matching the working bolt:** the deployed
+  archive's files equal staging; the clip sets (Compressed, 180 frames,
+  null motionExtraction, fallback indices like vanilla's) and the round mesh
+  (one LOD, vanilla's materials and bind matrix, path hash correct).
+- **The fix:** `finish_moving_parts.py` binds each round's `controlBinding`
+  to `DioscuriBolt`. A gate asserts that every animated part we add takes
+  its animation from its own parent.
+- **The test build (deployed 2026-10-29 15:16 UTC, archive md5 a0a14d7b...)**
+  was built with `--probe-slots`: slot components on `cocking_mechanism`
+  (`DioscuriProbeBolt`) and each round's `mag_std` (`DioscuriProbeRoundA/B`).
+  The CET probe `tests\cet-probes\DioscuriRoundProbe` (copied to the game's
+  CET mods folder) writes each bone's position in the weapon's frame to
+  `round_probe.txt` in its folder whenever one moves. The bolt is the
+  control: it must read y 0.108 closed and 0.008 open. If it does and the
+  rounds' `mag_std` stays put, their clips still are not playing.
+  **Before any release:** rebuild without `--probe-slots` (the staged
+  `dioscuri_weapon.app` is the probe build and is NOT committed), and remove
+  the CET probe folder from the game.
+  Rollbacks: `.modwright\backups\20261029-151620` (the first rounds build),
+  `20261029-041010` (the published 1.2.0).
+
 The maintainer, on the published 1.2.0: "there are still no bullet showing in
 the chamber". Now each of the two rounds shows: it comes up in V's loading
 hand, goes into its slot on top of the receiver, lies there beside the other
