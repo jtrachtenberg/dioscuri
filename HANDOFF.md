@@ -80,6 +80,37 @@ and deployed as a TEST build, not yet seen:
   **2026-10-30:** the probe now also logs the held item's record and every
   component the live weapon entity has (Codeware `GetComponents`), so the
   next run answers that by itself. Redeployed to the game's CET folder.
+  (The 10-29 runs: a knife was in V's hand, from the sai work.)
+- **2026-10-30 run (Dioscuri drawn, two reloads): bolt moves, rounds still
+  never seen** (the maintainer: "no sign of the ammo being loaded"). Log:
+  the game's probe folder, `round_probe.txt`. What it settles:
+  - All 36 components are on the live weapon, ours included, rounds'
+    meshes enabled.
+  - **The bolt plays OUR set.** Its reload reads closed y 0.108 / open
+    0.008, opening at ~12% and closing at ~83% of the reload: our
+    `dioscuri_base1` clip closes at 83-84%, the vanilla Ashura's at 77%.
+    So the vanilla `animations.hash` it carries (17504751757023123269, the
+    Ashura `Barrel`'s) does not swap in the vanilla set.
+  - **The round slots read nothing we can explain.** `mag_std` rests at
+    (0, 0.226, 0.005) in the weapon frame, where our rig puts it at the
+    component origin; in the reload it holds near (0, 0.319, 0.065-0.112)
+    with no rotation. Round A and round B read IDENTICAL every frame
+    (x = 0), though our two clips differ by 15 mm in x and rotate the
+    round. It matches neither our clips nor any vanilla clip (Ashura
+    cartridge, Kang Tao Dian magazine; decoded with
+    `glbtrack`-style FK on the export GLBs). Both round components also
+    carry the SAME hash, the Ashura `Magazine`'s 7303319547767703256.
+    So the separate round components are an unknown: the bone the probe
+    reads, or the clip they play, is not what we built.
+  - **Proposed next route: no round components at all.** The bolt's rig
+    has three cable bones, `l_cable_front_01` / `_middle_01` / `_back_01`
+    (children of `barrel`), that Dioscuri's mesh does not use and that every
+    clip, vanilla and ours, holds still. Skin round A to `l_cable_front_01`
+    and round B to `l_cable_middle_01` (both meshes skinned to
+    `DioscuriBolt`), and key the authored round poses (`rounds.json`) on
+    those two bones in `dioscuri_base1.anims`, the one set proven to play
+    in game. Rest stays hidden in the chamber, since every other clip keeps
+    the cables at their bind pose. Awaiting the maintainer's go-ahead.
 
 The maintainer, on the published 1.2.0: "there are still no bullet showing in
 the chamber". Now each of the two rounds shows: it comes up in V's loading
