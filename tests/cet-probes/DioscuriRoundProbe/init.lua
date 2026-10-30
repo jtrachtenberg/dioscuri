@@ -73,6 +73,22 @@ local function sample()
             found[#found + 1] = n .. "=" .. tostring(c ~= nil) .. "/enabled " .. en
         end
         rec("weapon " .. wid .. " " .. table.concat(found, " "))
+        -- 2026-10-30: two runs on 10-29 found NONE of the names above, not
+        -- even the bolt control, so record WHICH item is held and every
+        -- component the live weapon entity really has (Codeware GetComponents).
+        local rid = "?"
+        pcall(function() rid = TDBID.ToStringDEBUG(ItemID.GetTDBID(w:GetItemID())) end)
+        rec("  record " .. tostring(rid) .. " class " .. tostring(w:GetClassName().value))
+        local okc, comps = pcall(function() return w:GetComponents() end)
+        if okc and comps then
+            local names = {}
+            for _, c in ipairs(comps) do
+                names[#names + 1] = tostring(c:GetName().value) .. ":" .. tostring(c:GetClassName().value)
+            end
+            rec("  components " .. #names .. " " .. table.concat(names, " "))
+        else
+            rec("  components ERR " .. tostring(comps))
+        end
         last = {}
     end
     local wp = w:GetWorldPosition()

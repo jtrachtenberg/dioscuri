@@ -70,6 +70,16 @@ and deployed as a TEST build, not yet seen:
   the CET probe folder from the game.
   Rollbacks: `.modwright\backups\20261029-151620` (the first rounds build),
   `20261029-041010` (the published 1.2.0).
+- **2026-10-29 the probe ran twice (11:46 and 15:02 local) and read
+  NOTHING:** on the held weapon, `FindComponentByName` found none of the
+  five names, not even the bolt control, although the deployed app (md5
+  a0a14d7b..., same as staging) carries all of them. So either the held
+  gun was not Dioscuri or the lookup fails on a weapon entity; the log
+  could not tell which. No visual verdict on those runs is recorded. Kept
+  as `round_probe_20261029.txt` in the game's probe folder.
+  **2026-10-30:** the probe now also logs the held item's record and every
+  component the live weapon entity has (Codeware `GetComponents`), so the
+  next run answers that by itself. Redeployed to the game's CET folder.
 
 The maintainer, on the published 1.2.0: "there are still no bullet showing in
 the chamber". Now each of the two rounds shows: it comes up in V's loading
