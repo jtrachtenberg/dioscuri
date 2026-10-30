@@ -1,13 +1,20 @@
 # Nexus page copy (paste into mod page editor)
 
-**1.2.0 UPLOAD (built 2026-10-28):** `dist\MalorianArmsDioscuri-1.2.0.zip`,
-md5 349EF69D455E9456117AD4A502DEC1B5, 4 files, every one byte-identical to
-the build the maintainer confirmed in game ("the animation is now perfect").
-Upload it as the new MAIN file (version 1.2.0). Add **redscript 0.5.32 or
-newer** (mod 1511, the game 2.5 release; the confirmed build ran on 0.5.32)
-to the Requirements tab (new: the reload's script), and paste the full description
-again (below: Requirements, Installation and a feature line changed).
+**1.2.1 UPLOAD (built 2026-10-30):** `dist\MalorianArmsDioscuri-1.2.1.zip`,
+md5 D1D47BEB30188D45EBD04CFCFBEE6A75, 4 files. The yaml, the script and the
+.xl are byte-identical to 1.2.0's; the archive is the build the maintainer
+confirmed in game on 2026-10-30 ("test pass") minus only the three test
+probe slots in `dioscuri_weapon.app` (unbundled and compared: 24 of 25 files
+identical, the app's other components identical). Upload it as the new MAIN
+file (version 1.2.1). Requirements and description are unchanged from 1.2.0
+(no need to paste again).
 Changelog line:
+> 1.2.1 - The two rounds now show during the reload: V carries each one up
+> to the gun, it lies in the action while she fetches the second, and the
+> bolt pushes both into the chamber.
+
+**1.2.0 (published 2026-10-28):** `dist\MalorianArmsDioscuri-1.2.0.zip`,
+md5 349EF69D455E9456117AD4A502DEC1B5. Changelog:
 > 1.2.0 - The bolt now works the action when you reload, and the reload
 > loads both rounds of the twin chamber (the reload takes 3.0 s, up from
 > 2.1). Now requires redscript.

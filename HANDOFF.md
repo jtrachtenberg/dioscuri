@@ -35,10 +35,19 @@ in NEXUS-PAGE.md. Key late-stage lessons appended below the original log:
   shows only hex lookup keys. Export json via CLI serialize, edit, deserialize.
 - 65,535 verts/submesh engine cap (double-siding all gunmetal exceeded it).
 
-## Visible rounds (2026-10-28 night): built + deployed as working 1.2.1, NOT yet seen in game
+## Visible rounds: CONFIRMED in game 2026-10-30, released as 1.2.1
 
-**2026-10-30: REBUILT ON THE BOLT'S CABLE BONES, deployed as a test build,
-not yet seen in game** (the maintainer's go-ahead: "Yes, rebuild"). Why:
+**2026-10-30: the cable-bone build PASSED in game** (the maintainer: "ok,
+test pass - give me a build for nexus"). Release build: the app rebuilt
+without `--probe-slots`; `dist\MalorianArmsDioscuri-1.2.1.zip` md5
+D1D47BEB30188D45EBD04CFCFBEE6A75 (archive 100a2e83...), upload block in
+NEXUS-PAGE.md. Deployed to the game; the CET `DioscuriRoundProbe` removed
+from the game (its logs kept in `mesh-work\ashura-reload\work\probe-logs\`,
+gitignored; the probe source stays in `tests\cet-probes\`). Rollback
+`.modwright\backups\20261030-165036` = the tested probe build (fa6aa34d).
+
+**2026-10-30: REBUILT ON THE BOLT'S CABLE BONES, deployed as a test build**
+(the maintainer's go-ahead: "Yes, rebuild"). Why:
 the 10-30 probe run (below) showed the bolt playing our clip exactly while
 the separate round components did not. Now there are NO round components:
 - **Motion:** `mesh-work\key_round_bones.py` (Blender) keys the authored round
@@ -76,9 +85,9 @@ the separate round components did not. Now there are NO round components:
   Rollbacks: `.modwright\backups\20261030-162836` (the 10-29 probe build,
   a0a14d7b), `20261029-041010` (the published 1.2.0). The probe log of the
   10-30 component run is kept as `round_probe_20261030_components.txt`.
-- **Still a TEST build:** the staged app has the probe slots and is not
-  committed; before release, rerun `finish_moving_parts.py` without
-  `--probe-slots`, rebuild, and remove the game's CET `DioscuriRoundProbe`.
+- **Test build** (done for 1.2.1, see the top): the app had the probe slots;
+  the release reran `finish_moving_parts.py` without `--probe-slots`,
+  rebuilt, and removed the game's CET `DioscuriRoundProbe`.
 - **In-game check:** as below (round in hand on the way up, first round in
   its slot while the second is fetched, both forward with the bolt, nothing
   at rest, no pop at the screen edge). The probe should now read the cable
