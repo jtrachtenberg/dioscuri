@@ -27,11 +27,12 @@ Gate: the materials and appearances are unchanged from 1.1.0's mesh.
 The app. As the Ashura's .app does, an animated component on the base1 rig
 (weapon.animgraph + the Ashura's base1 anim sets) hangs off Dioscuri's
 Receiver, and the body becomes a skinned mesh bound to it. The two ROUNDS
-each get the Ashura's cartridge rig (mag_std, weapon.animgraph) in an animated
-component of their own, playing Dioscuri's own clip set for that round, and a
-skinned mesh component with Dioscuri's round mesh (build_rounds.py and
-finish_rounds.py make both: the mesh rests hidden in the chamber, the clips
-carry each round from V's hand into its slot and forward with the bolt).
+are two more skinned meshes bound to that same bolt component, each skinned
+to one of the bolt rig's spare cable bones (finish_rounds.py makes the
+meshes, resting hidden in the chamber; key_round_bones.py keys the cable
+bones in the bolt's own clips to carry each round from V's hand into its
+slot and forward with the bolt). Until 2026-10-30 each round had an animated
+component and clip set of its own; in game those did not play our clips.
 Each new component goes into
 BOTH `components` and `compiledData` (the cooked copy the game reads), sharing
 their binding handles as vanilla's do, and compiledData's CruidDict (chunk
@@ -65,9 +66,12 @@ BARREL_EPSILON = 1.2
 # own clips, authored from V's hands (build_rounds.py), and a mesh that rests
 # in the chamber, so nothing depends on the component's localTransform
 # (unproven in game). `--no-rounds` leaves them out.
+# 2026-10-30: in game those round components played none of our clips (both
+# rounds moved identically, the bolt played ours exactly), so the rounds now
+# ride the bolt's own rig: one mesh per round, skinned to a cable bone.
 ROUNDS = '--no-rounds' not in sys.argv
-ROUND_SETS = {'A': 'mod\\dioscuri\\anims\\dioscuri_round_a.anims', 'B': 'mod\\dioscuri\\anims\\dioscuri_round_b.anims'}
-ROUND_MESH = 'mod\\dioscuri\\meshes\\dioscuri_round.mesh'
+ROUND_MESHES = {'A': ('mod\\dioscuri\\meshes\\dioscuri_round_a.mesh', 'l_cable_front_01'),
+                'B': ('mod\\dioscuri\\meshes\\dioscuri_round_b.mesh', 'l_cable_middle_01')}
 MATERIAL_KEYS = ('appearances', 'materialEntries', 'preloadLocalMaterialInstances', 'preloadExternalMaterials',
                  'externalMaterials', 'localMaterialBuffer', 'localMaterialInstances', 'objectType')
 
@@ -274,41 +278,27 @@ rebind(body, 'skinning', 'DioscuriBolt')
 new = [bolt, body]
 
 # Dioscuri fires a two-round burst, so V loads two (the maintainer, 2026-10-28):
-# round A goes in first, round B second, each on its own cartridge rig and
-# clip set; both use the one round mesh.
+# round A goes in first, round B second. Each is a skinned mesh on the BOLT's
+# component, its one bone a spare cable bone of the bolt's rig, so the bolt's
+# own clips (proven in game) carry it. A copy of the Ashura's cartridge mesh
+# component (its mesh settings), rebound to DioscuriBolt as the body is.
 if ROUNDS:
-    for rnd, anims in ROUND_SETS.items():
-        rc = dup(named(S['components'], 'Magazine'), {})        # the Ashura's cartridge rig + weapon.animgraph
-        rc['name'] = cname('DioscuriRound' + rnd)
-        rc['id'] = new_id('DioscuriRound' + rnd)
-        rebind(rc, 'parentTransform', 'DioscuriBolt')
-        # Its animation comes from the component it hangs from, as every vanilla
-        # part's does (Ashura: Magazine -> Barrel for both). The copy kept the
-        # name 'Barrel', which in Dioscuri's app is the Kang Tao Dian's leftover
-        # part with no mesh on it, and the rounds never left the chamber in game
-        # (2026-10-29).
-        rebind(rc, 'controlBinding', 'DioscuriBolt')
-        # only this round's own set: the Ashura's player and NPC cartridge sets
-        # would fly the moved mesh around
-        entry = rc['animations']['gameplay'][0]
-        ed = entry.data if isinstance(entry, wkhandles.Handle) else entry
-        ed['animSet']['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': anims}
-        rc['animations']['gameplay'] = [entry]
+    for rnd, (mesh, bone) in ROUND_MESHES.items():
         rm = dup(named(S['components'], 'w_rifle_sniper__tsunami_ashura__mag_std_017138'), {})
         rm['name'] = cname('dioscuri_round_%s_mesh' % rnd.lower())
         rm['id'] = new_id('dioscuri_round_%s_mesh' % rnd.lower())
-        rm['mesh']['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': ROUND_MESH}
-        rebind(rm, 'parentTransform', 'DioscuriRound' + rnd)
-        rebind(rm, 'skinning', 'DioscuriRound' + rnd)
-        new += [rc, rm]
+        rm['mesh']['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': mesh}
+        rebind(rm, 'parentTransform', 'DioscuriBolt')
+        rebind(rm, 'skinning', 'DioscuriBolt')
+        new.append(rm)
 
-# TEST BUILDS ONLY (`--probe-slots`): slot components on the bolt's and each
-# round's moving bone, so a CET probe can read where the game puts them
+# TEST BUILDS ONLY (`--probe-slots`): slot components on the bolt rig's moving
+# bones, so a CET probe can read where the game puts them
 # (SlotComponent.GetSlotTransform, as the player's own 'slots' are read).
 PROBE_SLOTS = '--probe-slots' in sys.argv
 PROBES = {'DioscuriProbeBolt': ('DioscuriBolt', 'cocking_mechanism')}
 if ROUNDS:
-    PROBES.update({'DioscuriProbeRound' + rnd: ('DioscuriRound' + rnd, 'mag_std') for rnd in ROUND_SETS})
+    PROBES.update({'DioscuriProbeRound' + rnd: ('DioscuriBolt', bone) for rnd, (_, bone) in ROUND_MESHES.items()})
 if PROBE_SLOTS:
     for name, (parent, bone) in PROBES.items():
         sc = dup(named(A['components'], 'FX_slots'), {})
@@ -339,12 +329,6 @@ for r in S['resolvedDependencies']:
             dep['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': DIOSCURI_BASE1}
         A['resolvedDependencies'].append(dep)
         have.add(dep['DepotPath']['$value'])
-if ROUNDS:
-    template = [r for r in S['resolvedDependencies'] if r['DepotPath']['$value'].endswith('__mag_std.anims')][0]
-    for anims in ROUND_SETS.values():
-        dep = copy.deepcopy(template)
-        dep['DepotPath'] = {'$type': 'ResourcePath', '$storage': 'string', '$value': anims}
-        A['resolvedDependencies'].append(dep)
 
 patched = os.path.join(app_dir, 'patched', 'dioscuri_weapon.app.json')
 os.makedirs(os.path.dirname(patched))
@@ -384,14 +368,18 @@ def binding(c, f):
 
 for where, lst in (('components', ba['components']), ('compiledData', ba['compiledData']['Data']['Chunks'])):
     rows = {c['name']['$value']: (c['$type'], binding(c, 'parentTransform'), binding(c, 'skinning')) for c in lst}
-    for n in ('DioscuriBolt', 'dioscuri_body_mesh', 'DioscuriRoundA', 'dioscuri_round_a_mesh', 'DioscuriRoundB', 'dioscuri_round_b_mesh'):
+    for n in ('DioscuriBolt', 'dioscuri_body_mesh', 'dioscuri_round_a_mesh', 'dioscuri_round_b_mesh'):
         if n in rows:
             print('APP %-12s %-22s %s' % (where, n, rows[n]))
     assert rows['dioscuri_body_mesh'] == ('entSkinnedMeshComponent', 'DioscuriBolt', 'DioscuriBolt'), rows['dioscuri_body_mesh']
     assert rows['DioscuriBolt'][1] == 'Receiver'
-    for rnd in (ROUND_SETS if ROUNDS else ()):
-        assert rows['DioscuriRound' + rnd] == ('entAnimatedComponent', 'DioscuriBolt', '-'), rows['DioscuriRound' + rnd]
-        assert rows['dioscuri_round_%s_mesh' % rnd.lower()] == ('entSkinnedMeshComponent', 'DioscuriRound' + rnd, 'DioscuriRound' + rnd)
+    for rnd, (mesh, _) in (ROUND_MESHES.items() if ROUNDS else ()):
+        assert rows['dioscuri_round_%s_mesh' % rnd.lower()] == ('entSkinnedMeshComponent', 'DioscuriBolt', 'DioscuriBolt')
+        c = [x for x in lst if x['name']['$value'] == 'dioscuri_round_%s_mesh' % rnd.lower()][0]
+        # read back, a depot path is its hash (FNV-1a 64 of the path)
+        assert c['mesh']['DepotPath']['$value'] in (mesh, str(fnv64(mesh))), (c['mesh'], fnv64(mesh))
+    # the first rounds build's own animated components must be gone
+    assert not any(n.startswith('DioscuriRound') for n in rows), sorted(rows)
     # every animated part we add takes its animation from its own parent
     for c in lst:
         if c['name']['$value'].startswith('Dioscuri') and c['$type'] == 'entAnimatedComponent':

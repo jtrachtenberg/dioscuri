@@ -40,8 +40,15 @@ STAGE = os.path.join(ROOT, 'archive-staging', 'Dioscuri', 'mod', 'dioscuri', 'an
 SETS = [  # (glb, vanilla set, Dioscuri set, has sound events)
     ('pwa', 'pwa_w_rifle_sniper__tsunami_ashura', 'pwa_dioscuri', True),
     ('pma', 'pma_w_rifle_sniper__tsunami_ashura', 'pma_dioscuri', True),
-    ('base1', 'w_rifle_sniper__tsunami_ashura__base1', 'dioscuri_base1', False),
+    # the bolt clips with the two rounds keyed on its cable bones
+    # (key_round_bones.py, 2026-10-30; base1.glb is the bolt alone)
+    ('base1_rounds', 'w_rifle_sniper__tsunami_ashura__base1', 'dioscuri_base1', False),
 ]
+# `python finish_two_round_reload.py dioscuri_base1` rebuilds only the sets named
+ONLY = set(sys.argv[1:])
+if ONLY:
+    assert ONLY <= {s[2] for s in SETS}, ONLY
+    SETS = [s for s in SETS if s[2] in ONLY]
 splice = json.load(open(os.path.join(TR, 'splice.json')))
 
 
@@ -101,7 +108,7 @@ for glb, van, out, has_events in SETS:
         assert buf['numFrames'] == splice[name]['frames'], (name, buf['numFrames'])
         # the bolt must NOT be SIMD: WolvenKit's SIMD encode of these 14-joint,
         # 16-bit clips hid the whole gun in game (build_two_round_reload.py)
-        assert glb != 'base1' or buf['$type'] == 'animAnimationBufferCompressed', (name, buf['$type'])
+        assert not glb.startswith('base1') or buf['$type'] == 'animAnimationBufferCompressed', (name, buf['$type'])
         assert buf['numExtraJoints'] == 0 and buf['numJoints'] == vbuf['numJoints'] and buf['numTracks'] == vbuf['numTracks'], name
         if buf['fallbackFrameIndices'] != vbuf['fallbackFrameIndices']:
             print('  %s %s: fallbackFrameIndices %s -> restored %s' % (out, name, buf['fallbackFrameIndices'], vbuf['fallbackFrameIndices']))

@@ -37,6 +37,54 @@ in NEXUS-PAGE.md. Key late-stage lessons appended below the original log:
 
 ## Visible rounds (2026-10-28 night): built + deployed as working 1.2.1, NOT yet seen in game
 
+**2026-10-30: REBUILT ON THE BOLT'S CABLE BONES, deployed as a test build,
+not yet seen in game** (the maintainer's go-ahead: "Yes, rebuild"). Why:
+the 10-30 probe run (below) showed the bolt playing our clip exactly while
+the separate round components did not. Now there are NO round components:
+- **Motion:** `mesh-work\key_round_bones.py` (Blender) keys the authored round
+  poses (`rounds.json`) onto the bolt rig's spare cable bones in the bolt's
+  three empty_reload clips: round A on `l_cable_front_01`, round B on
+  `l_cable_middle_01`. Bone pose C(t) = M(t) @ M_rest^-1 @ C_rest. In:
+  `work\two_round\base1.glb`; out: `base1_rounds.glb`, which
+  `finish_two_round_reload.py dioscuri_base1` imports (only that set; V's arm
+  sets untouched). Gates: every other channel identical to `base1.glb`
+  (3e-7), the evaluated cables on target (<1 micrometre).
+  Trap found: the CP77 importer turns GLB seconds into frames at the SCENE
+  rate, so re-importing our own GLB into an empty scene (24 fps) squeezed the
+  untouched channels to 144 frames; the GLB gate only looked at the longest
+  sampler. The script sets 30 fps before importing and gates every sampler.
+- **Meshes:** `finish_rounds.py` builds `dioscuri_round_a.mesh` /
+  `dioscuri_round_b.mesh`: the same chamber geometry, its one bone renamed to
+  the cable bone, the Ashura base1 mesh's own bind matrix and bonePosition
+  for it, epsilon 0.3. Uncooked back: in the chamber, skin joint = the cable
+  bone, bind = the cable's position (-0.0231, 0.3818, 0.0551) / (-0.0232,
+  0.2839, 0.0135). The first build's `dioscuri_round.mesh` and
+  `dioscuri_round_a/b.anims` are removed from staging.
+- **App:** `finish_moving_parts.py --probe-slots`: the two round meshes are
+  skinned mesh components bound (parentTransform + skinning) to
+  `DioscuriBolt`, like the body; no `DioscuriRoundA/B`; the probe slots
+  `DioscuriProbeRoundA/B` now sit on the cable bones of `DioscuriBolt` (the
+  CET probe needs no change). Body mesh byte-identical.
+- **End-to-end gate:** `mesh-work\verify_round_bones.py` reads the STAGED
+  bolt set decoded (`work\two_round\decoded_rounds\`), runs FK and applies
+  each mesh's skin: every round centre within 1.3 mm and axis within 0.15
+  deg of the authored path, all three variants; the bolt still 0.108/0.008,
+  every non-cable channel identical to the decoded set tested in game. Run
+  against the OLD bolt set it fails by 38-40 cm (the gate is not vacuous).
+  No new Blender render: the authored path is the one previewed 10-28.
+- **Deployed** 2026-10-30 09:28 local, archive md5 fa6aa34d..., 25 entries.
+  Rollbacks: `.modwright\backups\20261030-162836` (the 10-29 probe build,
+  a0a14d7b), `20261029-041010` (the published 1.2.0). The probe log of the
+  10-30 component run is kept as `round_probe_20261030_components.txt`.
+- **Still a TEST build:** the staged app has the probe slots and is not
+  committed; before release, rerun `finish_moving_parts.py` without
+  `--probe-slots`, rebuild, and remove the game's CET `DioscuriRoundProbe`.
+- **In-game check:** as below (round in hand on the way up, first round in
+  its slot while the second is fetched, both forward with the bolt, nothing
+  at rest, no pop at the screen edge). The probe should now read the cable
+  bones moving with the reload; at rest A (-0.023, 0.382, 0.055) and B
+  (-0.023, 0.284, 0.013).
+
 **2026-10-29: in game the rounds did NOT show** (the maintainer: "the rounds
 dont show up ... during the reload animation"). Found offline, then fixed
 and deployed as a TEST build, not yet seen:
