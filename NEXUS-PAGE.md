@@ -1,6 +1,6 @@
 # Nexus page copy (paste into mod page editor)
 
-**1.2.1 UPLOAD (built 2026-10-30):** `dist\MalorianArmsDioscuri-1.2.1.zip`,
+**1.2.1 (built and PUBLISHED 2026-10-30):** `dist\MalorianArmsDioscuri-1.2.1.zip`,
 md5 D1D47BEB30188D45EBD04CFCFBEE6A75, 4 files. The yaml, the script and the
 .xl are byte-identical to 1.2.0's; the archive is the build the maintainer
 confirmed in game on 2026-10-30 ("test pass") minus only the three test
